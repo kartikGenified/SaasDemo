@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "267987504542",
+    "project_id": "ozone-70b58",
+    "storage_bucket": "ozone-70b58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267987504542:android:7391f3698078125ba71a8f",
+        "android_client_info": {
+          "package_name": "com.netcarrots.ozone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfvaMYqbyCySpnjuLyFLswBBuQO1zo08c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

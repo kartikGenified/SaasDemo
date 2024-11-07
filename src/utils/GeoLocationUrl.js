@@ -1,0 +1,1 @@
+export const geoLocationUrl = "https://nominatim.openstreetmap.org/reverse?lat=<value>&lon=<value>&<params>"
