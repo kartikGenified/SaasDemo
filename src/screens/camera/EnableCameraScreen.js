@@ -72,8 +72,8 @@ const EnableCameraScreen = ({ navigation, route }) => {
         const granted = await PermissionsAndroid.request(
           PermissionsAndroid.PERMISSIONS.CAMERA,
           {
-            title: "OzoStars App Camera Permission",
-            message: "OzoStars App needs access to your camera",
+            title: "Genefied Demo App Camera Permission",
+            message: "Genefied Demo App needs access to your camera",
             buttonNegative: "Cancel",
             buttonPositive: "OK",
           }

@@ -7,7 +7,7 @@ export const clientID = 28;
 export const baseUrl = "http://sales-saas-api.genefied.in/"  // "http://saas-api-dev.genefied.in/""
 
 //icons and images
-export const appIcon = require("../../assets/images/ozoStartsLogo.png");
+export const appIcon = require("../../assets/images/genefiedLogo.jpg");
 export const splash = require("../../assets/gif/SplashGenefied.gif");
 
 export const descriptionImages = [

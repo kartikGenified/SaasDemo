@@ -647,7 +647,7 @@ const Splash = ({ navigation }) => {
     if (Platform.OS == "android") {
       LocationServicesDialogBox.checkLocationServicesIsEnabled({
         message:
-          "<h2 style='color: #0af13e'>Use Location ?</h2>Ozostars wants to change your device settings:<br/><br/>Enable location to use the application.<br/><br/><a href='#'>Learn more</a>",
+          "<h2 style='color: #0af13e'>Use Location ?</h2>Genefied Demo wants to change your device settings:<br/><br/>Enable location to use the application.<br/><br/><a href='#'>Learn more</a>",
         ok: "YES",
         cancel: "NO",
         enableHighAccuracy: true, // true => GPS AND NETWORK PROVIDER, false => GPS OR NETWORK PROVIDER

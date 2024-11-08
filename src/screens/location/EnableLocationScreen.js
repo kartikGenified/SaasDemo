@@ -133,7 +133,7 @@ const EnableLocationScreen = ({ route, navigation }) => {
     } else if (Platform.OS === "android") {
       LocationServicesDialogBox.checkLocationServicesIsEnabled({
         message:
-          "<h2 style='color: #0af13e'>Use Location ?</h2>Ozostars wants to change your device settings:<br/><br/>Enable location to use the application.<br/><br/><a href='#'>Learn more</a>",
+          "<h2 style='color: #0af13e'>Use Location ?</h2>Genefied Demo wants to change your device settings:<br/><br/>Enable location to use the application.<br/><br/><a href='#'>Learn more</a>",
         ok: "YES",
         cancel: "NO",
         enableHighAccuracy: true,
@@ -158,7 +158,7 @@ const EnableLocationScreen = ({ route, navigation }) => {
         .catch((error) => {
           Alert.alert(
             "You denied GPS access",
-            "To scan QR code, Ozostars app requires location access, kindly enable GPS access to start scanning",
+            "To scan QR code, Genefied Demo app requires location access, kindly enable GPS access to start scanning",
             [
               {
                 text: "OK",

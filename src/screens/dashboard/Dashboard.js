@@ -648,7 +648,26 @@ const Dashboard = ({ navigation }) => {
             {/* <PointBox pointBalance ={Math.trunc(Number(userPointData?.body?.point_balance)) } ></PointBox> */}
             {/* <PointBox pointBalance ={Math.trunc(0)} ></PointBox> */}
             {console.log("firstdkdkd", Math.trunc(Number(userPointData?.body?.point_balance)))}
-            <PointBox pointBalance ={Math.trunc(Number(userPointData?.body?.point_balance)) } ></PointBox> 
+            {/* <PointBox pointBalance ={Math.trunc(Number(userPointData?.body?.point_balance)) } ></PointBox>  */}
+            
+            <View style={{ width: "90%", height: 50, backgroundColor: 'white', marginBottom: 20, flexDirection: 'row', alignItems: 'center', borderColor: '#808080', borderWidth: 0.3, borderRadius: 10 }}>
+
+<View style={{ backgroundColor: 'white', width: '42%', marginHorizontal: 20 }}>
+ {userPointData?.body?.point_balance ? <PoppinsText content={`${t("balance points")} ${userPointData?.body?.point_balance ? userPointData?.body?.point_balance : "loading"}`} style={{ color: 'black', fontWeight: 'bold' }}></PoppinsText> : <AnimatedDots color={'black'}/>} 
+</View>
+
+
+<View style={{ height: '100%', borderWidth: 0.4, color: "#808080", opacity: 0.3,  }}>
+</View>
+
+<View style={{ backgroundColor: 'white',width:'46%' }}>
+  {userData && !userPointIsLoading && <TouchableOpacity style={{ backgroundColor: ternaryThemeColor,height:'100%', borderRadius: 5, width: '100%', alignItems: 'center',justifyContent:'center' }} onPress={() => { navigation.navigate("RedeemedHistory") }}>
+    <PoppinsTextLeftMedium style={{ color: 'white', fontWeight: '800',fontSize:16 }} content={t("redeem")} ></PoppinsTextLeftMedium>
+  </TouchableOpacity>}
+</View>
+
+</View>
+
             </View>
       
 

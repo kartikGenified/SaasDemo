@@ -54,7 +54,7 @@ const App = () => {
                     onPress: () => {
                       Linking.openURL(
                         Platform.OS === 'ios'
-                          ? 'https://apps.apple.com/in/app/ozostars-%E0%A4%8F%E0%A4%95-%E0%A4%AA%E0%A4%B9%E0%A4%B2-%E0%A4%85%E0%A4%AA%E0%A4%A8-%E0%A4%95-%E0%A4%B8-%E0%A4%A5/id1554075490'
+                          ? 'https://apps.apple.com/in/app/Genefied Demo-%E0%A4%8F%E0%A4%95-%E0%A4%AA%E0%A4%B9%E0%A4%B2-%E0%A4%85%E0%A4%AA%E0%A4%A8-%E0%A4%95-%E0%A4%B8-%E0%A4%A5/id1554075490'
                           : "https://play.google.com/store/apps/details?id=com.genefied.demo"
                       );
                     },
