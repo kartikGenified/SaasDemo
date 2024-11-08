@@ -54,7 +54,7 @@ const UpdateModal = (props) => {
         </TouchableOpacity> */}
         <TouchableOpacity onPress={()=>{
              Linking.openURL(
-                "https://play.google.com/store/apps/details?id=com.netcarrots.ozone"
+                "https://play.google.com/store/apps/details?id=com.genefied.demo"
               )
         }} style={{height:50,width:100,alignItems:'center',justifyContent:'center',backgroundColor:ternaryThemeColor,borderRadius:10}}>
             <Text style={{color:"white",fontSize:18,fontWeight:'600'}}>

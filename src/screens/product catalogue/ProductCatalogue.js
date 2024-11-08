@@ -30,7 +30,7 @@ const ProductCatalogue = ({navigation}) => {
     ? useSelector(state => state.apptheme.ternaryThemeColor)
     : 'grey';
 
-    const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader.gif')).uri;
+    const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader2.gif')).uri;
 
 
   const [

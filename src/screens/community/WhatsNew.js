@@ -16,7 +16,7 @@ const WhatsNew = ({ navigation }) => {
     const [categories, setCategories] = useState();
     const [media, setMedia] = useState();
 
-    const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader.gif')).uri;
+    const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader2.gif')).uri;
 
     const ternaryThemeColor = useSelector(
         state => state.apptheme.ternaryThemeColor,

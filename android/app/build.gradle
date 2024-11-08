@@ -75,9 +75,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.netcarrots.ozone"
+    namespace "com.genefied.demo"
     defaultConfig {
-        applicationId "com.netcarrots.ozone"
+        applicationId "com.genefied.demo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 70025

@@ -21,7 +21,7 @@ const Feedback = ({ navigation }) => {
   const userData = useSelector(state => state.appusersdata.userData)
 
     const userName = useSelector(state => state.appusersdata.name);
-    const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader.gif')).uri;
+    const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader2.gif')).uri;
 
     const {t} = useTranslation();
 

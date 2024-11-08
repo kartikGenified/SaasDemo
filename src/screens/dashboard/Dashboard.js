@@ -124,7 +124,7 @@ const Dashboard = ({ navigation }) => {
     : "#FFB533";
 
   const gifUri = Image.resolveAssetSource(
-    require("../../../assets/gif/loader.gif")
+    require("../../../assets/gif/loader2.gif")
   ).uri;
   // console.log("pointSharingData", JSON.stringify(pointSharingData), userData)
   // console.log("user id is from dashboard", userId)

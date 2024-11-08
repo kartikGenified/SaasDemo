@@ -117,7 +117,7 @@ const QrCodeScanner = ({ navigation,route }) => {
     ? useSelector((state) => state.apptheme.ternaryThemeColor)
     : "grey";
   const gifUri = Image.resolveAssetSource(
-    require("../../../assets/gif/loader.gif")
+    require("../../../assets/gif/loader2.gif")
   ).uri;
   const dispatch = useDispatch();
   // console.log('Workflow Program is ',location);

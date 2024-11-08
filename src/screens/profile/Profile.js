@@ -214,7 +214,7 @@ const Profile = ({ navigation }) => {
   const name = profileName ? fetchProfileData?.body.name : '';
   const membership = getActiveMembershipData && getActiveMembershipData.body?.tier.name
   const accountVerified = !Object.values(kycData).includes(false);
-  const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader.gif')).uri;
+  const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader2.gif')).uri;
 
 
   const ProfileBox = (props) => {

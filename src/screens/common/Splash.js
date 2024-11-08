@@ -102,6 +102,7 @@ import { useInternetSpeedContext } from "../../Contexts/useInternetSpeedContext"
 import { setSlowNetwork } from "../../../redux/slices/internetSlice";
 import { apiFetchingInterval } from "../../utils/apiFetchingInterval";
 import { clientName, splash } from "../../utils/HandleClientSetup";
+import FastImage from "react-native-fast-image";
 
 const Splash = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -132,7 +133,7 @@ const Splash = ({ navigation }) => {
     console.log("current version check", currentVersion);
     dispatch(setAppVersion(currentVersion));
   }
-  const gifUri = Image.resolveAssetSource(splash).uri;
+  const gifUri = Image.resolveAssetSource(require('../../../assets/gif/SplashGenefied.gif')).uri;
   // generating functions and constants for API use cases---------------------
   const [
     getAppTheme,
@@ -882,7 +883,9 @@ const Splash = ({ navigation }) => {
             dispatch(setAppUsersData(appUsersData));
           }
         } else {
-          console.log("There is no user data calling the api for the first time");
+          console.log(
+            "There is no user data calling the api for the first time"
+          );
           getUsers();
         }
       } catch (e) {
@@ -998,9 +1001,14 @@ const Splash = ({ navigation }) => {
       __DEV__ && setMinVersionSupport(true);
 
       if (value === "Yes") {
-        navigation.navigate("SelectUser");
+        setTimeout(()=>{
+          navigation.navigate("SelectUser");
+        },2000)
       } else {
-        navigation.navigate("Introduction");
+        setTimeout(()=>{
+          navigation.navigate("Introduction");
+        
+        },2000)
       }
       // console.log("isAlreadyIntroduced",isAlreadyIntroduced,gotLoginData)
     }
@@ -1145,29 +1153,30 @@ const Splash = ({ navigation }) => {
       <View
         style={{ alignItems: "center", justifyContent: "center", width: "90%" }}
       >
-        <Text style={{ color: "black" }}>
-          Slow Internet Connection Detected
-        </Text>
-        <Text style={{ color: "black" }}>
-          Please check your internet connection.{" "}
-        </Text>
+        <FastImage
+          style={{ width: "100%", height: "100%", alignSelf: "center" }}
+          source={{
+            uri: gifUri, // Update the path to your GIF
+            priority: FastImage.priority.normal,
+          }}
+          resizeMode={FastImage.resizeMode.cover}
+        />
       </View>
     );
   };
 
   // console.log("internet connection status",connected)
   return (
-    <ImageBackground
-      resizeMode="stretch"
-      style={{
-        height: "100%",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-      source={splash}
-    >
-      <InternetModal visible={!connected} comp={NoInternetComp} />
+    <View>
+      <FastImage
+        style={{ width: "100%", height: "100%", alignSelf: "center" }}
+        source={{
+          uri: gifUri, // Update the path to your GIF
+          priority: FastImage.priority.normal,
+        }}
+        resizeMode={FastImage.resizeMode.cover}
+      />
+
       {isSlowInternet && (
         <InternetModal visible={isSlowInternet} comp={SlowInternetComp} />
       )}
@@ -1201,7 +1210,7 @@ const Splash = ({ navigation }) => {
           ></PoppinsTextMedium>
         </View>
       }
-    </ImageBackground>
+    </View>
   );
 };
 
