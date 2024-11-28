@@ -33,8 +33,6 @@ import DisplayOnlyTextInput from "../../components/atoms/DisplayOnlyTextInput";
 import { useTranslation } from "react-i18next";
 import PincodeTextInput from "../../components/atoms/input/PincodeTextInput";
 import PrefilledTextInput from "../../components/atoms/input/PrefilledTextInput";
-import { eKyc } from "../../utils/HandleClientSetup";
-import TextInputGST from "../../components/atoms/input/TextInputGST";
 
 const EditProfile = ({ navigation, route }) => {
   const [changedFormValues, setChangedFormValues] = useState([]);
@@ -44,10 +42,9 @@ const EditProfile = ({ navigation, route }) => {
   const [profileImage, setProfileImage] = useState(route.params?.savedImage);
   const [filename, setFilename] = useState(route.params?.savedImage);
   const [message, setMessage] = useState();
-  const [location, setLocation] = useState();
+  const [location, setLocation] = useState()
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
-  const [isLoading, setisLoading] = useState(false)
   const [marginB, setMarginB] = useState(0);
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
@@ -96,14 +93,11 @@ const EditProfile = ({ navigation, route }) => {
       setMessage("Profile Updated Successfully");
       setSuccess(true);
       setIsClicked(false);
-      setisLoading(false)
     } else if (updateProfileError) {
       console.log("updateProfileError", updateProfileError);
       setMessage(updateProfileError.data.message);
       setError(true);
       setIsClicked(false);
-      setisLoading(false)
-
     }
   }, [updateProfileData, updateProfileError]);
 
@@ -135,35 +129,38 @@ const EditProfile = ({ navigation, route }) => {
   }, [uploadImageData, uploadImageError]);
 
   const handleFetchPincode = (data) => {
-    console.log("pincode is", data);
-    getLocationFromPinCode(data);
-  };
-  const getLocationFromPinCode = (pin) => {
-    console.log("getting location from pincode", pin);
-    var url = `http://postalpincode.in/api/pincode/${pin}`;
+    console.log("pincode is", data)
+    getLocationFromPinCode(data)
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((json) => {
-        console.log("location address=>", JSON.stringify(json));
-        if (json.PostOffice === null) {
-          setError(true);
-          setMessage("Pincode data cannot be retrieved.");
-        } else {
-          const locationJson = {
-            postcode: pin,
-            district: json.PostOffice[0].District,
-            state: json.PostOffice[0].State,
-            country: json.PostOffice[0].Country,
-            city: json.PostOffice[0].Region,
-          };
-          setLocation(locationJson);
-        }
-      });
-  };
+  }
+  const getLocationFromPinCode =  (pin) => {
+    console.log("getting location from pincode",pin)
+    var url = `http://postalpincode.in/api/pincode/${pin}`
+
+  fetch(url).then(response => response.json()).then(json => {
+    console.log("location address=>", JSON.stringify(json));
+    if(json.PostOffice===null)
+    {
+      setError(true)
+      setMessage("Pincode data cannot be retrieved.")
+    }
+    else{
+      const locationJson = {
+        "postcode":pin,
+        "district":json.PostOffice[0].District,
+        "state":json.PostOffice[0].State,
+        "country":json.PostOffice[0].Country,
+        "city":json.PostOffice[0].Region
+      }
+      setLocation(locationJson)
+    }
+    
+
+  })
+}
 
   const handleData = (data, title, jsonData) => {
-    console.log("djnjbdhdndddjj",data, title)
+    // console.log("djnjbdhdndddjj",data, title)
 
     let submissionData = [...changedFormValues];
     let removedValues = submissionData.filter((item, index) => {
@@ -187,21 +184,10 @@ const EditProfile = ({ navigation, route }) => {
       }
     }
 
-    if(data?.label == "GSTIN"){
-
-      removedValues.push({
-        value: data?.value,
-        name: data?.label.toLowerCase(),
-      });
-    }
-    else{
-
-      removedValues.push({
-        value: data,
-        name: title,
-      });
-    }
-
+    removedValues.push({
+      value: data,
+      name: title,
+    });
     setChangedFormValues(removedValues);
     console.log("removedValues", removedValues);
 
@@ -221,7 +207,6 @@ const EditProfile = ({ navigation, route }) => {
   };
 
   const handleButtonPress = () => {
-    setisLoading(true)
     if (!isClicked) {
       updateProfile();
       setIsClicked(true);
@@ -589,13 +574,10 @@ const EditProfile = ({ navigation, route }) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={{ width: "90%" }}
-          contentContainerStyle={{ width: "100%" }}
         >
           {formFields &&
             formValues &&
             formFields.map((item, index) => {
-              console.log("gstin input", item.name);
-
               if (item.type === "text") {
                 if (item.name === "aadhar") {
                   return (
@@ -655,7 +637,9 @@ const EditProfile = ({ navigation, route }) => {
                       photo={require("../../../assets/images/eye.png")}
                     ></DisplayOnlyTextInput>
                   );
-                } else if (item.name.trim().toLowerCase() === "pincode") {
+                }
+                else if ((item.name).trim().toLowerCase() === "pincode"   ) {
+                 
                   return (
                     <PincodeTextInput
                       jsonData={item}
@@ -665,12 +649,15 @@ const EditProfile = ({ navigation, route }) => {
                       placeHolder={item.name}
                       value={location?.postcode}
                       label={item.label}
-                      displayText={item.name}
+                      displayText = {item.name}
                       maxLength={6}
-                      shouldReturnValue={true}
+                      shouldReturnValue = {true}
                     ></PincodeTextInput>
-                  );
-                } else if (item.name.trim().toLowerCase() === "city") {
+                  )
+                }
+
+                else if ((item.name).trim().toLowerCase() === "city" ) {
+
                   return (
                     <PrefilledTextInput
                       jsonData={item}
@@ -678,13 +665,15 @@ const EditProfile = ({ navigation, route }) => {
                       handleData={handleData}
                       placeHolder={item.name}
                       value={location?.city}
-                      displayText={item.name}
+                      displayText = {item.name}
                       label={item.label}
                       isEditable={true}
-                      shouldReturnValue={true}
+                      shouldReturnValue = {true}
                     ></PrefilledTextInput>
-                  );
-                } else if (item.name.trim().toLowerCase() === "state") {
+                  )
+
+                }
+                else if ((item.name).trim().toLowerCase() === "state"  ) {
                   return (
                     <PrefilledTextInput
                       jsonData={item}
@@ -693,12 +682,14 @@ const EditProfile = ({ navigation, route }) => {
                       placeHolder={item.name}
                       value={location?.state}
                       label={item.label}
-                      displayText={item.name}
+                      displayText = {item.name}
                       isEditable={false}
-                      shouldReturnValue={true}
+                      shouldReturnValue = {true}
                     ></PrefilledTextInput>
-                  );
-                } else if (item.name.trim().toLowerCase() === "district") {
+                  )
+                }
+                else if ((item.name).trim().toLowerCase() === "district"  ) {
+
                   return (
                     <PrefilledTextInput
                       jsonData={item}
@@ -707,27 +698,16 @@ const EditProfile = ({ navigation, route }) => {
                       placeHolder={item.name}
                       value={location?.district}
                       label={item.label}
-                      displayText={item.name}
+                      displayText = {item.name}
                       isEditable={false}
-                      shouldReturnValue={true}
+                      shouldReturnValue = {true}
                     ></PrefilledTextInput>
-                  );
-                } else if (eKyc && item.name === "gstin") {
-                  console.log("gstin input", item.name);
-                  return (
-                    <View style={{width:'100%', marginLeft:-20}}>
-                      <TextInputGST
-                        jsonData={item}
-                        key={index}
-                        handleData={handleData}
-                        placeHolder={item.name}
-                        label={item.label}
-                      >
-                        {" "}
-                      </TextInputGST>
-                    </View>
-                  );
-                } else if (item.name === "enrollment_date") {
+                  )
+
+
+
+                }
+                else if (item.name === "enrollment_date") {
                   return (
                     <DisplayOnlyTextInput
                       key={index}
@@ -841,6 +821,7 @@ const EditProfile = ({ navigation, route }) => {
                       value={
                         formValues[index] != undefined ? formValues[index] : ""
                       }
+                      
                     ></TextInputRectangularWithPlaceholder>
                   );
                 }

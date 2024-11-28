@@ -69,7 +69,7 @@ const TextInputRectangle = (props) => {
           color: "black",
           fontSize: 16,
         }}
-        placeholderTextColor="grey"
+        placeholderTextColor="#D3D3D3"
         onChangeText={(text) => {
           handleInput(text);
         }}

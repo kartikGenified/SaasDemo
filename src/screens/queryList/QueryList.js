@@ -147,7 +147,7 @@ const QueryList = ({ navigation }) => {
                         source={require('../../../assets/images/blackBack.png')}></Image>
                 </TouchableOpacity>
 
-                <PoppinsTextMedium style={{ fontSize: 20, color: '#ffffff', marginTop: "3%", position: 'absolute', left: 50 }} content={"Query List"}></PoppinsTextMedium>
+                <PoppinsTextMedium style={{ fontSize: 20, fontWeight:'bold', color: '#ffffff', marginTop: "3%", position: 'absolute', left: 50 }} content={"Query List"}></PoppinsTextMedium>
 
 
             </View>

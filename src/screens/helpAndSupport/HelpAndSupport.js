@@ -64,7 +64,7 @@ const HelpAndSupport = ({navigation}) => {
             source={require('../../../assets/images/blackBack.png')}></Image>
         </TouchableOpacity>
         <PoppinsTextMedium
-          content={t("Help And SUpport")}
+          content={t("Help & Support")}
           style={{
             marginLeft: 10,
             fontSize: 16,

@@ -9,17 +9,14 @@ import Cancel from 'react-native-vector-icons/MaterialIcons'
 
 const ErrorModal = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [warningMode, setWaringMode] = useState(props?.warning)
+  const navigation = useNavigation()
+  const ternaryThemeColor = useSelector(state => state.apptheme.ternaryThemeColor)
   const productData = props.productData;
   const type = props.type
   const title = props.title
-  const params = props?.params
-  const navigation = useNavigation()
-  const ternaryThemeColor = useSelector(
-    state => state.apptheme.ternaryThemeColor,
-  )
-    ? useSelector(state => state.apptheme.ternaryThemeColor)
-    : 'grey';
   const navigateTo = props.navigateTo
+  const warning = props.warning 
 
   console.log("product data in report an issue", productData,navigateTo)
 
@@ -33,14 +30,18 @@ const ErrorModal = (props) => {
     else {
       setModalVisible(false)
     }
+    if(props.warning == true){
+      setWaringMode(true)
+    }
   }, [])
+
   useEffect(()=>{
     // navigation.navigate(navigateTo)
   },[navigateTo])
   const closeModal = () => {
    
     
-    navigateTo &&  navigation.replace(navigateTo,params)
+    navigateTo &&  navigation.replace(navigateTo)
     
     props.modalClose()
     setModalVisible(!modalVisible)
@@ -66,25 +67,25 @@ const ErrorModal = (props) => {
         onRequestClose={() => {
           props.modalClose()
           setModalVisible(!modalVisible);
-         navigateTo &&  navigation.replace(navigateTo,params)
+         navigateTo &&  navigation.replace(navigateTo)
         }}>
         <View style={styles.centeredView}>
-          <View style={{ ...styles.modalView}}>
+          <View style={{ ...styles.modalView,   borderColor:warning? "#E38C27" :'#c43b3d'}}>
             {/* <Image style={{ width: 80, height: 80, resizeMode: 'contain' }} source={require('../../../assets/images/failed.png')}></Image> */}
-            <Cancel name="cancel" size = {100} color="#FF3436"></Cancel>
-            {title && <Text style={{ color: '#FF5D5D', fontSize: 24, fontWeight: '700' }}>{title}</Text>}
-            {!title && <Text style={{ color: '#FF5D5D', fontSize: 24, fontWeight: '700' }}>{t("Error")}</Text>}
+            <Cancel name="cancel" size = {100} color={warningMode ? "#E38C27" : "#FF3436"}></Cancel>
+            {title && <Text style={{ color: warningMode ? "#E38C27" : '#FF5D5D', fontSize: 24, fontWeight: '700' }}>{title}</Text>}
+            {!title && <Text style={{ color: warningMode ? "#E38C27" : '#FF5D5D', fontSize: 24, fontWeight: '700' }}>{warning? "Warning" : t("Error")}</Text>}
 
             <Text style={{ ...styles.modalText, fontSize: 20, fontWeight: '600', color: 'black' }}>{props.message}</Text>
             <Pressable
-              style={{ ...styles.button, backgroundColor: '#FF3436', width: 240 }}
+              style={{ ...styles.button, backgroundColor: warningMode ?"#E38C27": '#FF3436', width: 240 }}
               onPress={() => closeModal()}>
               <Text style={styles.textStyle}>{t("Try Again")}</Text>
             </Pressable>
 
             {props.isReportable &&
               <Pressable
-                style={{ ...styles.button, backgroundColor: 'red', width: 100, marginTop: 10 }}
+                style={{ ...styles.button, backgroundColor: warningMode? "#E38C27" :"red", width: 100, marginTop: 10 }}
                 onPress={() => reportAndNavigate()}>
                 <Text style={styles.textStyle}>Report</Text>
               </Pressable>
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     borderWidth:3,
-    borderColor:'#c43b3d'
+  
    
   },
   button: {

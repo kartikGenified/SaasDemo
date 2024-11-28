@@ -631,7 +631,9 @@ const AadharDataBox = ({ dob, name,gender,address }) => {
               modalClose={modalClose}
               message={message}
               openModal={error}
-              navigateTo="Dashboard"></ErrorModal>
+              warning={verifyPanError?.status!== 500 && true}
+              // navigateTo="Dashboard"
+              ></ErrorModal>
           )}
           {success && (
             <MessageModal
@@ -651,7 +653,7 @@ const AadharDataBox = ({ dob, name,gender,address }) => {
                 <PoppinsTextMedium style={{color:'#919191',fontSize:16,marginLeft:4,marginRight:4}} content={t("Enter Pan Number" )}> </PoppinsTextMedium>
                 </View>
                 <View style={{alignItems:"center",justifyContent:'flex-start',flexDirection:"row",width:'100%',height:40}}>
-                <TextInput maxLength={10} value={pan ? pan:verifyPanData?.body?.pan} onChangeText={(text)=>{handlePanInput(text)}} style={{alignItems:'center',justifyContent:'center',width:'82%',height:40,fontSize:16,letterSpacing:1,marginLeft:20,color:'black'}} placeholder='DBJUU1234'></TextInput>
+                <TextInput maxLength={10} value={pan ? pan:verifyPanData?.body?.pan} onChangeText={(text)=>{handlePanInput(text.toUpperCase())}} style={{alignItems:'center',justifyContent:'center',width:'82%',height:40,fontSize:16,letterSpacing:1,marginLeft:20,color:'black'}} placeholder='DBJUU1234'></TextInput>
                {verifyPanData &&  <View style={{width:'14%',height:40,alignItems:'center',justifyContent:'center',}}>
                 <Image style={{height:22,width:22,resizeMode:'contain'}} source={require('../../../assets/images/tickBlue.png')}></Image>
                 </View>}
@@ -674,7 +676,7 @@ const AadharDataBox = ({ dob, name,gender,address }) => {
                 <PoppinsTextMedium style={{color:'#919191',fontSize:16,marginLeft:4,marginRight:4}} content={t("Enter Your Name")} > </PoppinsTextMedium>
                 </View>
                 <View style={{alignItems:"center",justifyContent:'flex-start',flexDirection:"row",width:'100%',height:40}}>
-                <TextInput value={name!=="" ? name : verifyPanData?.body?.registered_name } onChangeText={(text)=>{setName(text)}} style={{alignItems:'center',justifyContent:'center',width:'82%',height:40,fontSize:16,letterSpacing:1,marginLeft:20,color:'black'}} placeholder='Enter Your Name'></TextInput>
+                <TextInput value={name!=="" ? name : verifyPanData?.body?.registered_name } onChangeText={(text)=>{setName(text.toUpperCase())}} style={{alignItems:'center',justifyContent:'center',width:'82%',height:40,fontSize:16,letterSpacing:1,marginLeft:20,color:'black'}} placeholder='Enter Your Name'></TextInput>
                 
                 </View>
                
@@ -788,7 +790,7 @@ const AadharDataBox = ({ dob, name,gender,address }) => {
           
         }}>
           
-          <PoppinsTextMedium style={{alignSelf:'center', fontWeight:'bold', fontSize:20, color:'white'}} content={t("proceed")}></PoppinsTextMedium>
+          <PoppinsTextMedium style={{alignSelf:'center', fontWeight:'bold', fontSize:20, color:'white'}} content={t("Proceed")}></PoppinsTextMedium>
         </TouchableOpacity>
         </View>
         

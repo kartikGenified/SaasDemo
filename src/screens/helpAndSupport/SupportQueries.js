@@ -175,7 +175,7 @@ const SupportQueries = ({ navigation }) => {
       {error && (
         <ErrorModal
           modalClose={modalClose}
-
+          warning={true}
           message={message}
           openModal={error}></ErrorModal>
       )}

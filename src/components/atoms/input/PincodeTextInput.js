@@ -12,7 +12,7 @@ const PincodeTextInput = (props) => {
     if(displayText == "pincode" || displayText == "Pincode"){
         displayText = "Pincode"
     }
-    // console.log("pinnn", displayText)
+    console.log("pinnn", displayText)
    
     const required = props.required ===undefined ? props.jsonData.required : props.required
     const {t} = useTranslation()
@@ -40,34 +40,24 @@ const PincodeTextInput = (props) => {
     },[keyboardShow])
 
     const handleInput=(text)=>{
-        console.log("tettttt", text)
-        if(text == "." || text == "," || value && value?.includes(".")){
-            setValue("")
+        setValue(text)
+        console.log(maxLength,text)
+        if(text.length===6 )
+        {
+        props.handleFetchPincode(text)
+        let tempJsonData ={...props.jsonData,"value":text}
+        console.log(tempJsonData)
+        if(shouldReturnValue)
+        props.handleData(value, placeHolder)
+        else
+        props.handleData(tempJsonData)
+
         }
-        else{
-            setValue(text)
-            console.log(maxLength,text)
-            if(text.length===6 )
-            {
-            props.handleFetchPincode(text)
-            let tempJsonData ={...props.jsonData,"value":text}
-            console.log(tempJsonData)
-            if(shouldReturnValue)
-            props.handleData(value, placeHolder)
-            else
-            props.handleData(tempJsonData)
-    
-            }
-        }
-   
         // props.handleData(value)
        
     }
     
     const handleInputEnd=()=>{
-        if(value?.includes(".")){
-            setValue("")
-        }
         let tempJsonData ={...props.jsonData,"value":value}
         console.log(tempJsonData)
         if(shouldReturnValue)
@@ -77,13 +67,11 @@ const PincodeTextInput = (props) => {
     }
 
     return (
-        <View style={{height:60,width:'95%',borderWidth:1,borderColor:'#DDDDDD',alignItems:"center",justifyContent:"center",backgroundColor:'white',margin:10}}>
+        <View style={{height:60,width:'86%',borderWidth:1,borderColor:'#DDDDDD',alignItems:"center",justifyContent:"center",backgroundColor:'white',margin:10}}>
             <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'white',position:"absolute",top:-15,left:16}}>
                 <PoppinsTextMedium style={{color:"#919191",padding:4,fontSize:18}} content = {t(displayText)}></PoppinsTextMedium>
             </View>
-            <TextInput autoComplete='postal-address' keyboardType='numeric' maxLength={maxLength} onSubmitEditing={(text)=>{handleInputEnd()}} onEndEditing={(text)=>{handleInputEnd()}} style={{height:50,width:'100%',alignItems:"center",justifyContent:"flex-start",fontWeight:'500',marginLeft:24,color:'black',fontSize:16}} placeholderTextColor="grey" onChangeText={(text)=>{handleInput(text)}} value={value} placeholder={required ? `${label} *` : `${label}`}></TextInput>
-            
-            
+            <TextInput keyboardType='numeric' maxLength={maxLength} onSubmitEditing={(text)=>{handleInputEnd()}} onEndEditing={(text)=>{handleInputEnd()}} style={{height:50,width:'100%',alignItems:"center",justifyContent:"flex-start",fontWeight:'500',marginLeft:24,color:'black',fontSize:16}}    placeholderTextColor="#D3D3D3" onChangeText={(text)=>{handleInput(text)}} value={value} placeholder={required ? `${label} *` : `${label}`}></TextInput>
         </View>
     );
 }

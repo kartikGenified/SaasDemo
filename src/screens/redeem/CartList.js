@@ -49,7 +49,7 @@ const CartList = ({ navigation, route }) => {
     : '#FFB533';
   const userData = useSelector(state => state.appusersdata.userData);
   const schemeType = route.params?.schemeType
-  const schemeID = route.parmas?.schemeID
+  const schemeID = route.params?.schemeID
   console.log('userdata', route.params.cart);
   const height = Dimensions.get('window').height
 
@@ -442,6 +442,7 @@ const CartList = ({ navigation, route }) => {
           modalClose={modalClose}
           message={message}
           openModal={error}
+          warning= {true}
           ></ErrorModal>
       )}
       {success && (

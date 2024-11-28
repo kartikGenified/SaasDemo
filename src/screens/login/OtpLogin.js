@@ -243,7 +243,7 @@ const OtpLogin = ({ navigation, route }) => {
                 name: name,
                 mobile: mobile,
                 navigatingFrom: "OtpLogin",
-                registrationRequired: registrationRequired,
+                registrationRequired: true,
               });
             } else {
               navigateToOtp();

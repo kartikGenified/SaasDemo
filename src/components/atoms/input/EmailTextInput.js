@@ -5,177 +5,136 @@ import PoppinsTextLeftMedium from "../../electrons/customFonts/PoppinsTextLeftMe
 import { useTranslation } from "react-i18next";
 
 const EmailTextInput = (props) => {
-  const [value, setValue] = useState(props.value);
-  const [isValidEmailState, setIsValidEmailState] = useState(true);
-  const [maxLength, setMaxLength] = useState(
-    props.maxLength ? props.maxLength : 100
-  );
-  const [keyboardShow, setKeyboardShow] = useState(false);
-  const placeHolder = props.placeHolder;
-  const label = props.label;
-  let displayText = props.placeHolder
-  const required = props.jsonData.required
-  props.required === undefined ? props.jsonData.required : props.required;
+  const { value, maxLength, placeholder, label, jsonData, handleData } = props;
+  const { t } = useTranslation();
 
-  const {t} =useTranslation()
+  console.log("email text input", label)
 
-  Keyboard.addListener("keyboardDidShow", () => {
-  
-    console.log("Keyboard Visible")
+  const [inputValue, setInputValue] = useState(value || ""); // Initialize with provided value or empty string
+  const [isValidEmail, setIsValidEmail] = useState(true);
 
-  });
-  Keyboard.addListener("keyboardDidHide", () => {
-    if(placeHolder==="email")
-    {
-    handlekeyboardHide("text")
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    }
-    console.log("Keyboard Hidden")
+  // Function to validate email
+  const validateEmail = (text) => emailRegex.test(text);
 
-  });
-  const isValidEmail = (text) => {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailRegex.test(text);
-  };
-
-  if(displayText=="email" || "Email"){
-      displayText =  "Email"
-  }
-  
-const handlekeyboardHide=(text)=>{
-    console.log("call form addListner",text)
-    let tempJsonData = { ...props.jsonData, value: value };
-    // console.log("tempJsonData", tempJsonData);
-    // console.log("is valid ", isValidEmail(value));
-        if(value!==undefined)
-        {
-            if (isValidEmail(value)) {
-                props.handleData(tempJsonData);
-                setIsValidEmailState(true);
-              } 
-              else {
-                props.handleData(tempJsonData)
-                setIsValidEmailState(false);
-                console.log("inside else statement",isValidEmailState)
-              }
-        }
-     
-    console.log("keyboard visible",isValidEmail(value),  placeHolder);
-}
-
-//   useEffect(() => {
-//     let tempJsonData = { ...props.jsonData, value: value };
-//     console.log("tempJsonData", tempJsonData);
-//     console.log("is valid ", isValidEmail(value));
-//     if (props.value !== undefined) {
-//       if (isValidEmail(value)) {
-//         props.handleData(tempJsonData);
-//         setIsValidEmailState(true)
-
-//       } else {
-//         setIsValidEmailState(false);
-//         props.handleData(tempJsonData);
-//       }
-//     }
-//     console.log("keyboard visible", keyboardShow, placeHolder);
-//   }, [props.value]);
-
-  const handleInput = (text) => {
-    setValue(text);
+  // Handle text input change
+  const handleInputChange = (text) => {
+    setInputValue(text);
     if (text.length === 0) {
-      setIsValidEmailState(true);
+      setIsValidEmail(true); // Reset email validity on empty input
     }
-    // props.handleData(value)
   };
 
-  
-
+  // Handle input submission/end
   const handleInputEnd = () => {
-    if(value)
-    {
-        if (value.length === 0) {
-            setIsValidEmailState(true);
-          }
-          let tempJsonData = { ...props.jsonData, value: value };
-          console.log(tempJsonData);
-          if (isValidEmail(value)) {
-            props.handleData(tempJsonData);
-            setIsValidEmailState(true)
-          } else {
-            setIsValidEmailState(false);
-            props.handleData(tempJsonData);
-          }
+    if (inputValue) {
+      const isValid = validateEmail(inputValue);
+      setIsValidEmail(isValid);
+
+      const updatedJsonData = { ...jsonData, value: inputValue };
+      handleData(updatedJsonData);
     }
-    
   };
+
+  // Keyboard listeners for additional behavior
+  useEffect(() => {
+    const keyboardShowListener = Keyboard.addListener("keyboardDidShow", () => {
+      console.log("Keyboard Visible");
+    });
+    const keyboardHideListener = Keyboard.addListener("keyboardDidHide", () => {
+      if (placeholder === "email") {
+        handleInputEnd();
+      }
+      console.log("Keyboard Hidden");
+    });
+
+    return () => {
+      keyboardShowListener.remove();
+      keyboardHideListener.remove();
+    };
+  }, [inputValue]);
 
   return (
-    <View
-      style={{ width: "86%", alignItems: "center", justifyContent: "center" }}
-    >
-      <View
-        style={{
-          height: 60,
-          width: "100%",
-          borderWidth: 1,
-          borderColor: "#DDDDDD",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "white",
-          margin: 10,
-        }}
-      >
-        <View
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "white",
-            position: "absolute",
-            top: -15,
-            left: 16,
-          }}
-        >
-          <PoppinsTextMedium
-            style={{ color: "#919191", padding: 4, fontSize: 18 }}
-            content={t(displayText)}
-          ></PoppinsTextMedium>
-        </View>
+    <View style={styles.container}>
+      <View style={styles.inputWrapper}>
+        {/* Label */}
+        {label && (
+          <View style={styles.labelWrapper}>
+            <PoppinsTextMedium
+              style={styles.labelText}
+              content={t(placeholder || label)}
+            />
+          </View>
+        )}
+
+        {/* TextInput */}
         <TextInput
-          maxLength={maxLength}
-          onSubmitEditing={(text) => {
-            handleInputEnd();
-          }}
-          onEndEditing={(text) => {
-            handleInputEnd();
-          }}
-          style={{
-            height: 50,
-            width: "100%",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            fontWeight: "500",
-            marginLeft: 24,
-            color: "black",
-            fontSize: 16,
-          }}
-          placeholderTextColor="grey"
-          onChangeText={(text) => {
-            handleInput(text);
-          }}
-          value={value}
-          placeholder={required ? `${placeHolder} *` : `${placeHolder}`}
-        ></TextInput>
+          maxLength={maxLength || 100} // Use default of 100 if maxLength not provided
+          onSubmitEditing={handleInputEnd}
+          onEndEditing={handleInputEnd}
+          style={styles.textInput}
+          placeholder={jsonData?.required ? `${label.toLowerCase()} *` : label.toLowerCase()}
+          placeholderTextColor="#D3D3D3"
+          onChangeText={handleInputChange}
+          value={inputValue}
+        />
       </View>
-      {isValidEmailState===false && (
+
+      {/* Validation Error */}
+      {!isValidEmail && (
         <PoppinsTextLeftMedium
-          style={{ color: "red", marginBottom: 5 }}
+          style={styles.errorText}
           content="Please enter a valid email"
-        ></PoppinsTextLeftMedium>
+        />
       )}
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    width: "86%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  inputWrapper: {
+    height: 60,
+    width: "100%",
+    borderWidth: 1,
+    borderColor: "#DDDDDD",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+    margin: 10,
+  },
+  labelWrapper: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
+    position: "absolute",
+    top: -15,
+    left: 16,
+  },
+  labelText: {
+    color: "#919191",
+    padding: 4,
+    fontSize: 18,
+  },
+  textInput: {
+    height: 50,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    fontWeight: "500",
+    marginLeft: 24,
+    color: "black",
+    fontSize: 16,
+  },
+  errorText: {
+    color: "red",
+    marginBottom: 5,
+  },
+});
 
 export default EmailTextInput;

@@ -21,7 +21,7 @@ const ScannedDetails = ({ navigation, route }) => {
         return (
             <View style={{ height: 180, width: '100%', backgroundColor: '#DDDDDD', alignItems: "center", justifyContent: 'center', padding: 16, marginTop: 120 }}>
                 <View style={{ height: 154, width: 154, borderRadius: 10, borderWidth: 1, backgroundColor: 'white', position: "absolute", top: -74, borderColor: '#DDDDDD', alignItems: "center", justifyContent: "center" }}>
-                {image ? <Image style={{ height: 40, width: 40, resizeMode: "contain" }} source={{uri:image}}></Image>: <Image style={{ height: 40, width: 40, resizeMode: "contain" }} source={appIcon}></Image>}
+                {image ? <Image style={{ height: 90, width: 90, resizeMode: "contain" }} source={{uri:image}}></Image>: <Image style={{ height: 60, width: 60, resizeMode: "contain" }} source={appIcon}></Image>}
                 </View>
                 <View style={{ alignItems: "flex-start", justifyContent: "center", position: "absolute", bottom: 10, left: 20 }}>
                     <PoppinsTextMedium style={{ margin: 4, fontSize: 18, fontWeight: '700', color: 'black' }} content={t("Product Name") + ` : ${productName}`}></PoppinsTextMedium>
@@ -48,7 +48,7 @@ const ScannedDetails = ({ navigation, route }) => {
                 <TouchableOpacity onPress={() => { navigation.goBack() }}>
                     <Image style={{ height: 24, width: 24, resizeMode: 'contain', marginLeft: 10 }} source={require('../../../assets/images/blackBack.png')}></Image>
                 </TouchableOpacity>
-                <PoppinsTextMedium content={t("Scanned Details")} style={{ marginLeft: 10, fontSize: 16, fontWeight: '600', color: '#171717' }}></PoppinsTextMedium>
+                <PoppinsTextMedium content={t("Scanned Details")} style={{ marginLeft: 10, fontSize: 16, fontWeight: '600', color: '#171717', fontWeight:'bold' }}></PoppinsTextMedium>
             </View>
             <StatusBox status={status}></StatusBox>
             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", marginTop: 10 }}>

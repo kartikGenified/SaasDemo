@@ -517,6 +517,7 @@ const RedeemCoupons = ({ navigation, route }) => {
         <ErrorModal
           modalClose={modalClose}
           message={message}
+          warning={true}
           openModal={error}
         ></ErrorModal>
       )}
@@ -555,7 +556,7 @@ const RedeemCoupons = ({ navigation, route }) => {
         </TouchableOpacity>
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <PoppinsTextMedium
-            content={t("Redeem Points")}
+            content={t("Redeem Coupon")}
             style={{
               marginLeft: 10,
               fontSize: 16,

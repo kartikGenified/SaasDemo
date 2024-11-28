@@ -1290,9 +1290,10 @@ const codeScanner = useCodeScanner({
               style={{
                 fontSize: 20,
                 color: 'white',
-                marginLeft: 75
+                marginLeft: 75,
+                marginBottom:30
               }}
-              content="Scan Product Bar Code"></PoppinsTextMedium>
+              content="Scan Product Qr Code"></PoppinsTextMedium>
             <View
               style={{
                 backgroundColor: 'transparent',
@@ -1423,6 +1424,7 @@ const codeScanner = useCodeScanner({
               modalClose={modalClose}
               productData={verifyQrData?.body?.qr}
               message={message}
+              warning = {!isReportable ? true : false}
               isReportable={isReportable}
               openModal={error}>
             </ErrorModal>

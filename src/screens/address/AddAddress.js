@@ -12,9 +12,9 @@ import { useAddAddressMutation } from "../../apiServices/userAddress/UserAddress
 import MessageModal from "../../components/modals/MessageModal";
 import ErrorModal from "../../components/modals/ErrorModal";
 import { useIsFocused } from "@react-navigation/native";
-import { GoogleMapsKey } from "@env";
+import { GoogleMapsKey,locationIqApi } from "@env";
 
-const AddAddress = ({ navigation }) => {
+const AddAddress = ({ navigation,route }) => {
   const [message, setMessage] = useState();
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -22,6 +22,8 @@ const AddAddress = ({ navigation }) => {
   const [fieldIsEmpty, setFieldIsEmpty] = useState(false);
   const [hideButton, setHideButton] = useState(false);
   const [location, setLocation] = useState();
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
 
   const dispatch = useDispatch();
   const focused = useIsFocused();
@@ -47,6 +49,40 @@ const AddAddress = ({ navigation }) => {
   useEffect(() => {
     setHideButton(false);
   }, [focused]);
+
+
+  useEffect(()=>{
+    try{
+      const options = {method: 'GET', headers: {accept: 'application/json'}};
+      console.log("location IQ API", locationIqApi)
+      fetch(`https://us1.locationiq.com/v1/reverse?key=${locationIqApi}&lat=${latitude}&lon=${longitude}&format=json`,options)
+      .then(response => response.json())
+      .then(response => {
+        console.log("location iq api response",response)
+        let locationJson = {}
+        locationJson["lat"] = latitude
+        locationJson["lon"] = longitude
+        locationJson["postcode"] = response?.address?.postcode
+        locationJson["city"] = response?.address?.city
+        locationJson["state"] = response?.address?.state
+        locationJson["district"] = response?.address?.state_district
+        locationJson["country"] = response?.address?.country
+        dispatch(setLocation(locationJson));
+        dispatch(setLocationPermissionStatus(true));
+        dispatch(setLocationEnabled(true));
+        saveLocationToStorage(locationJson);
+
+        setTimeout(() => {
+        geoFencingCheck && navigateTo && navigation.replace(navigateTo);
+        }, 500);
+      })
+  
+    }
+    catch(error){
+      console.log("error in fetching location iq api",error)
+    }
+  
+  },[latitude, longitude])
 
   useEffect(() => {
     if (addAddressData) {
@@ -74,9 +110,11 @@ const AddAddress = ({ navigation }) => {
     let lat = "";
     let lon = "";
     Geolocation.getCurrentPosition((res) => {
-      console.log("res", res);
+      console.log("res Addrr", res);
       lat = res?.coords?.latitude;
+      setLatitude(lat)
       lon = res?.coords?.longitude;
+      setLongitude(lon)
       // getLocation(JSON.stringify(lat),JSON.stringify(lon))
       console.log("latlong", lat, lon);
       var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${res?.coords?.latitude},${res?.coords?.longitude}
@@ -242,13 +280,10 @@ const AddAddress = ({ navigation }) => {
         console.log("response array", responseArray);
         let address = "";
         let data = {};
-        for (var i = 0; i < responseArray.length; i++) {
-          if (i !== 0) {
-            address = address + ", " + responseArray[i].value;
-          } else {
-            address = address + responseArray[i].value;
-          }
-        }
+       
+            address = responseArray[0]?.value + ", " + responseArray[1]?.value
+          
+        
         data["address"] = address;
         // console.log("address", address,responseArray);
         for (var i = 0; i < responseArray.length; i++) {
@@ -264,9 +299,17 @@ const AddAddress = ({ navigation }) => {
             if (responseArray[i]?.value === undefined) {
               check = true;
             }
+            else{
+              data["house no"] = responseArray[i]?.value
+
+            }
           } else if (responseArray[i].name === "street") {
             if (responseArray[i].value === undefined) {
               check = true;
+            }
+            else{
+              data["street"] = responseArray[i]?.value
+
             }
           }
         }
@@ -334,6 +377,7 @@ const AddAddress = ({ navigation }) => {
       )}
       {success && (
         <MessageModal
+          params = {route.params}
           modalClose={modalClose}
           title={"Thanks"}
           message={message}

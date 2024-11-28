@@ -279,6 +279,183 @@ const Splash = ({ navigation }) => {
   }, []);
 
   useEffect(() => {
+    const FinalNavigation = async () => {
+      const jsonValue = await AsyncStorage.getItem("loginData");
+
+      const parsedJsonValues = JSON.parse(jsonValue);
+      console.log("parsedJson1032", parsedJsonValues);
+      const value = await AsyncStorage.getItem("isAlreadyIntroduced");
+      if (getDashboardData) {
+        console.log("getDashboardData", getDashboardData);
+        if (parsedJsonValues) {
+          const getData = async () => {
+            const value = await AsyncStorage.getItem("appMenu");
+            let mPin = await AsyncStorage.getItem("userMpin");
+            const jsonValue = JSON.parse(value);
+            try {
+              console.log("jsonValueGetDashbaordData", jsonValue);
+              if (jsonValue != null) {
+                const getCurrentTimeInMilliSecond = new Date().getTime();
+                if (
+                  getCurrentTimeInMilliSecond - lastFetchedApiOn >
+                  apiFetchingInterval
+                ) {
+                  console.log("Time limit exceeded refetching appmenu");
+                  dispatch(setAppUserId(parsedJsonValue.user_type_id));
+                  dispatch(setAppUserName(parsedJsonValue.name));
+                  dispatch(setAppUserType(parsedJsonValue.user_type));
+                  dispatch(setUserData(parsedJsonValue));
+                  dispatch(setId(parsedJsonValue.id));
+                  dispatch(
+                    setDashboardData(getDashboardData?.body?.app_dashboard)
+                  );
+                  setShowLoading(false);
+
+                  parsedJsonValue && getAppMenuFunc(parsedJsonValue?.token);
+                } else {
+                  console.log("data already present saving appmenu");
+                  dispatch(setDrawerData(jsonValue));
+                  dispatch(setAppUserId(parsedJsonValue.user_type_id));
+                  dispatch(setAppUserName(parsedJsonValue.name));
+                  dispatch(setAppUserType(parsedJsonValue.user_type));
+                  dispatch(setUserData(parsedJsonValue));
+                  dispatch(setId(parsedJsonValue.id));
+                  dispatch(
+                    setDashboardData(getDashboardData?.body?.app_dashboard)
+                  );
+                  console.log(
+                    "navigate to dashboard error1",
+                    minVersionSupport,
+                    jsonValue,
+                    getDashboardData,
+                    getWorkflowData
+                  );
+
+                  if (
+                    getFormData &&
+                    (!__DEV__ ? minVersionSupport : true) &&
+                    jsonValue &&
+                    getDashboardData &&
+                    getWorkflowData &&
+                    getFormData
+                  ) {
+                      navigation.reset({
+                        index: "0",
+                        routes: [{ name: "Dashboard" }],
+                      });
+                    
+                  } else {
+                    getFormData &&
+                      (!__DEV__ ? minVersionSupport : true) &&
+                      jsonValue &&
+                      getDashboardData &&
+                      getWorkflowData &&
+                      setTimeout(() => {
+                        navigation.reset({
+                          index: "0",
+                          routes: [{ name: "SelectUser" }],
+                        });
+                      }, 3000);
+                  }
+                }
+              } else {
+                console.log("JsonValue is null", parsedJsonValue);
+                dispatch(setAppUserId(parsedJsonValue.user_type_id));
+                dispatch(setAppUserName(parsedJsonValue.name));
+                dispatch(setAppUserType(parsedJsonValue.user_type));
+                dispatch(setUserData(parsedJsonValue));
+                dispatch(setId(parsedJsonValue.id));
+                dispatch(
+                  setDashboardData(getDashboardData?.body?.app_dashboard)
+                );
+                setShowLoading(false);
+
+                parsedJsonValue && getAppMenuFunc(parsedJsonValue?.token);
+              }
+            } catch (e) {
+              console.warn("Error in fetching appDashboard async value", e);
+            }
+          };
+          getData();
+
+          console.log("all data in one console", {
+            getFormData,
+            getAppMenuData,
+            getDashboardData,
+            getWorkflowData,
+            getBannerData,
+            minVersionSupport,
+          });
+        }
+      } else {
+        if (
+          getPolicyData &&
+          getMinVersionSupportData &&
+          getTermsData &&
+          getTermsData &&
+          getAppMenuData &&
+          getUsersData &&
+          getBannerData &&
+          getFormData &&
+          getWorkflowData &&
+          getAppThemeData
+        ) {
+          if (value === "Yes") {
+            minVersionSupport && navigation.navigate("SelectUser");
+          } else {
+            minVersionSupport && navigation.navigate("Introduction");
+          }
+        } else {
+          if (minVersionSupport && !parsedJsonValue) {
+            if (value === "Yes") {
+              minVersionSupport &&
+                setTimeout(() => {
+                  navigation.navigate("SelectUser");
+                }, 5000);
+            } else {
+              minVersionSupport &&
+                setTimeout(() => {
+                  navigation.navigate("Introduction");
+                }, 5000);
+            }
+          }
+        }
+      }
+    };
+
+    console.log(
+      "Final Navigation",
+      getPolicyData,
+      getMinVersionSupportData,
+      getTermsData,
+      getTermsData,
+      getDashboardData,
+      getAppMenuData,
+      getUsersData,
+      getBannerData,
+      getFormData,
+      getWorkflowData,
+      getAppThemeData
+    );
+
+    FinalNavigation();
+  }, [
+    getPolicyData,
+    getMinVersionSupportData,
+    getTermsData,
+    getTermsData,
+    getDashboardData,
+    getAppMenuData,
+    getUsersData,
+    getBannerData,
+    getFormData,
+    getWorkflowData,
+    getAppThemeData,
+    minVersionSupport,
+  ]);
+
+
+  useEffect(() => {
     if (getTermsData) {
       // console.log("getTermsData", getTermsData.body.data?.[0]?.files[0]);
       dispatch(setTerms(getTermsData.body.data?.[0]?.files[0]));

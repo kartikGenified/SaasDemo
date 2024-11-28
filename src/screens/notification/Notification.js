@@ -37,7 +37,9 @@ const Notification = ({ navigation }) => {
         if (notifData) {
             console.log("notifdata", notifData)
         } else {
-
+            if(notifError){
+                
+            }
         }
     }, [notifData, notifError])
 
@@ -87,7 +89,7 @@ const Notification = ({ navigation }) => {
                     })
                 }
                  {
-                  notifData?.body?.count == "0"  &&
+                  (notifData?.body?.count == "00"  || notifData?.body == undefined) &&
                      <View style={{height:'100%', backgroundColor:'white', }}>
                      <DataNotFound></DataNotFound>
                      </View>

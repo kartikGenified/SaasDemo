@@ -126,7 +126,7 @@ const Feedback = ({ navigation }) => {
                         source={require('../../../assets/images/blackBack.png')}></Image>
                 </TouchableOpacity>
 
-                <PoppinsTextMedium style={{ fontSize: 20, color: '#ffffff', marginTop: 5, position: 'absolute', left: 60 }} content={t("feedback")}></PoppinsTextMedium>
+                <PoppinsTextMedium style={{ fontSize: 20, color: '#ffffff', marginTop: 5, position: 'absolute', left: 60 }} content={t("Feedback")}></PoppinsTextMedium>
 
 
             </View>
@@ -188,7 +188,7 @@ const Feedback = ({ navigation }) => {
             resizeMode={FastImage.resizeMode.contain}
           />
           }
-            {error && <ErrorModal modalClose={()=>{setError(false)}} message={message} openModal={error}></ErrorModal>}
+            {error && <ErrorModal  warning ={true} modalClose={()=>{setError(false)}} message={message} openModal={error}></ErrorModal>}
         </View>
     );
 };

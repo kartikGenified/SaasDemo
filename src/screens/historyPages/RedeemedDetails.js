@@ -170,7 +170,7 @@ const RedeemedDetails = ({ navigation, route }) => {
           style={{
             marginLeft: 10,
             fontSize: 16,
-            fontWeight: "600",
+            fontWeight: "800",
             color: "#171717",
           }}
         ></PoppinsTextMedium>
@@ -198,7 +198,7 @@ const RedeemedDetails = ({ navigation, route }) => {
             }}
           >
             <PoppinsTextMedium
-              style={{ fontSize: 16, fontWeight: "600", color: "#171717" }}
+              style={{ fontSize: 16, fontWeight: "800", color: "#171717" }}
               content={`${t("Redeem Date")} ${redeemedDate}`}
             ></PoppinsTextMedium>
             <View
@@ -226,12 +226,13 @@ const RedeemedDetails = ({ navigation, route }) => {
               justifyContent: "center",
               borderWidth: 1,
               borderColor: "#DDDDDD",
-              width: "100%",
+              width: "80%",
+              borderRadius:10,
               padding: 10,
             }}
           >
             <Image
-              style={{ height: 80, width: 80, resizeMode: "contain" }}
+              style={{ height: 180, width: 180, resizeMode: "contain" }}
               source={{ uri: image }}
             ></Image>
             <PoppinsTextMedium
@@ -326,7 +327,7 @@ const RedeemedDetails = ({ navigation, route }) => {
               alignItems: "center",
               justifyContent: "center",
               width: "100%",
-              marginTop: 20,
+              marginTop: 40,
             }}
           >
             <TouchableOpacity
@@ -344,7 +345,7 @@ const RedeemedDetails = ({ navigation, route }) => {
             >
               <Location name="location" size={30} color="white" />
               <PoppinsTextMedium
-                style={{ color: "white", fontSize: 14, marginLeft: 4 }}
+                style={{ color: "white", fontSize: 14, marginLeft: 4, fontWeight:'bold' }}
                 content={t("Track Delivery Status")}
               ></PoppinsTextMedium>
               

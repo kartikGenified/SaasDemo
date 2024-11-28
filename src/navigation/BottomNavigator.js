@@ -56,7 +56,7 @@ function BottomNavigator({ navigation }) {
       if( workflow.includes("Points On Product")){
         console.log("isAlreadyWalkThrough", isAlreadyWalkedThrough, stepId);
         if ( !(isAlreadyWalkedThrough =="true") && stepId === 0) {
-          setWalkThrough(true);
+          setWalkThrough(false);
         } else if (stepId == 2) {
           setStep3(true);
         } else {

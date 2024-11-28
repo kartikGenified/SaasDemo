@@ -323,8 +323,8 @@ const Dashboard = ({ navigation }) => {
         };
         handleLogout();
       } else {
-        setError(true);
-        setMessage("problem in fetching membership, kindly retry.");
+        // setError(true);
+        // setMessage("problem in fetching membership, kindly retry.");
         console.log("getActiveMembershipError", getActiveMembershipError);
       }
     }
