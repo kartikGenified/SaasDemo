@@ -65,10 +65,15 @@ const QueryList = ({ navigation }) => {
                     height: 19,
                     width: 8,
                 },
-                margin: 10,
+                borderWidth:1,
+                borderColor:ternaryThemeColor,
+                borderRadius:10,
                 backgroundColor: 'white',
                 elevation: 15,
-                padding: 10,
+                padding: 30,
+                marginTop:20,
+                marginHorizontal:15,
+                
             }}>
                 <View style={{ flexDirection: 'row', padding: 10, justifyContent: 'center', }}>
                     <PoppinsTextLeftMedium style={{ color: ternaryThemeColor, fontWeight: '800', fontSize: 18 }} content={item?.data?.type}></PoppinsTextLeftMedium>
@@ -129,7 +134,7 @@ const QueryList = ({ navigation }) => {
             {/* Navigator */}
             <View
                 style={{
-                    height: 50,
+                    height: 60,
                     width: '100%',
                     backgroundColor: ternaryThemeColor,
                     alignItems: 'flex-start',
@@ -189,6 +194,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white'
+
     },
 });
 

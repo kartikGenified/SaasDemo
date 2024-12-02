@@ -1290,7 +1290,7 @@ const codeScanner = useCodeScanner({
               style={{
                 fontSize: 20,
                 color: 'white',
-                marginLeft: 75,
+                marginLeft: 110,
                 marginBottom:30
               }}
               content="Scan Product Qr Code"></PoppinsTextMedium>

@@ -139,7 +139,7 @@ else if(getAllCouponsError){
             <Image style={{height:24,width:24,resizeMode:'contain',marginLeft:10}} source={require('../../../assets/images/blackBack.png')}></Image>
 
                 </TouchableOpacity>
-            <PoppinsTextMedium content ={t("Coupon History")} style={{marginLeft:10,fontSize:16,fontWeight:'600',color:'#171717'}}></PoppinsTextMedium>
+            <PoppinsTextMedium content ={t("Coupon History")} style={{marginLeft:10,fontSize:16,fontWeight:'800',color:'#171717'}}></PoppinsTextMedium>
             
             </View>
             <View style={{padding:14,alignItems:"center",justifyContent:"flex-start",width:"100%",flexDirection:"row",borderBottomWidth:1,borderColor:'#DDDDDD',borderStyle:'dashed'}}>

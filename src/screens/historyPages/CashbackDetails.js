@@ -32,7 +32,7 @@ const CashbackDetails = ({navigation,route}) => {
             <Image style={{height:24,width:24,resizeMode:'contain',marginLeft:10}} source={require('../../../assets/images/blackBack.png')}></Image>
 
             </TouchableOpacity>
-            <PoppinsTextMedium content ="Cashback Details" style={{marginLeft:10,fontSize:16,fontWeight:'600',color:'#171717'}}></PoppinsTextMedium>
+            <PoppinsTextMedium content ="Cashback Details" style={{marginLeft:10,fontSize:16,fontWeight:'600',color:'#171717', fontWeight:'bold'}}></PoppinsTextMedium>
             {/* <TouchableOpacity style={{marginLeft:160}}>
             <Image style={{height:30,width:30,resizeMode:'contain'}} source={require('../../../assets/images/notificationOn.png')}></Image>
             </TouchableOpacity> */}
@@ -40,7 +40,7 @@ const CashbackDetails = ({navigation,route}) => {
             
             <View style={{alignItems:"center",justifyContent:"center",marginTop:40}}>
                 <Image style={{height:80,width:80,resizeMode:"contain"}} source={require('../../../assets/images/greenRupee.png')}></Image>
-                <PoppinsTextMedium style={{marginTop:10,fontSize:20,color:'black',width:220}} content={data?.approval_status == 1 ? "Cashback Received" : data?.approval_status == 2 ? "Cashback Rejected" :  "Cashback Pending"}></PoppinsTextMedium>
+                <PoppinsTextMedium style={{marginTop:20,fontSize:20,color:'black',width:220}} content={data?.approval_status == 1 ? "Cashback Received" : data?.approval_status == 2 ? "Cashback Rejected" :  "Cashback Pending"}></PoppinsTextMedium>
             </View>
 
             <View style={{padding:10,borderWidth:1,borderStyle:"dashed",backgroundColor:data.approval_status == "1" ? "green" : data.approval_status==2 ? "red" : ternaryThemeColor,alignItems:"center",justifyContent:"center",borderRadius:4,opacity:0.7,marginTop:30,width:140}}>

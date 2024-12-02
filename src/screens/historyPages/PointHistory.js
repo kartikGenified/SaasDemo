@@ -429,7 +429,7 @@ const PointHistory = ({ navigation }) => {
 
                 </TouchableOpacity>
                 {/* <PoppinsTextMedium content="Points History" style={{ marginLeft: 10, fontSize: 16, fontWeight: '600', color: '#171717' }}></PoppinsTextMedium> */}
-                <PoppinsTextMedium content={t("points history")} style={{ marginLeft: 10, fontSize: 16, fontWeight: '600', color: '#171717' }}></PoppinsTextMedium>
+                <PoppinsTextMedium content={t("points history")} style={{ marginLeft: 10, fontSize: 16, fontWeight: '600', color: '#171717', fontWeight:'bold' }}></PoppinsTextMedium>
 
                 {/* <TouchableOpacity style={{ marginLeft: 180 }}>
                     <Image style={{ height: 30, width: 30, resizeMode: 'contain' }} source={require('../../../assets/images/notificationOn.png')}></Image>

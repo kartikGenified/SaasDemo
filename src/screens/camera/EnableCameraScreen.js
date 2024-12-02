@@ -18,6 +18,7 @@ import {
 } from "../../../redux/slices/cameraStatusSlice";
 import PoppinsTextMedium from "../../components/electrons/customFonts/PoppinsTextMedium";
 import { useIsFocused } from "@react-navigation/native";
+import { cameraPermissionMessage } from "../../utils/HandleClientSetup";
 
 const EnableCameraScreen = ({ navigation, route }) => {
   const appState = useRef(AppState.currentState);
@@ -82,7 +83,7 @@ const EnableCameraScreen = ({ navigation, route }) => {
           if (!alertShown) {
             Alert.alert(
               "Alert",
-              "To scan a QR code, the OZOSTAR app must have access permissions. Please grant access to the camera.",
+              `${cameraPermissionMessage}`,
               [{ text: "OK", onPress: () => Linking.openSettings() }],
               { cancelable: false }
             );

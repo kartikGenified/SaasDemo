@@ -333,12 +333,13 @@ const Splash = ({ navigation }) => {
 
                   if (
                     getFormData &&
-                    (!__DEV__ ? minVersionSupport : true) &&
+                    minVersionSupport &&
                     jsonValue &&
                     getDashboardData &&
                     getWorkflowData &&
                     getFormData
                   ) {
+                    
                       navigation.reset({
                         index: "0",
                         routes: [{ name: "Dashboard" }],
@@ -346,10 +347,11 @@ const Splash = ({ navigation }) => {
                     
                   } else {
                     getFormData &&
-                      (!__DEV__ ? minVersionSupport : true) &&
+                      minVersionSupport &&
                       jsonValue &&
                       getDashboardData &&
                       getWorkflowData &&
+                      !parsedJsonValue &&
                       setTimeout(() => {
                         navigation.reset({
                           index: "0",
@@ -388,6 +390,8 @@ const Splash = ({ navigation }) => {
           });
         }
       } else {
+        console.log("idhar se else 391")
+
         if (
           getPolicyData &&
           getMinVersionSupportData &&
@@ -399,16 +403,20 @@ const Splash = ({ navigation }) => {
           getFormData &&
           getWorkflowData &&
           getAppThemeData
+          && !jsonValue
         ) {
           if (value === "Yes") {
+          console.log("idhar se 404", )
+
             minVersionSupport && navigation.navigate("SelectUser");
           } else {
             minVersionSupport && navigation.navigate("Introduction");
           }
         } else {
-          if (minVersionSupport && !parsedJsonValue) {
+          console.log("idhar se 409", parsedJsonValue)
+          if (minVersionSupport && !parsedJsonValue && !jsonValue) {
             if (value === "Yes") {
-              minVersionSupport &&
+              minVersionSupport && !jsonValue &&
                 setTimeout(() => {
                   navigation.navigate("SelectUser");
                 }, 5000);
@@ -510,14 +518,14 @@ const Splash = ({ navigation }) => {
                 );
                 console.log(
                   "navigate to dashboard error",
-                  !__DEV__ && minVersionSupport,
+                   minVersionSupport,
                   jsonValue,
                   getDashboardData,
                   getWorkflowData
                 );
 
                 getFormData &&
-                  (!__DEV__ ? minVersionSupport : true) &&
+                  minVersionSupport &&
                   jsonValue &&
                   getDashboardData &&
                   getWorkflowData &&
@@ -588,7 +596,7 @@ const Splash = ({ navigation }) => {
         );
 
         getFormData &&
-          (!__DEV__ ? minVersionSupport : true) &&
+          minVersionSupport  &&
           getAppMenuData &&
           getDashboardData &&
           getWorkflowData &&
@@ -662,7 +670,7 @@ const Splash = ({ navigation }) => {
                           getWorkflowData
                         );
 
-                        getFormData && (!__DEV__ ? minVersionSupport : true);
+                        getFormData && minVersionSupport &&
                         jsonValue &&
                           jsonValue &&
                           getWorkflowData &&
@@ -990,51 +998,51 @@ const Splash = ({ navigation }) => {
     dispatch({ type: "NETWORK_REQUEST" });
   }, []);
 
-  // useEffect(() => {
-  //   if (getMinVersionSupportData) {
-  //     console.log("getMinVersionSupportData", getMinVersionSupportData);
-  //     if (getMinVersionSupportData.success) {
-  //       setMinVersionSupport(getMinVersionSupportData?.body?.data);
-  //       if (!getMinVersionSupportData?.body?.data) {
-  //         Alert.alert(
-  //           "Kindly update the app to the latest version",
-  //           "Your version of app is not supported anymore, kindly update",
-  //           [
-  //             {
-  //               text: "Update",
-  //               onPress: () =>
-  //                 Linking.openURL(
-  //                   "https://play.google.com/store/apps/details?id=com.genefied.cg"
-  //                 ),
-  //             },
-  //           ]
-  //         );
-  //       }
-  //     } else {
-  //       if (Object.keys(getMinVersionSupportData?.body)?.length == 0) {
-  //         Alert.alert(
-  //           "Kindly update the app to the latest version",
-  //           "Your version of app is not supported anymore, kindly update",
-  //           [
-  //             {
-  //               text: "Update",
-  //               onPress: () =>
-  //                 Linking.openURL(
-  //                   "https://play.google.com/store/apps/details?id=com.genefied.cg"
-  //                 ),
-  //             },
-  //           ]
-  //         );
-  //       }
-  //     }
-  //   } else if (getMinVersionSupportError) {
-  //     // console.log("getMinVersionSupportError", getMinVersionSupportError)
-  //   }
-  // }, [getMinVersionSupportData, getMinVersionSupportError]);
+  useEffect(() => {
+    if (getMinVersionSupportData) {
+      console.log("getMinVersionSupportData", getMinVersionSupportData);
+      if (getMinVersionSupportData.success) {
+        setMinVersionSupport(getMinVersionSupportData?.body?.data);
+        if (!getMinVersionSupportData?.body?.data) {
+          Alert.alert(
+            "Kindly update the app to the latest version",
+            "Your version of app is not supported anymore, kindly update",
+            [
+              {
+                text: "Update",
+                onPress: () =>
+                  Linking.openURL(
+                    "https://play.google.com/store/apps/details?id=com.genefied.demo"
+                  ),
+              },
+            ]
+          );
+        }
+      } else {
+        if (Object.keys(getMinVersionSupportData?.body)?.length == 0) {
+          Alert.alert(
+            "Kindly update the app to the latest version",
+            "Your version of app is not supported anymore, kindly update",
+            [
+              {
+                text: "Update",
+                onPress: () =>
+                  Linking.openURL(
+                    "https://play.google.com/store/apps/details?id=com.genefied.demo"
+                  ),
+              },
+            ]
+          );
+        }
+      }
+    } else if (getMinVersionSupportError) {
+      // console.log("getMinVersionSupportError", getMinVersionSupportError)
+    }
+  }, [getMinVersionSupportData, getMinVersionSupportError]);
 
   useEffect(() => {
     console.log("internet status", isConnected);
-    setConnected(isConnected.isConnected);
+    setConnected(isConnected.isInternetReachable);
     // setIsSlowInternet(isConnected.isInternetReachable)
     const getData = async () => {
       try {
@@ -1175,9 +1183,9 @@ const Splash = ({ navigation }) => {
     } else {
       setShowLoading(false);
       console.log("minVersionSupport while login", minVersionSupport);
-      __DEV__ && setMinVersionSupport(true);
+     
 
-      if (value === "Yes") {
+      if (value === "Yes" && !jsonValue) {
         setTimeout(()=>{
           navigation.navigate("SelectUser");
         },2000)
@@ -1353,9 +1361,9 @@ const Splash = ({ navigation }) => {
         }}
         resizeMode={FastImage.resizeMode.cover}
       />
-
-      {isSlowInternet && (
-        <InternetModal visible={isSlowInternet} comp={SlowInternetComp} />
+    {console.log("isSlow", isConnected.isInternetReachable)}
+      {(!connected) && (
+        <InternetModal visible={(!connected)} comp={NoInternetComp} />
       )}
 
       {error && (

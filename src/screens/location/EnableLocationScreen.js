@@ -23,6 +23,7 @@ import { GoogleMapsKey,locationIqApi } from "@env";
 import { useIsFocused } from "@react-navigation/native";
 import crashlytics from "@react-native-firebase/crashlytics";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { locationPermissionMessage } from "../../utils/HandleClientSetup";
 
 const EnableLocationScreen = ({ route, navigation }) => {
   const appState = useRef(AppState.currentState);
@@ -282,7 +283,7 @@ const EnableLocationScreen = ({ route, navigation }) => {
         if (error.code === 1) {
           Alert.alert(
             "Alert",
-            "To scan a QR code, the OZOSTAR app must have access permissions. Please grant access to the location.",
+            `${locationPermissionMessage}`,
             [{ text: "NO",onPress:(()=>{
                 
             }) }, { text: "Yes", onPress: openSettings }],

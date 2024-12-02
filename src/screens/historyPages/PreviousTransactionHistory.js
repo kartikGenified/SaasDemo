@@ -195,7 +195,7 @@ const PreviousTransactionHistory = ({navigation}) => {
               style={{
                 marginLeft: 10,
                 fontSize: 16,
-                fontWeight: "600",
+                fontWeight: "800",
                 color: "#171717",
               }}
             ></PoppinsTextMedium>

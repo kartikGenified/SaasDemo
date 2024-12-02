@@ -80,8 +80,8 @@ android {
         applicationId "com.genefied.demo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 70025
-        versionName "70025"
+        versionCode 1
+        versionName "1.0.0"
         missingDimensionStrategy 'react-native-camera', 'general'
         
     }

@@ -24,6 +24,10 @@ const TextInputRectangularWithPlaceholder = (props) => {
         editable = false
     }
 
+    useEffect(()=>{
+        console.log("checckk")
+    },[focus])
+
 
 
     useEffect(() => {

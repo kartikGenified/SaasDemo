@@ -405,6 +405,7 @@ useEffect(()=>{
           borderBottomWidth: 1,
           borderColor: "#DDDDDD",
           padding: 4,
+          borderWidth:1,
           height: 100,
           flexDirection: 'row'
         }}
@@ -559,7 +560,7 @@ useEffect(()=>{
           style={{
             marginLeft: 10,
             fontSize: 16,
-            fontWeight: "600",
+            fontWeight: "800",
             color: "#171717",
           }}
         ></PoppinsTextMedium>

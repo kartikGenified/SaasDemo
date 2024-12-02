@@ -92,6 +92,10 @@ const EditProfile = ({ navigation, route }) => {
       console.log("updateProfileData", updateProfileData);
       setMessage("Profile Updated Successfully");
       setSuccess(true);
+      setTimeout(()=>{
+        navigation.navigate("Dashboard")
+
+      },2000)
       setIsClicked(false);
     } else if (updateProfileError) {
       console.log("updateProfileError", updateProfileError);
@@ -120,8 +124,8 @@ const EditProfile = ({ navigation, route }) => {
       if (uploadImageData.success) {
         setFilename(uploadImageData.body.fileLink);
         setModalVisible(false);
-        setMessage(uploadImageData.message);
-        setSuccess(true);
+        // setMessage(uploadImageData.message);
+        // setSuccess(true);
       }
     } else {
       console.log(uploadImageError);

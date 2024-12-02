@@ -32,9 +32,9 @@ const AddBankAccountAndUpi = ({navigation}) => {
             <View style={{height:'90%',width:'100%',borderTopRightRadius:40,borderTopLeftRadius:40,alignItems:"center",justifyContent:"flexx-start",backgroundColor:"white"}}>
             
             <View style={{borderBottomWidth:1,borderColor:'#DDDDDD',width: '80%',paddingBottom:10}}>
-            <PoppinsTextMedium style={{color:'#292626',marginTop:10,fontWeight:'600'}} content={t("Select Method")}></PoppinsTextMedium>
+            <PoppinsTextMedium style={{color:'#292626',marginTop:10,fontWeight:'800', fontSize:18}} content={t("Select Method")}></PoppinsTextMedium>
             </View>
-            <TouchableOpacity onPress={()=>{navigation.navigate('AddBankDetails')}} style={{width:'90%',alignItems:"center",justifyContent:"center",height:80,flexDirection:'row',marginTop:20,borderBottomWidth:0.4,borderColor:'#DDDDDD'}}>
+            {/* <TouchableOpacity onPress={()=>{navigation.navigate('AddBankDetails')}} style={{width:'90%',alignItems:"center",justifyContent:"center",height:80,flexDirection:'row',marginTop:20,borderBottomWidth:0.4,borderColor:'#DDDDDD'}}>
             <View style={{height:60,width:60,alignItems:'center',justifyContent:'center',borderRadius:30,borderWidth:1,borderColor:'#DDDDDD'}}>
                 <Image style={{height:30,width:30,resizeMode:'contain'}} source={require('../../../assets/images/bankaccount.png')}></Image>
             </View>
@@ -46,7 +46,7 @@ const AddBankAccountAndUpi = ({navigation}) => {
             <View style={{alignItems:'center',justifyContent:'center'}}>
                 <Image style={{height:20,width:20,resizeMode:"contain"}} source={require('../../../assets/images/next.png')}></Image>
             </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity onPress={()=>{navigation.navigate('AddUpi')}} style={{width:'90%',alignItems:"center",justifyContent:"center",height:80,flexDirection:'row',marginTop:20,borderBottomWidth:0.4,borderColor:'#DDDDDD'}}>
             <View style={{height:60,width:60,alignItems:'center',justifyContent:'center',borderRadius:30,borderWidth:1,borderColor:'#DDDDDD'}}>
                 <Image style={{height:30,width:30,resizeMode:'contain'}} source={require('../../../assets/images/upi.png')}></Image>

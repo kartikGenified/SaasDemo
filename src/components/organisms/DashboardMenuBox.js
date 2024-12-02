@@ -31,6 +31,9 @@ const DashboardMenuBox=(props)=>{
         else if(data.toLowerCase() === "warranty list"){
             navigation.navigate('WarrantyHistory')
         }
+        else if(data.toLowerCase() === "faqs" || data.toLowerCase() === "faq" ){
+            navigation.navigate('FAQ')
+        }
         else if(data.toLowerCase() === "scheme"){
             navigation.navigate("EnableLocationScreen",{navigateTo:"Scheme"})
         }

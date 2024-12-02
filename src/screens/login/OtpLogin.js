@@ -243,7 +243,7 @@ const OtpLogin = ({ navigation, route }) => {
                 name: name,
                 mobile: mobile,
                 navigatingFrom: "OtpLogin",
-                registrationRequired: true,
+                registrationRequired: registrationRequired,
               });
             } else {
               navigateToOtp();
@@ -460,6 +460,7 @@ const OtpLogin = ({ navigation, route }) => {
                   userId: user_type_id,
                   name: name,
                   mobile: mobile,
+                  registrationRequired:registrationRequired,
                   navigatingFrom: "OtpLogin",
                 });
               }}

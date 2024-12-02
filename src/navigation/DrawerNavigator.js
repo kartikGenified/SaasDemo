@@ -13,7 +13,7 @@ import BottomNavigator from "./BottomNavigator";
 import RedeemRewardHistory from "../screens/historyPages/RedeemRewardHistory";
 import AddBankAccountAndUpi from "../screens/payments/AddBankAccountAndUpi";
 import Profile from "../screens/profile/Profile";
-import { DrawerActions, useNavigation } from "@react-navigation/native";
+import { DrawerActions, useIsFocused, useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useGetAppDashboardDataMutation } from "../apiServices/dashboard/AppUserDashboardApi";
@@ -102,6 +102,8 @@ const CustomDrawer = () => {
     },
   ] = useGetActiveMembershipMutation();
 
+  const focused = useIsFocused()
+
   useEffect(() => {
     const fetchData = async () => {
       const credentials = await Keychain.getGenericPassword();
@@ -116,7 +118,7 @@ const CustomDrawer = () => {
     fetchData();
     getMembership();
     fetchFaq();
-  }, []);
+  }, [focused]);
 
   useEffect(() => {
     if (locationSetup) {
@@ -278,7 +280,11 @@ const CustomDrawer = () => {
                 navigation.navigate("ReferAndEarn");
               } else if (props.title.toLowerCase() === "warranty list") {
                 navigation.navigate("WarrantyHistory");
-              } else if (props.title.toLowerCase() === "help and support") {
+              } 
+              else if (props.title.toLowerCase() === "complaint list") {
+                navigation.navigate("QueryList");
+              } 
+              else if (props.title.toLowerCase() === "help and support") {
                 navigation.navigate("HelpAndSupport");
               } else if (props.title.toLowerCase() === "product catalogue") {
                 navigation.navigate("ProductCatalogue");
@@ -548,7 +554,7 @@ const CustomDrawer = () => {
             </Text>
           )}
 
-          {/* {!Object.values(kycData).includes(false) ? <View style={{ flexDirection: 'row', marginTop: 4 }}>
+          {!Object.values(kycData).includes(false) ? <View style={{ flexDirection: 'row', marginTop: 4 }}>
             <View
               style={{
                 height: 22,
@@ -582,7 +588,7 @@ const CustomDrawer = () => {
               </View>
 
             </View>
-          } */}
+          }
         </View>
         <PoppinsTextMedium
           content={`Version : ${currentVersion}`}
