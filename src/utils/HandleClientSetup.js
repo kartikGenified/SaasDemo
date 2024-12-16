@@ -1,4 +1,4 @@
-//Thanks to Karik for this setup (the Half blood prince)
+//Thanks to Karik for this Setup (The Half Blood Prince)
 
 //clint ID's
 export const clientName = "genefied";
@@ -27,7 +27,7 @@ export const eKyc = true;  // send true if you want to call aadhar gst and pan a
 
 
 //Dashboard
-export const needCaimpaign = __DEV__ ? false : true;
+export const needCaimpaign = __DEV__ ? true : true;
 
 export const scannerType = "qr"; //"qr for qr", "bar for bar
 
@@ -44,5 +44,9 @@ export const neededHistory = [
 ];
 
 export const showEditProfile = true;
+
+export const needWalkedThrough = true
+
+export const needRandomRedeemPoint = true
 
 export const redeemptionItems = ["gift", "cashback","coupon" ]; // choose from -->  ["gift", "cashback","coupon"]

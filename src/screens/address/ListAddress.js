@@ -20,6 +20,9 @@ const ListAddress = ({ navigation ,route}) => {
   const dispatch = useDispatch()
   const schemeType = route.params?.schemeType
   const schemeID = route.params?.schemeID
+  const cart = route.params?.cart
+  const schemeGiftCatalogue = route.params?.schemeGiftCatalogue
+  console.log("list adress navigation params",schemeType,schemeID,schemeGiftCatalogue,cart)
   const ternaryThemeColor = useSelector(
     (state) => state.apptheme.ternaryThemeColor
   )
@@ -280,6 +283,7 @@ const ListAddress = ({ navigation ,route}) => {
     const { address, city, state, country, index, district, pincode } = props;
     const [selected, setSelected] = useState(false);
     const addressJson = {
+      address,
       index,
       city,
       district,
@@ -522,7 +526,7 @@ const ListAddress = ({ navigation ,route}) => {
           ></PoppinsText>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("AddAddress");
+              navigation.navigate("AddAddress",{type:"Gift",schemeType:schemeType,schemeID:schemeID});
             }}
             style={{
               backgroundColor: "#DDDDDD",

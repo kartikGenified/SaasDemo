@@ -17,6 +17,7 @@ import {
   setStepId,
   setAlreadyWalkedThrough,
 } from "../../redux/slices/walkThroughSlice";
+import { needWalkedThrough } from "../utils/HandleClientSetup";
 
 const Tab = createBottomTabNavigator();
 
@@ -55,8 +56,8 @@ function BottomNavigator({ navigation }) {
       console.log("isAlreadyWalkedThrough",isAlreadyWalkedThrough)
       if( workflow.includes("Points On Product")){
         console.log("isAlreadyWalkThrough", isAlreadyWalkedThrough, stepId);
-        if ( !(isAlreadyWalkedThrough =="true") && stepId === 0) {
-          setWalkThrough(false);
+        if ( !(isAlreadyWalkedThrough =="true") && stepId === 0 && needWalkedThrough) {
+          setWalkThrough(true);
         } else if (stepId == 2) {
           setStep3(true);
         } else {
@@ -74,6 +75,8 @@ function BottomNavigator({ navigation }) {
   const handleNextStep = () => {
     setWalkThrough(false);
     setStep3(false)
+    console.log("stepIdddd", stepId)
+    //step 1
     dispatch(setStepId(stepId + 1)); // Move to the next step
   };
 
@@ -288,7 +291,7 @@ function BottomNavigator({ navigation }) {
                           fontWeight: "bold",
                         }}
                       >
-                       Click On Passbook to Check Points
+                       Click on passbook to check points
                       </Text>
                       <View style={{ flexDirection: "row" }}>
                         <TouchableOpacity

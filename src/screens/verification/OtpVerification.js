@@ -320,7 +320,7 @@ const OtpVerification = ({ navigation, route }) => {
 
   useEffect(() => {
     if (redeemCashbackData) {
-      setShowRedeemButton(true);
+      setShowRedeemButton(false);
       console.log("redeemCashbackData", redeemCashbackData);
       if (redeemCashbackData.success) {
         handleCashbackRedemption();
@@ -329,7 +329,7 @@ const OtpVerification = ({ navigation, route }) => {
       // setMessage(redeemCashbackData.message)
     } else if (redeemCashbackError) {
       console.log("redeemCashbackError", redeemCashbackError);
-      setShowRedeemButton(true);
+      setShowRedeemButton(false);
       setError(true);
       setMessage(redeemCashbackError.data.message);
     }
@@ -365,10 +365,12 @@ const OtpVerification = ({ navigation, route }) => {
     if (verifyOtpForNormalUseData) {
       console.log("Verify Otp", verifyOtpForNormalUseData);
       if (verifyOtpForNormalUseData.success) {
+        setShowRedeemButton(true);
       }
     } else if (verifyOtpForNormalUseError) {
       console.log("verifyOtpForNormalUseError", verifyOtpForNormalUseError);
       setError(true);
+      setShowRedeemButton(false)
       setMessage("Please Enter The Correct OTP");
     }
   }, [verifyOtpForNormalUseData, verifyOtpForNormalUseError]);
@@ -378,12 +380,12 @@ const OtpVerification = ({ navigation, route }) => {
       console.log("redeemGiftsData", redeemGiftsData);
       setSuccess(true);
       setMessage(redeemGiftsData.message);
-      setShowRedeemButton(true);
+      setShowRedeemButton(false);
     } else if (redeemGiftsError) {
       console.log("redeemGiftsError", redeemGiftsError);
       setMessage(redeemGiftsError.data.message);
       setError(true);
-      setShowRedeemButton(true);
+      setShowRedeemButton(false);
     }
   }, [redeemGiftsError, redeemGiftsData]);
 
@@ -411,7 +413,7 @@ const OtpVerification = ({ navigation, route }) => {
     if (value.length === 6) {
       setOtp(value);
       console.log("From Verify Otp", value);
-      setShowRedeemButton(true);
+      // setShowRedeemButton(false);
       handleOtpSubmission(value);
     }
   };
@@ -599,7 +601,7 @@ const OtpVerification = ({ navigation, route }) => {
             modalClose={modalClose}
             message={message}
             openModal={error}
-            navigateTo="Passbook"
+            // navigateTo="Passbook"
           ></ErrorModal>
         )}
         {success && (

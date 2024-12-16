@@ -55,7 +55,7 @@ import ModalWithBorder from "../../components/modals/ModalWithBorder";
 import ErrorModal from "../../components/modals/ErrorModal";
 import { useTranslation } from "react-i18next";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { needCaimpaign } from "../../utils/HandleClientSetup";
+import { needCaimpaign, needRandomRedeemPoint } from "../../utils/HandleClientSetup";
 import { useGetAppCampaignMutation } from "../../apiServices/campaign/CampaignApi";
 import Tooltip from "react-native-walkthrough-tooltip";
 import {
@@ -84,8 +84,8 @@ const Dashboard = ({ navigation }) => {
   const [walkThrough, setWalkThrough] = useState(false);
   const stepId = useSelector((state) => state.walkThrough.stepId);
 
-  const pointsRef = useRef(0)
-  const randomNoRef = useRef(0)
+  const pointsRef = useRef(0);
+  const randomNoRef = useRef(0);
 
   // const position1 = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
 
@@ -199,9 +199,8 @@ const Dashboard = ({ navigation }) => {
     const showTooltip = stepId === 1;
     if (showTooltip) {
       setWalkThrough(true);
-    }
-    else{
-      setWalkThrough(false)
+    } else {
+      setWalkThrough(false);
     }
   }, [stepId]);
 
@@ -268,8 +267,8 @@ const Dashboard = ({ navigation }) => {
 
   useEffect(() => {
     if (userPointData) {
-      console.log("userPointData",userPointData)
-      pointsRef.current = userPointData?.body?.point_balance
+      console.log("userPointData", userPointData);
+      pointsRef.current = userPointData?.body?.point_balance;
     } else if (userPointError) {
       setError(true);
       setMessage("Can't get user user point data, kindly retry.");
@@ -642,35 +641,170 @@ const Dashboard = ({ navigation }) => {
             )}
           </View>
           {/* Ozone specific change do not show for sales */}
-          {userData?.user_type_id !== 13 && userData && !userPointIsLoading  && (
-           
-           <View style={{width:'90%',alignItems:'center',justifyContent:''}}>
-            {/* <PointBox pointBalance ={Math.trunc(Number(userPointData?.body?.point_balance)) } ></PointBox> */}
-            {/* <PointBox pointBalance ={Math.trunc(0)} ></PointBox> */}
-            {console.log("firstdkdkd", Math.trunc(Number(userPointData?.body?.point_balance)))}
-            {/* <PointBox pointBalance ={Math.trunc(Number(userPointData?.body?.point_balance)) } ></PointBox>  */}
+          {userData?.user_type_id !== 13 && userData && !userPointIsLoading && (
+            <View
+              style={{ width: "90%", alignItems: "center", justifyContent: "" }}
+            >
+              {/* <PointBox pointBalance ={Math.trunc(Number(userPointData?.body?.point_balance)) } ></PointBox> */}
+              {/* <PointBox pointBalance ={Math.trunc(0)} ></PointBox> */}
+              {console.log(
+                "firstdkdkd",
+                Math.trunc(Number(userPointData?.body?.point_balance))
+              )}
+              {/* <PointBox pointBalance ={Math.trunc(Number(userPointData?.body?.point_balance)) } ></PointBox>  */}
+              {needRandomRedeemPoint ?
+                <PointBox pointBalance ={Math.trunc(Number(userPointData?.body?.point_balance)) } ></PointBox> 
+            :
+            <View
+            style={{
+              width: "90%",
+              height: 50,
+              backgroundColor: "white",
+              marginBottom: 20,
+              flexDirection: "row",
+              alignItems: "center",
+              borderColor: "#808080",
+              borderWidth: 0.3,
+              borderRadius: 10,
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: "white",
+                width: "42%",
+                marginHorizontal: 20,
+              }}
+            >
+              {userPointData?.body?.point_balance ? (
+                <View>
+                  <PoppinsTextMedium
+                    content={`${t("Balance points ")}`}
+                    style={{ color: "black", fontWeight: "bold" }}
+                  ></PoppinsTextMedium>
+                  <PoppinsTextMedium
+                    content={`${
+                      userPointData?.body?.point_balance
+                        ? Math.floor(userPointData?.body?.point_balance)
+                        : "loading"
+                    }`}
+                    style={{ color: "black", fontWeight: "bold" }}
+                  ></PoppinsTextMedium>
+                </View>
+              ) : (
+                <AnimatedDots color={"black"} />
+              )}
+
+              
+            </View>
+
+            <View
+              style={{
+                height: "100%",
+                borderWidth: 0.4,
+                color: "#808080",
+                opacity: 0.3,
+              }}
+            >
+              <View
+                style={{
+                  width: "90%",
+                  alignItems: "center",
+                  justifyContent: "",
+                }}
+              >
+                {/* <PointBox pointBalance ={Math.trunc(Number(userPointData?.body?.point_balance)) } ></PointBox> */}
+              </View>
+            </View>
+
+            <View style={{ backgroundColor: "white", width: "46%" }}>
+              {userData && !userPointIsLoading && (
+                <View>
+                  <TouchableOpacity
+                    style={{
+                      backgroundColor: ternaryThemeColor,
+                      height: "100%",
+                      borderRadius: 5,
+                      width: "100%",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                    onPress={() => {
+                      navigation.navigate("RedeemedHistory");
+                    }}
+                  >
+                    <PoppinsTextLeftMedium
+                      style={{
+                        color: "white",
+                        fontWeight: "800",
+                        fontSize: 16,
+                      }}
+                      content={t("redeem")}
+                    ></PoppinsTextLeftMedium>
+                  </TouchableOpacity>
+                  <Tooltip
+                    isVisible={walkThrough}
+                    content={
+                      <View style={{ alignItems: "center" }}>
+                        <Text
+                          style={{
+                            color: "black",
+                            textAlign: "center",
+                            marginBottom: 10,
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Use redeem to use your scanned point
+                        </Text>
+                        <View style={{ flexDirection: "row" }}>
+                          <TouchableOpacity
+                            style={{
+                              backgroundColor: ternaryThemeColor,
+                              paddingVertical: 5,
+                              paddingHorizontal: 15,
+                              borderRadius: 5,
+                              marginRight: 12,
+                            }}
+                            onPress={() => handleSkip()}
+                          >
+                            <Text style={{ color: "white" }}>Skip</Text>
+                          </TouchableOpacity>
+
+                          <TouchableOpacity
+                            style={{
+                              backgroundColor: "lightgray",
+                              paddingVertical: 5,
+                              paddingHorizontal: 15,
+                              borderRadius: 5,
+                            }}
+                            onPress={() => handleNextStep()}
+                          >
+                            <Text style={{ color: "black" }}>Next</Text>
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    }
+                    placement="right"
+                    animated={true}
+                    onClose={() => setWalkThrough(false)}
+                    tooltipStyle={{ borderRadius: 30 }}
+                    contentStyle={{
+                      backgroundColor: "white",
+                      minHeight: 100,
+                      borderWidth: 2,
+                      borderRadius: 10,
+                      borderColor: ternaryThemeColor,
+                    }}
+                  ></Tooltip>
+                </View>
+              )}
+            </View>
+          </View>
+            }
             
-            <View style={{ width: "90%", height: 50, backgroundColor: 'white', marginBottom: 20, flexDirection: 'row', alignItems: 'center', borderColor: '#808080', borderWidth: 0.3, borderRadius: 10 }}>
-
-<View style={{ backgroundColor: 'white', width: '42%', marginHorizontal: 20 }}>
- {userPointData?.body?.point_balance ? <PoppinsText content={`${t("balance points")} ${userPointData?.body?.point_balance ? userPointData?.body?.point_balance : "loading"}`} style={{ color: 'black', fontWeight: 'bold' }}></PoppinsText> : <AnimatedDots color={'black'}/>} 
-</View>
 
 
-<View style={{ height: '100%', borderWidth: 0.4, color: "#808080", opacity: 0.3,  }}>
-</View>
-
-<View style={{ backgroundColor: 'white',width:'46%' }}>
-  {userData && !userPointIsLoading && <TouchableOpacity style={{ backgroundColor: ternaryThemeColor,height:'100%', borderRadius: 5, width: '100%', alignItems: 'center',justifyContent:'center' }} onPress={() => { navigation.navigate("RedeemedHistory") }}>
-    <PoppinsTextLeftMedium style={{ color: 'white', fontWeight: '800',fontSize:16 }} content={t("redeem")} ></PoppinsTextLeftMedium>
-  </TouchableOpacity>}
-</View>
-
-</View>
 
             </View>
-      
-
           )}
           {(userData?.user_type).toLowerCase() !== "dealer" ? (
             (userData?.user_type).toLowerCase() !== "sales" ? (

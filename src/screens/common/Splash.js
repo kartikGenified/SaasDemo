@@ -339,11 +339,11 @@ const Splash = ({ navigation }) => {
                     getWorkflowData &&
                     getFormData
                   ) {
-                    
-                      navigation.reset({
-                        index: "0",
-                        routes: [{ name: "Dashboard" }],
-                      });
+                    console.log("Dash342")
+                      // navigation.reset({
+                      //   index: "0",
+                      //   routes: [{ name: "Dashboard" }],
+                      // });
                     
                   } else {
                     getFormData &&
@@ -523,16 +523,23 @@ const Splash = ({ navigation }) => {
                   getDashboardData,
                   getWorkflowData
                 );
-
-                getFormData &&
+                if(   getFormData &&
                   minVersionSupport &&
                   jsonValue &&
                   getDashboardData &&
-                  getWorkflowData &&
-                  navigation.reset({
-                    index: "0",
-                    routes: [{ name: "Dashboard" }],
-                  });
+                  getWorkflowData ){
+                    
+                    setTimeout(()=>{
+                      navigation.reset({
+                        index: "0",
+                        routes: [{ name: "Dashboard" }],
+                      });
+                    },2000)
+                    console.log("Dashhhhhhhh536s")
+
+                }
+             
+              
               }
             } else {
               console.log("JsonValue is null", parsedJsonValue);
@@ -594,7 +601,7 @@ const Splash = ({ navigation }) => {
           getDashboardData,
           getWorkflowData
         );
-
+        console.log("Dashhhhhhhh598")
         getFormData &&
           minVersionSupport  &&
           getAppMenuData &&
@@ -669,7 +676,7 @@ const Splash = ({ navigation }) => {
                           jsonValue,
                           getWorkflowData
                         );
-
+                        console.log("Dashhhhhhhh682");
                         getFormData && minVersionSupport &&
                         jsonValue &&
                           jsonValue &&
@@ -678,7 +685,9 @@ const Splash = ({ navigation }) => {
                             index: "0",
                             routes: [{ name: "Dashboard" }],
                           });
+                       
                       }
+              
                     } else {
                       console.log("JsonValue is null", parsedJsonValue);
                       dispatch(setAppUserId(parsedJsonValue.user_type_id));
