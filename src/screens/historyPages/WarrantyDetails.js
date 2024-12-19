@@ -283,7 +283,7 @@ const WarrantyDetails = ({ navigation, route }) => {
             }
             else {
                 setError(true);
-                setMessage("Please fill all fields");
+                setMessage(t("Please fill all fields"));
             }
 
 
@@ -377,13 +377,13 @@ const WarrantyDetails = ({ navigation, route }) => {
                         Linking.openURL(data.warranty_pdf)
                         }
                         else{
-                            Alert.alert("Sorry for the inconvenience","Warranty PDF is not available yet kindly contact the support team")
+                            Alert.alert(t("Sorry for the inconvenience"),t("Warranty PDF is not available yet kindly contact the support team"))
                         }
                         }} style={{ padding:8, width: 240, alignItems: "center", justifyContent: "center", backgroundColor: "#91B406", marginTop: 20, borderRadius: 4 }}>
-                <PoppinsTextMedium style={{ color: 'white', fontSize: 18, marginTop: 4 }} content={`Download Warranty`}></PoppinsTextMedium>
+                <PoppinsTextMedium style={{ color: 'white', fontSize: 18, marginTop: 4 }} content={t("Download Warranty")}></PoppinsTextMedium>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => { setModal(true) }} style={{ padding:8, width: 240, alignItems: "center", justifyContent: "center", backgroundColor: "#353535", marginTop: 20, borderRadius: 4 }}>
-                <PoppinsTextMedium style={{ color: 'white', fontSize: 18, marginTop: 4 }} content={`Claim Warranty/View Claim`}></PoppinsTextMedium>
+                <PoppinsTextMedium style={{ color: 'white', fontSize: 18, marginTop: 4 }} content={t("Claim Warranty/View Claim")}></PoppinsTextMedium>
             </TouchableOpacity>
             {/* <ClickToReport></ClickToReport> */}
 

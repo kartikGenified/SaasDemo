@@ -194,7 +194,7 @@ const ScanAndRedirectToWarranty = ({ navigation }) => {
 if(e.data===undefined)
 {
   setError(true)
-  setMessage("Please scan a valid QR")
+  setMessage(t("Please scan a valid QR"))
 }
 else{
   const qrData = e?.data?.split('=')[1];
@@ -262,7 +262,7 @@ else{
         setAddedQrList([...addedQrList, data]);
       } else {
         setError(true);
-        setMessage('Sorry this QR is already added to the list');
+        setMessage(t('Sorry this QR is already added to the list'));
       }
     }
   };

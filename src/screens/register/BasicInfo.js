@@ -255,13 +255,13 @@ const BasicInfo = ({ navigation, route }) => {
       setOtpVerified(true);
       setOtpModal(true);
       console.log("verifyOtp", verifyOtpData);
-      setMessage("OTP Verified");
+      setMessage(t("OTP Verified"))
     } else if (verifyOtpError) {
       console.log("006");
 
       console.log("verifyOtpError", verifyOtpError);
       setError(true);
-      setMessage("Please Enter Correct OTP");
+      setMessage(t("Please Enter Correct OTP"))
     }
   }, [verifyOtpData, verifyOtpError]);
 
@@ -406,7 +406,7 @@ const BasicInfo = ({ navigation, route }) => {
       if (registerUserData.success) {
         setSuccess(true);
         setMessage(RegistrationMessage);
-        setModalTitle("Greetings");
+        setModalTitle(t("Greetings"))
       }
       setHideButton(false);
 
@@ -473,7 +473,7 @@ const BasicInfo = ({ navigation, route }) => {
           }
         } else {
           setError(true);
-          setMessage("Mobile number length must be 10");
+          setMessage(t("Mobile number length must be 10"))
         }
       } else {
         setError(true);
@@ -481,7 +481,7 @@ const BasicInfo = ({ navigation, route }) => {
       }
     } else {
       setError(true);
-      setMessage("Kindly enter mobile number");
+      setMessage(t("Kindly enter mobile number"))
     }
   };
 
@@ -529,7 +529,7 @@ const BasicInfo = ({ navigation, route }) => {
           setUserMobile(data?.value);
         } else {
           setError(true);
-          setMessage("Please enter a valid mobile number");
+          setMessage(t("Please enter a valid mobile number"))
         }
       }
     }
@@ -569,7 +569,7 @@ const BasicInfo = ({ navigation, route }) => {
         console.log("location address=>", JSON.stringify(json));
         if (json.PostOffice === null) {
           setError(true);
-          setMessage("Pincode data cannot be retrieved.");
+          setMessage(t("Pincode data cannot be retrieved"))
           setIsCorrectPincode(false);
         } else {
           setIsCorrectPincode(true);
@@ -802,7 +802,7 @@ const BasicInfo = ({ navigation, route }) => {
 
       if (keys.includes("pincode") && !isCorrectPincode) {
         setError(true);
-        setMessage("Pincode must be verified first");
+        setMessage(t("Pincode data cannot be retrieved"))
         return;
       }
 
@@ -818,7 +818,7 @@ const BasicInfo = ({ navigation, route }) => {
           }
         } else {
           setError(true);
-          setMessage("Email isn't verified");
+          setMessage(t("Email isn't verified"));
         }
       } else {
         if (isFormValid) {

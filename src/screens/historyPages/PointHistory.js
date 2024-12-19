@@ -54,7 +54,7 @@ const PointHistory = ({ navigation }) => {
 
 
 
-    const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader2.gif')).uri;
+    const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader.gif')).uri;
     const noData = Image.resolveAssetSource(require('../../../assets/gif/noData.gif')).uri;
     let startDate,endDate
     useEffect(() => {
@@ -172,7 +172,7 @@ const PointHistory = ({ navigation }) => {
         {
           if(new Date(endDate).getTime() < new Date(startDate).getTime())
           {
-            alert("Kindly enter proper end date")
+            alert(t("Kindly enter proper end date"))
             startDate=undefined
             endDate=undefined
           }
@@ -183,7 +183,7 @@ const PointHistory = ({ navigation }) => {
           
         }
         else{
-          alert("Kindly enter a valid date")
+          alert(t("Kindly enter a valid date"))
           startDate=undefined
           endDate=undefined
         }
@@ -364,11 +364,11 @@ const PointHistory = ({ navigation }) => {
             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "flex-start",width:'100%' }}>
                 <View style={{ alignItems: "center", justifyContent: "center",marginLeft:20 }}>
                     {userPointData && <PoppinsText style={{ color: "black" }} content={userPointData.body.point_earned}></PoppinsText>}
-                    <PoppinsTextMedium style={{ color: "black", fontSize: 14, color: 'black' }} content="Lifetime Earnings"></PoppinsTextMedium>
+                    <PoppinsTextMedium style={{ color: "black", fontSize: 14, color: 'black' }} content={t(("Lifetime Earnings").toLowerCase())}></PoppinsTextMedium>
                 </View>
                 <View style={{ alignItems: "center", justifyContent: "center", marginLeft: 20 }}>
                     {userPointData && <PoppinsText style={{ color: "black" }} content={userPointData.body.point_redeemed}></PoppinsText>}
-                    <PoppinsTextMedium style={{ color: "black", fontSize: 14, color: 'black' }} content="Lifetime Burns"></PoppinsTextMedium>
+                    <PoppinsTextMedium style={{ color: "black", fontSize: 14, color: 'black' }} content={t(("Lifetime Burns").toLowerCase())}></PoppinsTextMedium>
                 </View>
                 {/* <TouchableOpacity style={{ borderRadius: 2, height: 40, width: 100, backgroundColor: "#FFD11E", alignItems: "center", justifyContent: "center", marginLeft: 20, color: 'black' }}>
                     <PoppinsTextMedium style={{ color: 'black' }} content="Redeem"></PoppinsTextMedium>
@@ -429,7 +429,7 @@ const PointHistory = ({ navigation }) => {
 
                 </TouchableOpacity>
                 {/* <PoppinsTextMedium content="Points History" style={{ marginLeft: 10, fontSize: 16, fontWeight: '600', color: '#171717' }}></PoppinsTextMedium> */}
-                <PoppinsTextMedium content={t("points history")} style={{ marginLeft: 10, fontSize: 16, fontWeight: '600', color: '#171717', fontWeight:'bold' }}></PoppinsTextMedium>
+                <PoppinsTextMedium content={t("points history")} style={{ marginLeft: 10, fontSize: 16, fontWeight: '600', color: '#171717' }}></PoppinsTextMedium>
 
                 {/* <TouchableOpacity style={{ marginLeft: 180 }}>
                     <Image style={{ height: 30, width: 30, resizeMode: 'contain' }} source={require('../../../assets/images/notificationOn.png')}></Image>

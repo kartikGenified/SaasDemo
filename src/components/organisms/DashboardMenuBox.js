@@ -74,7 +74,7 @@ const DashboardMenuBox=(props)=>{
             data.map((item,index)=>{
                 return(
                    
-                    <MenuItems handlePress={handleMenuItemPress} key={index} image={item?.icon} content={item?.name}></MenuItems>
+                    <MenuItems handlePress={handleMenuItemPress} index ={index} key={index} image={item?.icon} content={item?.name}></MenuItems>
                    
                 )
             })
@@ -86,4 +86,3 @@ const DashboardMenuBox=(props)=>{
 }
 
 export default DashboardMenuBox;
-

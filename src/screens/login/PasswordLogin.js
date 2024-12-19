@@ -214,7 +214,7 @@ const PasswordLogin = ({ navigation, route }) => {
     else if(getWorkflowError) {
       // console.log("getWorkflowError",getWorkflowError)
       setError(true)
-      setMessage("Oops something went wrong")
+      setMessage(t("Oops something went wrong"))
     }
   }, [getWorkflowData, getWorkflowError])
 
@@ -240,7 +240,7 @@ const PasswordLogin = ({ navigation, route }) => {
       
       if(passwordLoginError.status===400)
       {
-      alert("Your status is under process, please contact Genefied Demo")
+        alert(t("Your status is under process, please contact OzoStars"))
       }
       else if(passwordLoginError?.message){
         setError(true)
@@ -326,7 +326,7 @@ const PasswordLogin = ({ navigation, route }) => {
     }
     else if(getBannerError){
       setError(true)
-      setMessage("Unable to fetch app banners")
+      setMessage(t("Unable to fetch app banners"))
       // console.log(getBannerError)
     }
   }, [getBannerError, getBannerData])

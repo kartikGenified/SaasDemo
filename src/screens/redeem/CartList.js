@@ -64,7 +64,7 @@ const CartList = ({ navigation, route }) => {
     if(cart.length===0)
     {
       setError(true)
-      setMessage("Cart cannot be empty")
+      setMessage(t("Cart cannot be empty"))
     }
     else{
       let tempID = []

@@ -90,7 +90,7 @@ const EditProfile = ({ navigation, route }) => {
   useEffect(() => {
     if (updateProfileData) {
       console.log("updateProfileData", updateProfileData);
-      setMessage("Profile Updated Successfully");
+      setMessage(t("Profile Updated Successfully"));
       setSuccess(true);
       setTimeout(()=>{
         navigation.navigate("Dashboard")
@@ -146,7 +146,7 @@ const EditProfile = ({ navigation, route }) => {
     if(json.PostOffice===null)
     {
       setError(true)
-      setMessage("Pincode data cannot be retrieved.")
+      setMessage(t("Pincode data cannot be retrieved."))
     }
     else{
       const locationJson = {
@@ -251,7 +251,7 @@ const EditProfile = ({ navigation, route }) => {
         }, 2000);
       } else {
         setError(true);
-        setMessage("Please enter a valid email");
+        setMessage(t("Please enter a valid email"));
         setIsClicked(false);
       }
     }
@@ -282,7 +282,7 @@ const EditProfile = ({ navigation, route }) => {
     } else {
       console.log("else");
       setError(true);
-      setMessage("Please select the image to be uploaded");
+      setMessage(t("Please select the image to be uploaded"));
     }
   };
   return (

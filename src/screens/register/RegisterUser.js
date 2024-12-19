@@ -121,7 +121,7 @@ const RegisterUser = ({navigation,route}) => {
         setMobile(data)
         }
         else{
-          alert("Enter a valid mobile number")
+          alert(t("Enter a valid mobile number"))
         }
       };
       const getName = data => {

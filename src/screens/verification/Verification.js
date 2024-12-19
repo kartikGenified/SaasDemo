@@ -135,7 +135,7 @@ const Verification = ({ navigation }) => {
       if (updateKycStatusData.success) {
         dispatch(setKycCompleted());
         setSuccess(true);
-        setMessage("Kyc Completed");
+        setMessage(t("Kyc Completed"))
         console.log("Success");
       }
     } else if (updateKycStatusError) {

@@ -233,14 +233,14 @@ const RedeemedHistory = ({ navigation }) => {
     console.log("fetchDataAccToFilter", startDate, endDate);
     if (startDate && endDate) {
       if (new Date(endDate).getTime() < new Date(startDate).getTime()) {
-        alert("Kindly enter proper end date");
+        alert(t("Kindly enter proper end date"))
         startDate = undefined;
         endDate = undefined;
       } else {
         console.log("fetchDataAccToFilter");
       }
     } else {
-      alert("Kindly enter a valid date");
+      alert(t("Kindly enter a valid date"))
       startDate = undefined;
       endDate = undefined;
     }
@@ -252,7 +252,7 @@ const RedeemedHistory = ({ navigation }) => {
     const handleRedeemButtonPress = () => {
       if (Number(userPointData.body.point_balance) <= 0) {
         setError(true);
-        setMessage("Sorry you don't have enough points.");
+        setMessage(t("Sorry you don't have enough points."))
         setNavigateTo("RedeemedHistory");
       } else if (Number(minRedemptionPoints) > Number(pointBalance)) {
         console.log(
@@ -260,9 +260,7 @@ const RedeemedHistory = ({ navigation }) => {
           minRedemptionPoints
         );
         setError(true);
-        setMessage(
-          `Minimum Point required to redeem is : ${minRedemptionPoints}`
-        );
+        setMessage(`${t("Minimum Point required to redeem is :")} ${minRedemptionPoints}`)
         setNavigateTo("RedeemedHistory");
       } else {
         if (
@@ -279,17 +277,12 @@ const RedeemedHistory = ({ navigation }) => {
             setModalVisible(true);
           } else {
             setError(true);
-            setMessage("Kyc not completed yet");
+            setMessage(t("KYC not completed yet"))
             setNavigateTo("Verification");
           }
         } else {
           setError(true);
-          setMessage(
-            "Redemption window starts from " +
-              moment(redemptionStartData).format("DD-MMM-YYYY") +
-              " and ends on " +
-              moment(redemptionEndDate).format("DD-MMM-YYYY")
-          );
+          setMessage(t("Redemption window starts from ")+ moment(redemptionStartData).format("DD-MMM-YYYY") + t(" and ends on ") +  moment(redemptionEndDate).format("DD-MMM-YYYY"))
           setNavigateTo("RedeemedHistory");
         }
       }
@@ -697,10 +690,7 @@ const RedeemedHistory = ({ navigation }) => {
               paddingRight: 5,
             }}
           >
-            <PoppinsTextMedium
-              style={{ fontWeight: "400", fontSize: 12, color: "white" }}
-              content={`Product Status : ${productStatus}`}
-            ></PoppinsTextMedium>
+          <PoppinsTextMedium style={{ fontWeight: '400', fontSize: 12, color: 'white' }} content={`${t("Product Status :")} ${productStatus}`}></PoppinsTextMedium>
           </View>
           <View
             style={{

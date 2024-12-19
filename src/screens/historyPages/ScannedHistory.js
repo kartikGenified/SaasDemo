@@ -23,7 +23,6 @@ import InputDate from "../../components/atoms/input/InputDate";
 import PoppinsTextLeftMedium from "../../components/electrons/customFonts/PoppinsTextLeftMedium";
 import FilterModal from "../../components/modals/FilterModal";
 import { useTranslation } from "react-i18next";
-import { appIcon } from "../../utils/HandleClientSetup";
 
 const ScannedHistory = ({ navigation }) => {
   const [distinctDateArr, setDistinctDateArr] = useState();
@@ -31,7 +30,7 @@ const ScannedHistory = ({ navigation }) => {
   const [limit, setLimit] = useState(20)
 
   const gifUri = Image.resolveAssetSource(
-    require("../../../assets/gif/loader2.gif")
+    require("../../../assets/gif/loader.gif")
   ).uri;
 
   const [
@@ -186,7 +185,7 @@ const ScannedHistory = ({ navigation }) => {
     {
       if(new Date(endDate).getTime() < new Date(startDate).getTime())
       {
-        alert("Kindly enter proper end date")
+        alert(t("Kindly enter proper end date"))
         startDate=undefined
         endDate=undefined
       }
@@ -196,7 +195,7 @@ const ScannedHistory = ({ navigation }) => {
       
     }
     else{
-      alert("Kindly enter a valid date")
+      alert(t("Kindly enter a valid date"))
       startDate=undefined
       endDate=undefined
     }
@@ -252,7 +251,7 @@ const ScannedHistory = ({ navigation }) => {
     const handleRedeemButtonPress = () => {
       if (Number(userPointData.body.point_balance) <= 0) {
         setError(true);
-        setMessage("Sorry you don't have enough points.");
+        setMessage(t("Sorry you don't have enough points."));
       } else {
         setModalVisible(true);
       }
@@ -355,7 +354,7 @@ const ScannedHistory = ({ navigation }) => {
           }}
         >
           <PoppinsTextLeftMedium
-            content="Filter Scanned Data"
+            content={t("Filter Scanned Data")}
             style={{
               color: "black",
               marginTop: 20, 
@@ -477,7 +476,12 @@ const ScannedHistory = ({ navigation }) => {
             marginLeft:20
           }}
         >
-          {image ? <Image style={{ height: 40, width: 40, resizeMode: "contain" }} source={{uri:image}}></Image>: <Image style={{ height: 40, width: 40, resizeMode: "contain" }} source={appIcon}></Image>}
+          {image !== null && (
+            <Image
+              style={{ height: 60, width: 60, resizeMode: "contain" }}
+              source={{ uri: image=='' ? null : image }}
+            ></Image>
+          )}
         </View>
         <View
           style={{
@@ -595,7 +599,7 @@ const ScannedHistory = ({ navigation }) => {
               style={{
                 marginLeft: 10,
                 fontSize: 16,
-                fontWeight: "800",
+                fontWeight: "600",
                 color: "#171717",
               }}
             ></PoppinsTextMedium>

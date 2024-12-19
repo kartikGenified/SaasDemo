@@ -83,6 +83,7 @@ import CouponCartList from '../screens/redeem/CouponCartList';
 import EnableLocationScreen from '../screens/location/EnableLocationScreen';
 import EnableCameraScreen from '../screens/camera/EnableCameraScreen';
 import SchemeItems from '../screens/scheme/SchemeItems';
+import ForgetPassword from '../screens/login/ForgotPassword';
 
 const Stack = createNativeStackNavigator()
 
@@ -127,6 +128,11 @@ const StackNavigator = () => {
                         headerShown: false
                     }
                 } name="SupportQueries" component={SupportQueries}></Stack.Screen>
+                       <Stack.Screen options={
+                    {
+                        headerShown: false
+                    }
+                } name="ForgetPassword" component={ForgetPassword}></Stack.Screen>
                 <Stack.Screen options={
                     {
                         headerShown: false

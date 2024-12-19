@@ -27,7 +27,7 @@ const SharedPointsHistory = ({ navigation }) => {
   const [distinctDateArr, setDistinctDateArr] = useState();
   const [scannedListData, setScannedListData] = useState([]);
   const gifUri = Image.resolveAssetSource(
-    require("../../../assets/gif/loader2.gif")
+    require("../../../assets/gif/loader.gif")
   ).uri;
   const noData = Image.resolveAssetSource(
     require("../../../assets/gif/noData.gif")
@@ -104,14 +104,14 @@ const SharedPointsHistory = ({ navigation }) => {
     console.log("fetchDataAccToFilter", startDate, endDate);
     if (startDate && endDate) {
       if (new Date(endDate).getTime() < new Date(startDate).getTime()) {
-        alert("Kindly enter proper end date");
+        alert(t("Kindly enter proper end date"));
         startDate = undefined;
         endDate = undefined;
       } else {
         console.log("fetchDataAccToFilter");
       }
     } else {
-      alert("Kindly enter a valid date");
+      alert(t("Kindly enter a valid date"));
       startDate = undefined;
       endDate = undefined;
     }
@@ -159,7 +159,7 @@ const SharedPointsHistory = ({ navigation }) => {
     const handleRedeemButtonPress = () => {
       if (Number(userPointData.body.point_balance) <= 0) {
         setError(true);
-        setMessage("Sorry you don't have enough points.");
+        setMessage(t("Sorry you don't have enough points."));
       } else {
         setModalVisible(true);
       }

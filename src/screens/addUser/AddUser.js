@@ -180,11 +180,11 @@ const AddUser = ({ navigation }) => {
     else if (registerUserError) {
       setError(true)
       if (registerUserError.status === 400) {
-        setMessage("Kindly fill the form")
+        setMessage(t("Kindly fill the form"))
 
       }
       else if (registerUserError.status === 401) {
-        setMessage("Your session is not valid")
+        setMessage(t("Your session is not valid"))
 
       }
       setMessage(registerUserError.data?.message)
@@ -234,7 +234,7 @@ const AddUser = ({ navigation }) => {
     else if (getLocationFormPincodeError) {
       console.log("getLocationFormPincodeError", getLocationFormPincodeError)
       setError(true)
-      setMessage("Please enter a valid pincode")
+      setMessage(t("Please enter a valid pincode"))
       setDisableButton(true)
     }
   }, [getLocationFormPincodeData, getLocationFormPincodeError])
@@ -259,7 +259,7 @@ const AddUser = ({ navigation }) => {
       else{
         setDisableButton(true)
         setError(true)
-        setMessage("Kindly enter a valid mobile number")
+        setMessage(t("Kindly enter a valid mobile number"))
       }
     }
     
@@ -412,7 +412,7 @@ const AddUser = ({ navigation }) => {
 
     if (missingFields.length > 0) {
         setError(true);
-        setMessage(`Please fill in the required fields: ${missingFields.join(', ')}`);
+        setMessage(`${t("Please fill in the required fields:")} ${missingFields.join(', ')}`);
         return;
     }
 
@@ -426,13 +426,13 @@ const AddUser = ({ navigation }) => {
 
     if (!emailValid) {
         setError(true);
-        setMessage("Please enter a valid email");
+        setMessage(t("Please enter a valid email"));
     } else {
         console.log("add user body", body);
         if(inputFormData["mobile"]?.length<10)
     {
       setError(true)
-      setMessage("Kindly enter valid mobile number")
+      setMessage(t("Kindly enter a valid mobile number"))
     }
 
     else{
@@ -441,7 +441,7 @@ const AddUser = ({ navigation }) => {
         if(inputFormData["pincode"]?.length<6)
         {
           setError(true)
-          setMessage("Kindly enter a vaild pincode")
+          setMessage(t("Please enter a valid pincode"))
         }
         else{
           registerUserFunc(body);

@@ -37,9 +37,7 @@ const Notification = ({ navigation }) => {
         if (notifData) {
             console.log("notifdata", notifData)
         } else {
-            if(notifError){
-                
-            }
+
         }
     }, [notifData, notifError])
 
@@ -53,7 +51,7 @@ const Notification = ({ navigation }) => {
     const Notificationbar = (props) => {
         console.log("Notificationbar",props.notification)
         return (
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center',borderBottomWidth:1,width:'90%',borderColor:'#DDDDDD' }}>
                 <View style={{ height: 40, width: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', backgroundColor: "#FFE7E7", marginLeft: 20 }}>
                     <Image style={{ width: 20, height: 20 }} source={require('../../../assets/images/noti-small.png')}></Image>
                 </View>
@@ -81,7 +79,7 @@ const Notification = ({ navigation }) => {
             </View>
             <ScrollView style={{ height: '90%', backgroundColor: buttonThemeColor, width:'100%' }}>
             
-            <View style={{ paddingBottom: 120, height: height, backgroundColor: 'white', width: '100%', borderTopLeftRadius: 30, borderTopRightRadius: 30, marginTop: 20 }}>
+            <View style={{ paddingBottom: 120, height: height, backgroundColor: 'white', width: '100%', borderTopLeftRadius: 30, borderTopRightRadius: 30, marginTop: 20,alignItems:'center',justifyContent:'center' }}>
                 {
                     notifData?.body?.data?.map((item, index) => {
                         return <Notificationbar notification={item?.title} body={item?.body} key={index} ></Notificationbar>
@@ -89,7 +87,7 @@ const Notification = ({ navigation }) => {
                     })
                 }
                  {
-                  (notifData?.body?.count == "00"  || notifData?.body == undefined) &&
+                  notifData?.body?.count == "0"  &&
                      <View style={{height:'100%', backgroundColor:'white', }}>
                      <DataNotFound></DataNotFound>
                      </View>

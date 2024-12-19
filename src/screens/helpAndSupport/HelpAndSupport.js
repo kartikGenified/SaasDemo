@@ -64,7 +64,7 @@ const HelpAndSupport = ({navigation}) => {
             source={require('../../../assets/images/blackBack.png')}></Image>
         </TouchableOpacity>
         <PoppinsTextMedium
-          content={t("Help & Support")}
+          content={t("Help And Support")}
           style={{
             marginLeft: 10,
             fontSize: 16,
@@ -81,7 +81,7 @@ const HelpAndSupport = ({navigation}) => {
                 <Image style={{height:40,width:40,resizeMode:"contain"}} source={require('../../../assets/images/whitemail.png')}></Image>
               </View>
               <PoppinsTextMedium
-          content="Mail us"
+          content={t("Mail us")}
           style={{
             marginLeft: 10,
             fontSize: 16,
@@ -102,7 +102,7 @@ const HelpAndSupport = ({navigation}) => {
                 <Image style={{height:40,width:40,resizeMode:"contain"}} source={require('../../../assets/images/whitemobile.png')}></Image>
               </View>
               <PoppinsTextMedium
-          content="Call us"
+          content={t("Call us")}
           style={{
             marginLeft: 10,
             fontSize: 16,

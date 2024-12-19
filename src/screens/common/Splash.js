@@ -103,6 +103,7 @@ import { setSlowNetwork } from "../../../redux/slices/internetSlice";
 import { apiFetchingInterval } from "../../utils/apiFetchingInterval";
 import { clientName, splash } from "../../utils/HandleClientSetup";
 import FastImage from "react-native-fast-image";
+import { useTranslation } from "react-i18next";
 
 const Splash = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -120,7 +121,7 @@ const Splash = ({ navigation }) => {
   const [dashboardDataLoaded, setDashboardDataLoaded] = useState(false);
   const [error, setError] = useState(false);
   const [checkedForInAppUpdate, setCheckedForInAppUpdate] = useState(false);
-
+  const {t} = useTranslation()
   const { responseTime, loading } = useInternetSpeedContext();
 
   // const [isAlreadyIntroduced, setIsAlreadyIntroduced] = useState(null);
@@ -791,7 +792,7 @@ const Splash = ({ navigation }) => {
 
   useEffect(() => {
     const backAction = () => {
-      Alert.alert("Exit App", "Are you sure you want to exit?", [
+      Alert.alert(t("Exit App"), t("Are you sure you want to exit?"),  [
         {
           text: "Cancel",
           onPress: () => null,
@@ -828,7 +829,7 @@ const Splash = ({ navigation }) => {
             style: "cancel",
           },
           {
-            text: "Settings",
+            text:  t("Settings"),
             onPress: () =>
               Platform.OS == "android"
                 ? Linking.openSettings()
@@ -954,8 +955,8 @@ const Splash = ({ navigation }) => {
           } else {
             // Other errors
             Alert.alert(
-              "Error",
-              "An error occurred while fetching your location.",
+              t("Error"),
+              t("An error occurred while fetching your location."),
               [{ text: "OK", onPress: () => console.log("OK Pressed") }],
               { cancelable: false }
             );
@@ -1014,11 +1015,11 @@ const Splash = ({ navigation }) => {
         setMinVersionSupport(getMinVersionSupportData?.body?.data);
         if (!getMinVersionSupportData?.body?.data) {
           Alert.alert(
-            "Kindly update the app to the latest version",
-            "Your version of app is not supported anymore, kindly update",
+            t("Kindly update the app to the latest version"),
+            t("Your version of app is not supported anymore, kindly update"),
             [
               {
-                text: "Update",
+                text: t("Update"),
                 onPress: () =>
                   Linking.openURL(
                     "https://play.google.com/store/apps/details?id=com.genefied.demo"
@@ -1030,8 +1031,8 @@ const Splash = ({ navigation }) => {
       } else {
         if (Object.keys(getMinVersionSupportData?.body)?.length == 0) {
           Alert.alert(
-            "Kindly update the app to the latest version",
-            "Your version of app is not supported anymore, kindly update",
+            t("Kindly update the app to the latest version"),
+            t("Your version of app is not supported anymore, kindly update"),
             [
               {
                 text: "Update",

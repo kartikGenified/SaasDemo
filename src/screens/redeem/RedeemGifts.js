@@ -223,7 +223,7 @@ const RedeemGifts = ({ navigation, route }) => {
         setCart(tempcart);
       }
     } else {
-      alert("You can redeem one gift at a time");
+      alert(t("You can redeem one gift at a time"))
     }
 
     console.log("cart issahdashdghashgd", cart);
@@ -256,7 +256,7 @@ const RedeemGifts = ({ navigation, route }) => {
             }
           } else {
             setError(true);
-            setMessage("Sorry you don't have enough points.");
+            setMessage(t("Sorry you don't have enough points."))
           }
         }
         // else{
@@ -665,7 +665,7 @@ const RedeemGifts = ({ navigation, route }) => {
                 schemeType: schemeType,
                 schemeID: schemeID,
               });
-            } else setError(true), setMessage("Cart cannot be empty");
+            } else setError(true),     setMessage(t("Cart cannot be empty"))
           }}
           style={{
             alignItems: "center",

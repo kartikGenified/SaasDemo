@@ -23,8 +23,7 @@ import { GoogleMapsKey,locationIqApi } from "@env";
 import { useIsFocused } from "@react-navigation/native";
 import crashlytics from "@react-native-firebase/crashlytics";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { locationPermissionMessage } from "../../utils/HandleClientSetup";
-
+import { useTranslation } from "react-i18next";
 const EnableLocationScreen = ({ route, navigation }) => {
   const appState = useRef(AppState.currentState);
   const [lat, setLat] = useState();
@@ -33,6 +32,7 @@ const EnableLocationScreen = ({ route, navigation }) => {
   const [continueWithoutGeocoding, setContinueWithoutGeoCoding] = useState(false)
   const [appStateVisible, setAppStateVisible] = useState(appState.current);
   const focused = useIsFocused();
+  const {t} = useTranslation()
   const message = route.params?.message;
   const navigateTo = route.params?.navigateTo;
   const dispatch = useDispatch();
@@ -55,7 +55,8 @@ const EnableLocationScreen = ({ route, navigation }) => {
   console.log(
     "EnableLocationScreen",
     locationEnabled,
-    locationPermissionStatus
+    locationPermissionStatus,
+    navigateTo
   );
 
   
@@ -123,10 +124,10 @@ const EnableLocationScreen = ({ route, navigation }) => {
 
     if (Platform.OS === "ios") {
       Alert.alert(
-        "GPS Disabled",
-        "Please enable GPS/Location to use this feature.",
+        t("GPS Disabled"),
+        t("Please enable GPS/Location to use this feature."),
         [
-          { text: "Cancel", style: "cancel" },
+          { text: t("Cancel"), style: "cancel" },
           { text: "Settings", onPress: openSettings },
         ],
         { cancelable: false }
@@ -134,7 +135,7 @@ const EnableLocationScreen = ({ route, navigation }) => {
     } else if (Platform.OS === "android") {
       LocationServicesDialogBox.checkLocationServicesIsEnabled({
         message:
-          "<h2 style='color: #0af13e'>Use Location ?</h2>Genefied Demo wants to change your device settings:<br/><br/>Enable location to use the application.<br/><br/><a href='#'>Learn more</a>",
+          `<h2 style='color: #0af13e'>${t("Use Location ?")}</h2>${t("Ozostars wants to change your device settings:")}<br/><br/>${t("Enable location to use the application.")}<br/><br/><a href='#'>${t("Learn more")}</a>`,
         ok: "YES",
         cancel: "NO",
         enableHighAccuracy: true,
@@ -158,11 +159,11 @@ const EnableLocationScreen = ({ route, navigation }) => {
         })
         .catch((error) => {
           Alert.alert(
-            "You denied GPS access",
-            "To scan QR code, Genefied Demo app requires location access, kindly enable GPS access to start scanning",
+            t("You denied GPS access"),
+            t("To scan QR code, Ozostars app requires location access, kindly enable GPS access to start scanning"),
             [
               {
-                text: "OK",
+                text: t("OK"),
                 onPress: () => {
                   navigation.navigate("Dashboard");
                 },
@@ -189,11 +190,11 @@ const EnableLocationScreen = ({ route, navigation }) => {
           lon: long || "N/A",
         };
         if (
-          (lati == undefined) & (long == undefined) ||
+          ((lati == undefined) || (long == undefined)) ||
           (lati == null || long == null)
         ) {
           Alert.alert(
-            "Unable To Fetch Location",
+            t("Unable To Fetch Location"),
             "We are not able to fetch your lat/lon at the moment",
             [
               {
@@ -239,7 +240,8 @@ const EnableLocationScreen = ({ route, navigation }) => {
               const formattedAddress = json?.results[0]?.formatted_address;
               locationJson.address = formattedAddress || "N/A";
               const addressComponent = json?.results[0]?.address_components;
-
+              locationJson.compoundCode = json?.plus_code?.compound_code
+              
               addressComponent.forEach((component) => {
                 if (component.types.includes("postal_code")) {
                   locationJson.postcode = component.long_name;
@@ -282,8 +284,8 @@ const EnableLocationScreen = ({ route, navigation }) => {
         console.error("Geolocation error:", error);
         if (error.code === 1) {
           Alert.alert(
-            "Alert",
-            `${locationPermissionMessage}`,
+            t("Alert"),
+            t("To scan a QR code, the OZOSTAR app must have access permissions. Please grant access to the location."),
             [{ text: "NO",onPress:(()=>{
                 
             }) }, { text: "Yes", onPress: openSettings }],
@@ -360,8 +362,8 @@ const EnableLocationScreen = ({ route, navigation }) => {
                 }
                 else{
                     Alert.alert(
-                        "Unable To Fetch Location",
-                        "We are not able to fetch your location from your lat/lon at the moment",
+                        t("Unable To Fetch Location"),
+                        t("We are not able to fetch your location from your lat/lon at the moment"),
                         [
                           {
                             text: "OK",
@@ -385,8 +387,8 @@ const EnableLocationScreen = ({ route, navigation }) => {
               }
               else{
                   Alert.alert(
-                      "Unable To Fetch Location",
-                      "We are not able to fetch your location from your lat/lon at the moment",
+                      t("Unable To Fetch Location"),
+                      t("We are not able to fetch your location from your lat/lon at the moment"),
                       [
                         {
                           text: "OK",
@@ -439,8 +441,8 @@ const EnableLocationScreen = ({ route, navigation }) => {
           }
           else{
               Alert.alert(
-                  "Unable To Fetch Location",
-                  "We are not able to fetch your location from your lat/lon at the moment",
+                  t("Unable To Fetch Location"),
+                  t("We are not able to fetch your location from your lat/lon at the moment"),
                   [
                     {
                       text: "OK",
@@ -464,8 +466,8 @@ const EnableLocationScreen = ({ route, navigation }) => {
         }
         else{
             Alert.alert(
-                "Unable To Fetch Location",
-                "We are not able to fetch your location from your lat/lon at the moment",
+                t("Unable To Fetch Location"),
+                t("We are not able to fetch your location from your lat/lon at the moment"),
                 [
                   {
                     text: "OK",
@@ -548,7 +550,7 @@ const EnableLocationScreen = ({ route, navigation }) => {
         >
           <PoppinsTextMedium
             style={styles.buttonText}
-            content="Enable Device Location"
+            content={t("Enable Device Location")}
           />
         </TouchableOpacity>
       </View>

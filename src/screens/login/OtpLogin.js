@@ -176,7 +176,7 @@ const OtpLogin = ({ navigation, route }) => {
           Keyboard.dismiss();
         } else {
           setError(true);
-          setMessage("Please enter a valid mobile number");
+          setMessage(t("Please enter a valid mobile number"))
         }
       }
     }
@@ -250,7 +250,7 @@ const OtpLogin = ({ navigation, route }) => {
             }
           } else {
             setError(true);
-            setMessage("Please enter your 10 digit mobile number");
+            setMessage(t("Please enter your 10 digit mobile number"))
           }
           // setName('')
           // setMobile('')
@@ -261,15 +261,15 @@ const OtpLogin = ({ navigation, route }) => {
       } else {
         if (mobile?.length != 10) {
           setError(true);
-          setMessage("Please enter your 10 digit mobile number");
+          setMessage(t("Please enter your 10 digit mobile number"))
         } else if (name == undefined || name == "") {
           setError(true);
-          setMessage("Please enter name");
+          setMessage(t("Please enter name"))
         }
       }
     } else {
       setError(true);
-      setMessage("Please Accept Terms and condition");
+      setMessage(t("Please Accept Terms and condition"))
     }
   };
 

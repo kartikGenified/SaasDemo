@@ -12,12 +12,14 @@ import * as Keychain from "react-native-keychain";
 import PoppinsTextLeftMedium from "../../components/electrons/customFonts/PoppinsTextLeftMedium";
 import { useIsFocused } from "@react-navigation/native";
 import { addAddress } from "../../../redux/slices/redemptionAddressSlice";
+import { useTranslation } from "react-i18next";
 const ListAddress = ({ navigation ,route}) => {
   const [selectedIndex, setSelectedIndex] = useState();
   const [selectedAddress, setSelectedAddress] = useState();
   const [addressList, setAddressList] = useState();
   const focused = useIsFocused()
   const dispatch = useDispatch()
+  const {t} = useTranslation()
   const schemeType = route.params?.schemeType
   const schemeID = route.params?.schemeID
   const cart = route.params?.cart
@@ -505,7 +507,7 @@ const ListAddress = ({ navigation ,route}) => {
             navigation.navigate('OtpVerification',{type:"Gift",schemeType:schemeType,schemeID:schemeID})
           }
           else{
-            alert("Please select an address first")
+            alert(t("Please select an address first"))
           }
         }}>
           <PoppinsTextMedium style={{fontSize:18,color:'white',fontWeight:'700'}} content="Select"></PoppinsTextMedium>

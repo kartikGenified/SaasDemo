@@ -242,11 +242,11 @@ const RedeemCoupons = ({ navigation, route }) => {
                 console.log("selectedValueData",selectedValueData)
                 props.handleOperation(selectedValueData, operation, temp);
               } else {
-                alert("Kindly redeem one coupon at a time");
+                alert(t("Kindly redeem one coupon at a time"));
               }
             } else {
               setError(true);
-              setMessage("Sorry you don't have enough points.");
+              setMessage(t("Sorry you don't have enough points."));
             }
           }
         } else {

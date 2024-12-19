@@ -76,7 +76,7 @@ const AddUpi = ({navigation}) => {
         setName(addBankDetailsData.body.bene_details.bene_name);
         setData(addBankDetailsData.body)
         setOpenBottomModal(true);
-        setMessage('UPI Added Successfully');
+        setMessage(t('UPI Added Successfully'));
         setTimeout(() => {
           setSuccess(false);
           // navigation.navigate("BankAccounts",{refresh:true})

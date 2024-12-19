@@ -40,33 +40,65 @@ const PrefilledTextInput = (props) => {
 
     useEffect(()=>{
        
-        let tempJsonData ={...props.jsonData,"value":value}
+       
+        let tempJsonData ={}
+        if(props.jsonData.name == "city" || props.jsonData.name == "district" || props.jsonData.name == "state")
+            {
+             tempJsonData ={...props.jsonData,"value":value?.replace(/[^\w\s]/gi, '')}
+            }
+            else{
+            tempJsonData ={...props.jsonData,"value":value}
+
+            }
         console.log("tempJsonData",tempJsonData)
         if(shouldReturnValue)
         {
             console.log("shouldReturnValue",value,placeHolder, props.value)
+
+            if(props.jsonData.name == "city" || props.jsonData.name == "district" || props.jsonData.name == "state")
+            {
+            props.handleData((props.value)?.replace(/[^\w\s]/gi, ''), props.placeHolder)
+            }
+            else{
             props.handleData(props.value, props.placeHolder)
+
+            }
+
         }
         else
         {
          props.handleData(tempJsonData,props.placeHolder)
         }
-        console.log("keyboard visible001",keyboardShow,placeHolder)
-    },[value])
+        console.log("keyboard visible",keyboardShow,placeHolder)
+    },[keyboardShow,value])
 
     const handleInput=(text)=>{
+        
         setValue(text)
         // props.handleData(value)
        
     }
     
     const handleInputEnd=()=>{
-        let tempJsonData ={...props.jsonData,"value":value}
+        let tempJsonData ={}
+        if(props.jsonData.name == "city" || props.jsonData.name == "district" || props.jsonData.name == "state")
+            {
+             tempJsonData ={...props.jsonData,"value":value?.replace(/[^\w\s]/gi, '')}
+            }
+            else{
+            tempJsonData ={...props.jsonData,"value":value}
+            }
         console.log(tempJsonData)
         if(shouldReturnValue)
         {
             console.log("shouldReturnValue",value,placeHolder, props.value)
-            props.handleData(props.value, placeHolder)
+            if(props.jsonData.name=="city"|| props.jsonData.name == "district" || props.jsonData.name == "state")
+            {
+            props.handleData((props.value)?.replace(/[^\w\s]/gi, ''), placeHolder)
+            }
+            else{
+            props.handleData((props.value), placeHolder)
+            }
         }
         else
         {
@@ -79,7 +111,7 @@ const PrefilledTextInput = (props) => {
             <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'white',position:"absolute",top:-15,left:16}}>
                 <PoppinsTextMedium style={{color:"#919191",padding:4,fontSize:18}} content = {t(displayText)}></PoppinsTextMedium>
             </View>
-            <TextInput editable={isEditable} maxLength={maxLength} onSubmitEditing={(text)=>{handleInputEnd()}} onEndEditing={(text)=>{handleInputEnd()}} style={{ height:50,width:'100%',alignItems:"center",justifyContent:"flex-start",fontWeight:'500',marginLeft:24,color:'black',fontSize:16, }}    placeholderTextColor="#D3D3D3"  onChangeText={(text)=>{handleInput(text)}} value={value} placeholder={required ? `${placeHolder} *` : `${placeHolder}`}></TextInput>
+            <TextInput editable={isEditable} maxLength={maxLength} onSubmitEditing={(text)=>{handleInputEnd()}} onEndEditing={(text)=>{handleInputEnd()}} style={{ height:50,width:'100%',alignItems:"center",justifyContent:"flex-start",fontWeight:'500',marginLeft:24,color:'black',fontSize:16, }} placeholderTextColor="grey" onChangeText={(text)=>{handleInput(text)}} value={value} placeholder={required ? `${placeHolder} *` : `${placeHolder}`}></TextInput>
         </View>
     );
 }

@@ -642,7 +642,7 @@ export default function Scheme({ navigation }) {
                 }
                 else { 
                   console.log("redemption window is not open", new Date(props.data.redeem_start).getTime(), new Date().getTime(), )
-                  alert(`Redemption window will start at ${props.data.redeem_start} and will end at ${props.data.redeem_end}`)
+                  alert(`${t("Redemption window will start at")} ${props.data.redeem_start} ${t("and will end at")} ${props.data.redeem_end}`)
                 }
                 
               }}

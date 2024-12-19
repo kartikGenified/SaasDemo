@@ -30,6 +30,7 @@ import ErrorModal from '../../components/modals/ErrorModal';
 import FastImage from 'react-native-fast-image';
 import { gifUri } from '../../utils/GifUrl';
 import PrefilledTextInput from '../../components/atoms/input/PrefilledTextInput';
+import { useTranslation } from 'react-i18next';
 
 const ActivateWarranty = ({ navigation, route }) => {
   const [responseArray, setResponseArray] = useState([]);
@@ -51,6 +52,8 @@ const ActivateWarranty = ({ navigation, route }) => {
   const [emailValid, setIsValidEmail] = useState(false)
   const [hideButton, setHideButton] = useState(false)
   const [invoiceNo, setInvoiceNo] = useState()
+
+  const{t} = useTranslation()
 
 
   //modal
@@ -133,7 +136,7 @@ const ActivateWarranty = ({ navigation, route }) => {
         setMessage(activateWarrantyData?.message)
       }
       else {
-        alert("Warranty status false")
+        alert(t("Warranty status false"))
       }
     } else if (activateWarrantyError) {
       if (activateWarrantyError.status === 409) {
@@ -188,7 +191,7 @@ const ActivateWarranty = ({ navigation, route }) => {
           }
           else{
             setError(true)
-            setMessage("Please enter a valid email")
+            setMessage(t("Please enter a valid email"))
           }
   
         } else {
@@ -200,7 +203,7 @@ const ActivateWarranty = ({ navigation, route }) => {
     }
     else{
       setError(true)
-      setMessage("Please enter invoice number")
+      setMessage(t("Please enter invoice number"))
     }
   
   };
@@ -276,7 +279,7 @@ const ActivateWarranty = ({ navigation, route }) => {
           else{
             console.log("DataValue Mobile", data?.value)
             setError(true)
-            setMessage("Kindly enter a valid mobile number")
+            setMessage(t("Kindly enter a valid mobile number"))
           }
         }
         

@@ -174,7 +174,7 @@ const [checkBeforeRedeem, {
           console.log("checking boolean bakchodi",isReedemable ==cashConversion )
           setError(true)
           // setMessage("Maximum Amount Trasaction Per Day Is : " + isReedemable)
-          setMessage("Maximum Amount Per Trasaction  : " + isReedemable)
+          setMessage(t("Maximum Amount Per Trasaction  : ") + isReedemable)
 
           return
         }
@@ -182,13 +182,13 @@ const [checkBeforeRedeem, {
         if(Number(minAmountRedeem) >Number(cashConversion)){
           console.log("Checks", minAmountRedeem,cashConversion,Number(minAmountRedeem) ==Number(cashConversion))
           setError(true)
-          setMessage("Minimum Amount per transaction : " + minAmountRedeem)
+          setMessage(t("Minimum Amount per transaction : ") + minAmountRedeem)
           return
         }
       
         else if(Number(cashConversion) >= Number(maxAmountPerDay)){
           setError(true)
-          setMessage("Maximum Amount Per Day  : " + maxAmountPerDay)
+          setMessage(t("Maximum Amount Per Day : ") + maxAmountPerDay)
           return
         }
         else if(!checkBeforeRedeemData.body.data){
@@ -210,13 +210,13 @@ const [checkBeforeRedeem, {
           }
           else {
             setError(true)
-            setMessage(`Minimum cash redemption value is ${maxCashConverted}`)
+            setMessage(`${t("Minimum cash redemption value is")} ${maxCashConverted}`)
           }
         }
       }
       else {
         setError(true)
-        setMessage("Min Points required to redeem : " + minPointsRedeemed)
+        setMessage(t("Min Points required to redeem : ") + minPointsRedeemed)
       }
     }
     else {
@@ -228,7 +228,7 @@ const [checkBeforeRedeem, {
         console.log("cashhhhh", isReedemable, cashConversion)
         if (cashConversion == 0) {
           setError(true)
-          setMessage("Cannot redeem 0 amount")
+          setMessage(t("Cannot redeem 0 amount"))
         }
         else {
           if(redemptionFrom!="Wallet")
@@ -274,7 +274,7 @@ const [checkBeforeRedeem, {
       else {
         console.log("cashConversionqwerty",cashConversion,getWalletBalanceData?.body?.cashback_balance)
         setError(true)
-        setMessage("You don't have enough wallet balance kindly redeem using your point")
+        setMessage(t("You don't have enough wallet balance kindly redeem using your point"))
       }
     }
 

@@ -80,6 +80,7 @@ const Dashboard = ({ navigation }) => {
   const [success, setSuccess] = useState(false);
   const [hide, setHide] = useState(true);
   const [campaignData, setCaimpaignData] = useState(null);
+  const [showCampaign, setShowCampaign] = useState()
   const [error, setError] = useState(false);
   const [walkThrough, setWalkThrough] = useState(false);
   const stepId = useSelector((state) => state.walkThrough.stepId);
@@ -478,6 +479,13 @@ const Dashboard = ({ navigation }) => {
     setError(false);
   };
 
+  const dontShow=(status)=>{
+    console.log("dont show campaign")
+    setShowCampaign(status)
+  }
+
+  
+
   const notifModalFunc = () => {
     return (
       <View style={{ width: "100%" }}>
@@ -630,15 +638,9 @@ const Dashboard = ({ navigation }) => {
           <View style={{ height: 200, width: "100%", marginBottom: 20 }}>
             {bannerArray && <Banner images={bannerArray}></Banner>}
 
-            {needCaimpaign && !hide && (
-              <CampaignVideoModal
-                appCampaignData={campaignData}
-                isVisible={CampainVideoVisible}
-                onClose={() => {
-                  setCmpainVideoVisible(false);
-                }}
-              />
-            )}
+            {showCampaign && <CampaignVideoModal dontShow = {dontShow} isVisible={CampainVideoVisible} onClose={()=>{
+              setCmpainVideoVisible(false)
+            }} />}
           </View>
           {/* Ozone specific change do not show for sales */}
           {userData?.user_type_id !== 13 && userData && !userPointIsLoading && (

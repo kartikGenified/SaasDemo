@@ -30,7 +30,7 @@ const WarrantyHistory = ({ navigation }) => {
 
     const {t} = useTranslation();
 
-    const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader2.gif')).uri;
+    const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader.gif')).uri;
     const noData = Image.resolveAssetSource(require('../../../assets/gif/noData.gif')).uri;
     let startDate,endDate
 
@@ -66,7 +66,7 @@ const WarrantyHistory = ({ navigation }) => {
         {
           if(new Date(endDate).getTime() < new Date(startDate).getTime())
           {
-            alert("Kindly enter proper end date")
+            alert(t("Kindly enter proper end date"))
             startDate=undefined
             endDate=undefined
           }
@@ -76,7 +76,7 @@ const WarrantyHistory = ({ navigation }) => {
           
         }
         else{
-          alert("Kindly enter a valid date")
+          alert(t("Kindly enter a valid date"))
           startDate=undefined
           endDate=undefined
         }
@@ -238,7 +238,7 @@ const WarrantyHistory = ({ navigation }) => {
                         Linking.openURL(item.warranty_pdf)
                         }
                         else{
-                            Alert.alert("Sorry for the inconvenience","Warranty PDF is not available yet kindly contact the support team")
+                            Alert.alert(t("Sorry for the inconvenience"),t("Warranty PDF is not available yet kindly contact the support team"))
                         }
                     }} style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
                         <Image style={{ height: 20, width: 20, resizeMode: "contain" }} source={require('../../../assets/images/greenDownload.png')}></Image>
@@ -267,7 +267,7 @@ const WarrantyHistory = ({ navigation }) => {
                     <Image style={{ height: 24, width: 24, resizeMode: 'contain', marginLeft: 10 }} source={require('../../../assets/images/blackBack.png')}></Image>
 
                 </TouchableOpacity>
-                <PoppinsTextMedium content={t("Warranty List")} style={{ marginLeft: 10, fontSize: 16, fontWeight: '800', color: '#171717' }}></PoppinsTextMedium>
+                <PoppinsTextMedium content={t("Warranty List")} style={{ marginLeft: 10, fontSize: 16, fontWeight: '600', color: '#171717' }}></PoppinsTextMedium>
                 {/* <TouchableOpacity style={{ marginLeft: 160 }}>
                     <Image style={{ height: 30, width: 30, resizeMode: 'contain' }} source={require('../../../assets/images/notificationOn.png')}></Image>
                 </TouchableOpacity> */}

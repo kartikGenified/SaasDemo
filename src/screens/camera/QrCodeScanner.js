@@ -322,7 +322,7 @@ const QrCodeScanner = ({ navigation,route }) => {
         handleLogout();
       } else {
         setError(true);
-        setMessage("Unable to check warranty status of this QR");
+        setMessage(t("Unable to check warranty status of this QR"));
       }
       // console.log('Error', checkGenuinityError);
     }
@@ -345,7 +345,7 @@ const QrCodeScanner = ({ navigation,route }) => {
         handleLogout();
       } else {
         setError(true);
-        setMessage("Unable to check warranty status of this QR");
+        setMessage(t("Unable to check warranty status of this QR"));
       }
       // console.log('warranty Error', checkWarrantyError);
     }
@@ -362,7 +362,7 @@ const QrCodeScanner = ({ navigation,route }) => {
       if (productDataData?.body?.products.length !== 0) {
         if (productDataData?.body?.products[0].points_active === "2") {
           setError(true);
-          setMessage("Reward is not activated for this product");
+          setMessage(t("Reward is not activated for this product"));
         } else {
           const body = {
             product_id: productDataData?.body?.products[0].product_id,
@@ -379,7 +379,7 @@ const QrCodeScanner = ({ navigation,route }) => {
         }
       } else {
         setError(true);
-        setMessage("Product data not available.");
+        setMessage(t("Product data not available."));
         if (addedQrList.length === 1) {
           setShowProceed(false);
         } else {
@@ -506,7 +506,7 @@ const QrCodeScanner = ({ navigation,route }) => {
       setIsLoading(false);
       if (verifyQrError === undefined) {
         setError(true);
-        setMessage("This QR is not activated yet");
+        setMessage(t("This QR is not activated yet"));
       } else {
         setError(true);
         setMessage(verifyQrError.data?.message);
@@ -580,7 +580,7 @@ const codeScanner = useCodeScanner({
     
     if (e === undefined) {
         setError(true);
-        setMessage("Please scan a valid QR");
+        setMessage(t("Please scan a valid QR"));
     } else {
 
 
@@ -601,7 +601,7 @@ const codeScanner = useCodeScanner({
                         console.log("Verify qr data", JSON.stringify(response));
                         if (response?.data?.body == null) {
                             setError(true);
-                            setMessage("Can't get product data");
+                            setMessage(t("Can't get product data"));
                         }
 
                         const qrStatus =
@@ -652,7 +652,7 @@ const codeScanner = useCodeScanner({
             
         } else {
             setError(true);
-            setMessage("Invalid QR");
+            setMessage(t("Invalid QR"));
         }
     };
     console.log("data from gallery", e)
@@ -731,7 +731,7 @@ const codeScanner = useCodeScanner({
         addedqr.push(data);
       } else {
         setError(true);
-        setMessage("Sorry This QR is already added to the list");
+        setMessage(t("Sorry This QR is already added to the list"));
       }
     }
     console.log("Adding qr to list chekcing duplicate and list" ,  addedQrList, isDuplicateQr)
@@ -1293,7 +1293,8 @@ const codeScanner = useCodeScanner({
                 marginLeft: 110,
                 marginBottom:30
               }}
-              content="Scan Product Qr Code"></PoppinsTextMedium>
+              content={t("Scan Product Bar Code")}>
+              </PoppinsTextMedium>
             <View
               style={{
                 backgroundColor: 'transparent',

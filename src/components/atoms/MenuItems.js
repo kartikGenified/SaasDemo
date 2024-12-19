@@ -9,6 +9,7 @@ import { FAB } from 'react-native-paper';
 
 
 const MenuItems = (props) => {
+
   const colorShades = useSelector(state=>state.apptheme.colorShades)
     const image= props.image
     const content = props.content
@@ -25,7 +26,7 @@ const MenuItems = (props) => {
     // console.log(image)
     return (
             
-                <View style={{alignItems:"center",justifyContent:"center",width:100,margin:6}}>
+                <View accessibilityLabel={String(props.index)} style={{alignItems:"center",justifyContent:"center",width:100,margin:6}}>
            
             <TouchableOpacity onPress={()=>{handlePress()}} style={{height:69,width:69,backgroundColor:colorShades[100],alignItems:"center",justifyContent:"center",borderRadius:34.5,opacity:0.6}}>
             <Image style={{height:69,width:69}} source={{uri:image}}></Image>

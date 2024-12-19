@@ -128,7 +128,7 @@ const RequestAppointment = ({ navigation, route }) => {
       else{
         setDisableButton(true)
         setError(true)
-        setMessage("Kindly enter a valid mobile number")
+        setMessage(t("Kindly enter a valid mobile number"))
       }
     }
   }
