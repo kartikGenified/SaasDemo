@@ -319,7 +319,11 @@ const CustomDrawer = () => {
                 navigation.navigate("ScanAndRedirectToWarranty");
               } else if (props.title.toLowerCase() === "scan list") {
                 navigation.navigate("PointHistory");
-              } else if (props.title.toLowerCase() === "add user") {
+              } 
+              else if (props.title.toLowerCase() === "coupons") {
+                navigation.navigate("RedeemCoupons");
+              } 
+              else if (props.title.toLowerCase() === "add user") {
                 navigation.navigate("ListUsers");
               } else if (props.title.toLowerCase() === "query list") {
                 navigation.navigate("QueryList");

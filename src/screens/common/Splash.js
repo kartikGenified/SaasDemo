@@ -1047,6 +1047,12 @@ const Splash = ({ navigation }) => {
       }
     } else if (getMinVersionSupportError) {
       // console.log("getMinVersionSupportError", getMinVersionSupportError)
+      Alert.alert(
+        t("Error"),
+        t("An error occurred while fetching minimum version support."),
+        [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+        { cancelable: false }
+      );
     }
   }, [getMinVersionSupportData, getMinVersionSupportError]);
 

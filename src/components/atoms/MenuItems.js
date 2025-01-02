@@ -9,7 +9,6 @@ import { FAB } from 'react-native-paper';
 
 
 const MenuItems = (props) => {
-
   const colorShades = useSelector(state=>state.apptheme.colorShades)
     const image= props.image
     const content = props.content
@@ -31,7 +30,7 @@ const MenuItems = (props) => {
             <TouchableOpacity onPress={()=>{handlePress()}} style={{height:69,width:69,backgroundColor:colorShades[100],alignItems:"center",justifyContent:"center",borderRadius:34.5,opacity:0.6}}>
             <Image style={{height:69,width:69}} source={{uri:image}}></Image>
             </TouchableOpacity>
-            <PoppinsTextMedium content={content == "Scan Qr" || content=="Scan QR" ? t("Scan QR") :content=="Activate Warranty" ? t("Activate Warranty"): content.toLowerCase() == "check genuinity" ? t("Check Genuinity") : content=="Passbook" ? t("Passbook") : content=="Product Catalogue" ? t("Product Catalogue") : content=="Report an Issue" ? t("Report an Issue") : content=="Customer Support" ? t("Customer Support"): content} style={{width:80,marginTop:6,color:'black',fontSize:platformFontSize,fontWeight:platformFontWeight}}></PoppinsTextMedium>
+            <PoppinsTextMedium content={content == "Scan Qr" || content=="Scan QR" ? t("Scan QR") :content=="Activate Warranty" ? t("Activate Warranty"): content.toLowerCase() == "check genuinity" ? t("Check Genuinity") : content=="Passbook" ? t("Passbook") : content=="Product Catalogue" ? t("Product Catalogue") : content=="Report an Issue" ? t("Report an Issue") : content=="Customer Support" ? t("Customer Support"): t(content)} style={{width:80,marginTop:6,color:'black',fontSize:platformFontSize,fontWeight:platformFontWeight}}></PoppinsTextMedium>
        
             
         </View>

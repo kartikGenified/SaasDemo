@@ -7,7 +7,7 @@ const PrefilledTextInput = (props) => {
     const [value,setValue] = useState(props.value)
     const [maxLength, setMaxLength] = useState(props.maxLength ? props.maxLength : 100)
     const [keyboardShow, setKeyboardShow] = useState(false)
-    const placeHolder = props.placeHolder
+    // const placeHolder = props.placeHolder
     const label = props.label
     const isEditable = props.isEditable
     const required = props.required ===undefined ? props.jsonData.required : props.required
@@ -15,6 +15,8 @@ const PrefilledTextInput = (props) => {
     const shouldReturnValue = props.shouldReturnValue
 
     const {t} = useTranslation()
+
+    const placeHolder = t(props.placeHolder)
 
     if(displayText == "state" || displayText ==  "State") {
         displayText = t("State")

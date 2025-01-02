@@ -7,6 +7,7 @@ const PincodeTextInput = (props) => {
     const [value,setValue] = useState(props.value)
     const [maxLength, setMaxLength] = useState(props.maxLength ? props.maxLength : 100)
     const [keyboardShow, setKeyboardShow] = useState(false)
+
     let displayText =props.placeHolder
 
     if(displayText == "pincode" || displayText == "Pincode"){
@@ -18,7 +19,7 @@ const PincodeTextInput = (props) => {
     const {t} = useTranslation()
 
     const placeHolder = props.placeHolder
-    const label = props.label
+    const label = t(props.label)
     const shouldReturnValue = props.shouldReturnValue
     Keyboard.addListener('keyboardDidShow',()=>{
         setKeyboardShow(true)

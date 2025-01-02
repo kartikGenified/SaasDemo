@@ -3,13 +3,14 @@ import {Alert, Modal, StyleSheet, Text, Pressable, View,BackHandler} from 'react
 import { useSelector } from 'react-redux';
 import  Icon  from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 const MessageModal = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
   const ternaryThemeColor = useSelector(
     state => state.apptheme.ternaryThemeColor,
   )
-    ? useSelector(state => state.apptheme.ternaryThemeColor)
-    : 'grey';
+  const {t} = useTranslation()
+    
     const navigation = useNavigation()
     const navigateTo = props.navigateTo
     const params = props.params
@@ -50,12 +51,12 @@ const MessageModal = (props) => {
         <View style={styles.centeredView}>
           <View style={{...styles.modalView,borderWidth:3,borderColor:'#2FBA7E'}}>
           <Icon name="cloud-done" size={100} color="#2FBA7E"></Icon>
-          <Text style={{color:'black',fontSize:24,fontWeight:'600'}}>Success</Text>
+          <Text style={{color:'black',fontSize:24,fontWeight:'600'}}>{t("Success")}</Text>
           <Text style={{...styles.modalText,fontSize:18,fontWeight:'500', color:'black',marginTop:20}}>{props.message}</Text>
             <Pressable
               style={{...styles.button,backgroundColor:'#2FBA7E',width:240}}
               onPress={() => closeModal()}>
-              <Text style={styles.textStyle}>Okay</Text>
+              <Text style={styles.textStyle}>{t("Okay")}</Text>
             </Pressable>
           </View>
         </View>

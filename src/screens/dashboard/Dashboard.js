@@ -64,6 +64,7 @@ import {
 } from "../../../redux/slices/walkThroughSlice";
 
 import PointBox from "../../components/organisms/PointBox";
+import { useCurrentDateTime } from "../../hooks/customHooks/useDate";
 
 const Dashboard = ({ navigation }) => {
   const [dashboardItems, setDashboardItems] = useState();
@@ -84,9 +85,12 @@ const Dashboard = ({ navigation }) => {
   const [error, setError] = useState(false);
   const [walkThrough, setWalkThrough] = useState(false);
   const stepId = useSelector((state) => state.walkThrough.stepId);
+  const { date, time, month, year } = useCurrentDateTime();
 
   const pointsRef = useRef(0);
   const randomNoRef = useRef(0);
+
+  console.log("timeeeeee", date, time, month, year)
 
   // const position1 = useRef(new Animated.ValueXY({ x: 0, y: 0 })).current;
 

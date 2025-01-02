@@ -18,7 +18,7 @@ const DeleteModal = (props) => {
     const userData = useSelector(state => state.appusersdata.userData)
     console.log("userdata",userData)
 
-  const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader2.gif')).uri;
+  const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader.gif')).uri;
     const [deleteDataFunc, {
         data: deleteDataData,
         error: deleteDataError,
@@ -94,7 +94,7 @@ const DeleteModal = (props) => {
               fontWeight: "600",
             }}
           >
-            Delete Data
+            {t("Delete Data")}
           </Text>
           <Text
             style={{
@@ -105,8 +105,7 @@ const DeleteModal = (props) => {
               marginTop: 30,
             }}
           >
-            Are you sure you want to delete your profile and all the data
-            associated to it ?
+            {t("Are you sure you want to delete your profile and all the data associated to it ?")}
           </Text>
           {!deleteDataIsLoading && <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-evenly',width:'100%',marginTop:30}}>
           <TouchableOpacity
@@ -138,7 +137,7 @@ const DeleteModal = (props) => {
                 fontWeight: "600",
               }}
             >
-              Delete
+              {t("Delete")}
             </Text>
           </TouchableOpacity>
           </View>}
@@ -161,7 +160,7 @@ const DeleteModal = (props) => {
               marginTop: 30,
             }}
           >
-            Profile Deleted Successfully!!
+            {t("Profile Deleted Successfully!!")}
           </Text>}
           {
             deleteDataError && <Text
@@ -173,7 +172,7 @@ const DeleteModal = (props) => {
               marginTop: 30,
             }}
           >
-            There was a prolem in deleting your profile.
+            {t("There was a prolem in deleting your profile.")}
           </Text>
           }
           

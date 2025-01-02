@@ -85,7 +85,7 @@ const EmailTextInput = (props) => {
       {!isValidEmail && (
         <PoppinsTextLeftMedium
           style={styles.errorText}
-          content="Please enter a valid email"
+          content={t("Please enter a valid email")}
         />
       )}
     </View>

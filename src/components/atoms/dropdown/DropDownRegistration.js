@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import {View, StyleSheet,Text,Image,TouchableOpacity,FlatList,ScrollView} from 'react-native';
 import PoppinsTextMedium from '../../electrons/customFonts/PoppinsTextMedium';
+import { useTranslation } from 'react-i18next';
 
 const DropDownRegistration = (props) => {
     const [selected, setSelected] = useState(props.header)
     const [showList, setShowList] = useState(false)
     const [topMargin, setTopMargin] = useState(0)
+    const {t} = useTranslation()
     const data = props.data
-    // console.log("datahgdfgasvdhas",data)
+    console.log("datahgdfgasvdhas",data)
     const name = props.title
-    // console.log("Options",data)
+    console.log("Options",data)
     const handleSelect=(data)=>{
         // console.log(data)
         setSelected(data)
@@ -29,7 +31,7 @@ const DropDownRegistration = (props) => {
             <TouchableOpacity onPress={()=>{
                 handleSelect(title)
             }} style={{alignItems:"flex-start",justifyContent:"center",width:'90%',height:40,borderBottomWidth:1,borderColor:'#DDDDDD'}}>
-                <Text style={{color:'black',fontSize:14,textTransform:'capitalize'}}>{title}</Text>                
+                <Text style={{color:'black',fontSize:14,textTransform:'capitalize'}}>{t(title)}</Text>                
             </TouchableOpacity>
         )
     }
@@ -40,7 +42,7 @@ const DropDownRegistration = (props) => {
 
             </View> */}
             <TouchableOpacity onPress={()=>{handleOpenList()}} style={{flexDirection:"row",width:'100%',alignItems:"center",justifyContent:'center',height:40,borderBottomWidth:1,borderColor:'#DDDDDD'}}>
-                <Text style={{color:'black',fontSize:14,position:"absolute",left:10,top:10,color:'black',textTransform:'capitalize'}}>{selected ? selected : "Select"}</Text>
+                <Text style={{color:'black',fontSize:14,position:"absolute",left:10,top:10,color:'black',textTransform:'capitalize'}}>{t(selected)}</Text>
                 <Image style={{height:14,width:14,resizeMode:"contain",position:"absolute",right:10,top:10}} source={require('../../../../assets/images/arrowDown.png')}></Image>
             </TouchableOpacity>
             

@@ -16,6 +16,7 @@ import { useGetRedeemedGiftsStatusMutation } from "../../apiServices/gifts/Redee
 import * as Keychain from 'react-native-keychain';
 import TrackDeliveryModal from "../../components/redeemDetails/TrackDeliveryModal";
 import { useTranslation } from "react-i18next";
+import ShakeViewAnimations from "../../components/animations/ShakeViewAnimations";
 
 const RedeemedDetails = ({ navigation, route }) => {
   const [status, setStatus] = useState("")
@@ -231,10 +232,17 @@ const RedeemedDetails = ({ navigation, route }) => {
               padding: 10,
             }}
           >
-            <Image
-              style={{ height: 180, width: 180, resizeMode: "contain" }}
-              source={{ uri: image }}
-            ></Image>
+            <ShakeViewAnimations comp ={()=>{
+              return(
+                <Image
+                style={{ height: 280, width: 280, resizeMode: "contain" }}
+                source={{ uri: image }}
+              ></Image>
+              )
+            
+
+            }}></ShakeViewAnimations>
+         
             <PoppinsTextMedium
               style={{ fontSize: 16, fontWeight: "700", color: "#171717" }}
               content={productName}

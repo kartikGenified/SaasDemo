@@ -92,6 +92,10 @@ const TextInputAadhar = (props) => {
                   verifyAadharFunc(data)
                   setShowLoading(true)
             }
+            else
+            {
+              props.notVerified(true)
+            }
         }
      },[otp])
      useEffect(()=>{
@@ -105,15 +109,15 @@ const TextInputAadhar = (props) => {
           setOtpSent(true)
           setShowOtp(true)
           setShowLoading(false)
-          props.notVerified(false)
+          props.notVerified(true)
         }
         }
         else if(sendAadharOtpError)
         {
-          props.notVerified(false)
         console.log("sendAadharOtpError",sendAadharOtpError)
           setShowLoading(false)
           setAadharExists(true)
+          props.notVerified(true)
         
         }
         
@@ -128,12 +132,12 @@ const TextInputAadhar = (props) => {
               setModalVisible(true)
               setShowLoading(false)
               setAadharVerified(true)
-              props.notVerified(true)
+              props.notVerified(false)
               }
             }
             else if(verifyAadharError){
               console.log("verifyAadharError",verifyAadharError)
-              props.notVerified(false)
+              props.notVerified(true)
               setShowLoading(false)
 
             }
@@ -167,7 +171,7 @@ const TextInputAadhar = (props) => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Aadhar Verified Succesfully</Text>
+            <Text style={styles.modalText}>{t("Aadhar Verified Succesfully")}</Text>
             <ZoomImageAnimation style={{marginBottom:20}} zoom={100} duration={1000}  image={require('../../../../assets/images/greenTick.png')}></ZoomImageAnimation>
             {/* <Image style={{height:60,width:60,margin:20}} source={require('../../../../assets/images/greenTick.png')}></Image> */}
             <Pressable
@@ -198,10 +202,11 @@ const TextInputAadhar = (props) => {
           otpSent && 
           
           <View style={{width:'100%',alignItems:'flex-start',justifyContent:'center'}}>
-            <PoppinsTextMedium style={{color:ternaryThemeColor,padding:4,fontSize:14,marginLeft:24}} content = "OTP Sent"></PoppinsTextMedium>
+            <PoppinsTextMedium style={{color:ternaryThemeColor,padding:4,fontSize:14,marginLeft:24}} content ={t("OTP Sent")}></PoppinsTextMedium>
           </View>
 
         }
+      
        {showOtp  && <View style={{height:60,width:'86%',borderWidth:1,borderColor:'#DDDDDD',alignItems:"center",justifyContent:"center",backgroundColor:'white',margin:10}}>
         
         <View style={{alignItems:"center",justifyContent:'center',backgroundColor:'white',position:"absolute",top:-15,left:16}}>
@@ -219,6 +224,11 @@ const TextInputAadhar = (props) => {
         />}
       
     </View>}
+    {
+          verifyAadharError && <View style={{width:'100%',alignItems:'flex-start',justifyContent:'center'}}>
+          <PoppinsTextMedium style={{color:"red",padding:4,fontSize:14,marginLeft:24}} content = {verifyAadharError?.data?.Error?.message}></PoppinsTextMedium>
+        </View>
+        }
         </View>
         
         

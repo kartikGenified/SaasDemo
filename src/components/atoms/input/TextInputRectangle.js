@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, TextInput, Keyboard } from "react-native";
 import PoppinsTextMedium from "../../electrons/customFonts/PoppinsTextMedium";
+import { useTranslation } from "react-i18next";
 const TextInputRectangle = (props) => {
   const [value, setValue] = useState();
   const [keyboardShow, setKeyboardShow] = useState(false);
-  const placeHolder = props.placeHolder;
-  const label = props.label;
+  const {t} = useTranslation()
+  const placeHolder = t(props.placeHolder);
+  const label = t(props.label);
   const required = props.required ===undefined ? props.jsonData.required : props.required
-
+console.log("asdhgasghfdghfsaghfcghvasghcghvsaghvchjvasghvchjs",placeHolder)
   Keyboard.addListener("keyboardDidShow", () => {
     setKeyboardShow(true);
   });
@@ -51,7 +53,7 @@ const TextInputRectangle = (props) => {
       >
         <PoppinsTextMedium
           style={{ color: "#919191", padding: 4, fontSize: 18 }}
-          content={label}
+          content={t(label)}
         ></PoppinsTextMedium>
       </View>
       <TextInput
@@ -69,7 +71,7 @@ const TextInputRectangle = (props) => {
           color: "black",
           fontSize: 16,
         }}
-        placeholderTextColor="#D3D3D3"
+        placeholderTextColor="grey"
         onChangeText={(text) => {
           handleInput(text);
         }}

@@ -1,5 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
-
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 const initialState = {
   primaryThemeColor:'',
   secondaryThemeColor:'',
@@ -18,7 +17,11 @@ const initialState = {
   customerSupportMail:'',
   extraFeatures:{}
 
+
 }
+
+
+
 
 export const appThemeSlice = createSlice({
   name: 'apptheme',
@@ -75,6 +78,7 @@ export const appThemeSlice = createSlice({
   }
   
   },
+  
 })
 
 // Action creators are generated for each case reducer function

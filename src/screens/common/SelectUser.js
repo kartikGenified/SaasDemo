@@ -144,16 +144,16 @@ const SelectUser = ({navigation}) => {
         
           <Image
             style={{
-              height: 200,
+              height: 100,
               width: 240,
               resizeMode: 'contain',
-              top: 60,
+              top: 50,
             }}
             source={{uri: icon}}></Image>
 
-            <View style={{width:'80%',alignItems:"center",justifyContent:'center',borderColor:ternaryThemeColor,borderTopWidth:1,borderBottomWidth:1,height:60,marginTop:40}}>
+            <View style={{width:'80%',alignItems:"center",justifyContent:'center',borderColor:ternaryThemeColor,borderTopWidth:1,borderBottomWidth:1,height:60,marginTop:70}}>
               {/* <PoppinsTextMedium style={{color:'#171717',fontSize:20,fontWeight:'700'}} ></PoppinsTextMedium> */}
-              <PoppinsTextMedium style={{ color: '#171717', fontSize: 20, fontWeight: '700' }} content={t('choose profile')} />
+              <PoppinsTextMedium style={{ color: '#171717', fontSize: 20, fontWeight: '700' ,}} content={t('choose profile')} />
 
             </View>
         {/* </View> */}

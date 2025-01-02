@@ -84,7 +84,7 @@ const AlertModal = (props) => {
               <Pressable
                 style={{ ...styles.button, backgroundColor: ternaryThemeColor, width: 100, marginTop: 10 }}
                 onPress={() => reportAndNavigate()}>
-                <Text style={styles.textStyle}>Report</Text>
+                <Text style={styles.textStyle}>{t("Report")}</Text>
               </Pressable>
             }
 

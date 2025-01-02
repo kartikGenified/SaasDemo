@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, FlatList } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import PoppinsText from '../../components/electrons/customFonts/PoppinsText';
 import SelectLanguageBox from '../../components/molecules/SelectLanguageBox';
@@ -7,17 +7,24 @@ import { useTranslation } from 'react-i18next'; // Import useTranslation
 import { useSelector } from 'react-redux';
 import { BaseUrlImages } from '../../utils/BaseUrlImages';
 import i18n from './i18n';
+import { useNavigation } from '@react-navigation/native';
 
-const SelectLanguage = ({ navigation }) => {
+const SelectLanguage = (params) => {
   const { t } = useTranslation(); // Destructure t and i18n directly
 
-  console.log("i18n", i18n);
-
+  // console.log("i18n", i18n);
+  const languages = useSelector(state=>state.appLanguage.languages)
+  console.log("languages118", languages, params)
   const ternaryThemeColor = useSelector(
     state => state.apptheme.ternaryThemeColor,
   )
     ? useSelector(state => state.apptheme.ternaryThemeColor)
     : '#FFB533';
+
+    const isFromProfile = params?.route?.params?.from == "profile"
+    console.log("isFromi18", isFromProfile)
+
+    const navigation = useNavigation()
 
   const icon = useSelector(state => state.apptheme.icon)
     ? useSelector(state => state.apptheme.icon)
@@ -28,9 +35,16 @@ const SelectLanguage = ({ navigation }) => {
   const setSelectedLanguage = (language) => {
     console.log("language", language);
     setLanguage(language);
+    const lang = language.toLowerCase()
     // Assuming 'english' and 'arabic' are the keys used in your translation files
-    i18n.changeLanguage(language === 'english' ? 'en' : language === "hindi" ? 'ar' : language === "tamil" ? "tm" : language === "telugu" ? "tl" : 'en'); // Corrected the logic for Tamil and Telugu
-    navigation.navigate('SelectUser');
+    i18n.changeLanguage(lang === 'english' ? 'en' : lang === "hindi" ? 'ar' : lang === "tamil" ? "tm" : lang === "telugu" ? "tl" : 'en'); // Corrected the logic for Tamil and Telugu
+    if(isFromProfile){
+    navigation.navigate('Splash');
+    }
+    else{
+      navigation.navigate('SelectUser');
+
+    }
   };
 
 
@@ -50,7 +64,18 @@ const SelectLanguage = ({ navigation }) => {
         <PoppinsText style={styles.subtitle} content={t('Your Language')} />
       </View>
       <View style={styles.languageContainer}>
-        <SelectLanguageBox
+      <FlatList
+        data={languages}
+        renderItem={({item}) => <SelectLanguageBox
+        selectedLanguage={language}
+        setSelectedLanguage={() => setSelectedLanguage(item.split('-')[0])}
+        languageHindi={item.split('-')[0]}
+        languageEnglish={item.split('-')[1]}
+        image={`https://saas-apk.s3.ap-south-1.amazonaws.com/languageImagesForLocalization/${item.split('-')[0]}.png`}
+      />}
+        keyExtractor={item => item.id}
+      />
+        {/* <SelectLanguageBox
           selectedLanguage={language}
           setSelectedLanguage={() => setSelectedLanguage('hindi')}
           languageHindi={'Hindi'}
@@ -77,7 +102,7 @@ const SelectLanguage = ({ navigation }) => {
           languageHindi={t('Telugu')}
           languageEnglish={t('தெலுங்கு')}
           image={require('../../../assets/images/teluguLanguage.png')}
-        />
+        /> */}
       </View>
     </LinearGradient>
   );

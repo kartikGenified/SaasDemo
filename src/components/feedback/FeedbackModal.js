@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity, Image } from 'react-native';
 import PoppinsTextMedium from '../electrons/customFonts/PoppinsTextMedium';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useTranslation } from 'react-i18next';
 
 
 // create a component
 const FeedbackModal = ({ isVisible, onClose, user }) => {
+    const {t} = useTranslation()
     return (
         <Modal
             transparent={true}
@@ -20,7 +22,7 @@ const FeedbackModal = ({ isVisible, onClose, user }) => {
                     <PoppinsTextMedium style={{ fontSize: 22, fontWeight: '600', color: '#7BC143', fontWeight: 'bold', marginTop: 10 }} content={"Dear " + user}></PoppinsTextMedium>
 
                     <View>
-                        <PoppinsTextMedium style={{ fontSize: 22, fontWeight: '600', color: '#000000', marginTop: 20, marginHorizontal: 20 }} type={"feedback"} content={"Thank You for submitting your feedback"}></PoppinsTextMedium>
+                        <PoppinsTextMedium style={{ fontSize: 22, fontWeight: '600', color: '#000000', marginTop: 20, marginHorizontal: 20 }} type={"feedback"} content={t("Thank You for submitting your feedback")}></PoppinsTextMedium>
                     </View>
 
                     <TouchableOpacity style={styles.closeButton} onPress={onClose}>

@@ -3,9 +3,11 @@ import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import PoppinsTextMedium from '../../electrons/customFonts/PoppinsTextMedium';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { useUploadImagesMutation } from '../../../apiServices/imageApi/imageApi';
+import { useTranslation } from 'react-i18next';
 
 const ImageInputWithUpload = (props) => {
     const [image, setImage] = useState()
+    const {t} = useTranslation()
     const data = props.data
     const action = props.action
     // const [
@@ -58,8 +60,7 @@ const ImageInputWithUpload = (props) => {
             <TouchableOpacity onPress={() => {
                 handleOpenImageGallery()
             }} style={{ width: '86%',  borderColor: '#DDDDDD', marginTop: 10,height:20 }}>
-
-                <PoppinsTextMedium style={{ color: 'black', alignSelf: 'center', }} content={"Upload the product Image"}></PoppinsTextMedium>
+   <PoppinsTextMedium style={{ color: 'black', alignSelf: 'center', }} content={t("Upload the Product Image")}></PoppinsTextMedium>
             </TouchableOpacity>
             
         </View>

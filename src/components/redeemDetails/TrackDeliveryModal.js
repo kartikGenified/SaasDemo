@@ -6,12 +6,13 @@ import { useSelector } from 'react-redux';
 import TrackGiftProgessBar from '../organisms/TrackGiftProgessBar';
 import { useGetRedeemedGiftsStatusMutation } from '../../apiServices/gifts/RedeemGifts';
 import Close from 'react-native-vector-icons/Ionicons';
+import { useTranslation } from 'react-i18next';
 
 
 
 // create a component
 const TrackDeliveryModal = ({ isVisible, onClose, data, trackdata }) => {
-
+    const {t} = useTranslation()
     const ternaryThemeColor = useSelector(
         state => state.apptheme.ternaryThemeColor,
     )
@@ -39,7 +40,7 @@ const TrackDeliveryModal = ({ isVisible, onClose, data, trackdata }) => {
                                 style={{ height: 21, width: 15, resizeMode: 'contain', marginTop: 2 }}
                                 source={require('../../../assets/images/loc.png')}></Image>
 
-                            <PoppinsTextMedium style={{ fontSize: 18, fontWeight: '700', color: 'black', marginLeft: 5, }} content={"Track Delivery Status"}></PoppinsTextMedium>
+                            <PoppinsTextMedium style={{ fontSize: 18, fontWeight: '700', color: 'black', marginLeft: 5, }} content={t("Track Delivery Status")}></PoppinsTextMedium>
                         </View>
 
                         <View style={{ color: '#808080', borderColor: '#80808030', borderWidth: 0.8, marginTop: 10, }}></View>
@@ -52,13 +53,13 @@ const TrackDeliveryModal = ({ isVisible, onClose, data, trackdata }) => {
 
                     <View style={{ width: '100%', flexDirection: 'row' }}>
                         <View style={{ width: '50%', backgroundColor: '#ECECEC', height: 53, alignItems: 'center' }}>
-                            <PoppinsTextMedium style={{ fontSize: 15, fontWeight: '600', marginTop: 5,color:'black' }} content={"Brand"}></PoppinsTextMedium>
+                            <PoppinsTextMedium style={{ fontSize: 15, fontWeight: '600', marginTop: 5,color:'black' }} content={t("Brand")}></PoppinsTextMedium>
                             <PoppinsTextMedium style={{ fontSize: 15, fontWeight: '600', marginTop: 2,color:'black' }} content={data.gift.gift[0].brand}></PoppinsTextMedium>
 
                         </View>
 
                         <View style={{ width: '50%', backgroundColor: '#DDDDDD', height: 53 }}>
-                            <PoppinsTextMedium style={{ fontSize: 15, fontWeight: '600', marginTop: 5 ,color:'black'}} content={"Order Number"}></PoppinsTextMedium>
+                            <PoppinsTextMedium style={{ fontSize: 15, fontWeight: '600', marginTop: 5 ,color:'black'}} content={t("Order Number")}></PoppinsTextMedium>
                             <PoppinsTextMedium style={{ fontSize: 15, fontWeight: '600', marginTop: 2,color:'black' }} content={data.gift.gift[0].id}></PoppinsTextMedium>
 
 
