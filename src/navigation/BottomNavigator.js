@@ -253,15 +253,7 @@ function BottomNavigator({ navigation }) {
                       );
                     }}
                   />
-                  <PoppinsTextMedium
-                    style={{
-                      marginTop: 4,
-                      fontSize: 12,
-                      fontWeight: platformFontWeight,
-                      color: "black",
-                    }}
-                    content="Check Genuinity"
-                  ></PoppinsTextMedium>
+                   <PoppinsTextMedium style={{marginTop:4,fontSize:12,fontWeight:platformFontWeight,color:'black'}} content={t("Check Genuinity")}></PoppinsTextMedium>
                 </TouchableOpacity>
               )
             )}
@@ -358,15 +350,7 @@ function BottomNavigator({ navigation }) {
                   size={24}
                   color={ternaryThemeColor}
                 ></BookOpen>
-                <PoppinsTextMedium
-                  style={{
-                    marginTop: 4,
-                    fontSize: 12,
-                    fontWeight: platformFontWeight,
-                    color: "black",
-                  }}
-                  content="Product Catalogue"
-                ></PoppinsTextMedium>
+ <PoppinsTextMedium style={{marginTop:4,fontSize:12,fontWeight:platformFontWeight,color:'black'}} content={t("Product Catalogue")}></PoppinsTextMedium>
               </TouchableOpacity>
             )}
           </View>

@@ -22,14 +22,10 @@ const ListAddress = ({ navigation ,route}) => {
   const {t} = useTranslation()
   const schemeType = route.params?.schemeType
   const schemeID = route.params?.schemeID
-  const cart = route.params?.cart
-  const schemeGiftCatalogue = route.params?.schemeGiftCatalogue
-  console.log("list adress navigation params",schemeType,schemeID,schemeGiftCatalogue,cart)
   const ternaryThemeColor = useSelector(
     (state) => state.apptheme.ternaryThemeColor
   )
-    ? useSelector((state) => state.apptheme.ternaryThemeColor)
-    : "grey";
+   
   const [
     getAllAddressFunc,
     { data: getAllAddressData, error: getAllAddressError },
@@ -285,7 +281,6 @@ const ListAddress = ({ navigation ,route}) => {
     const { address, city, state, country, index, district, pincode } = props;
     const [selected, setSelected] = useState(false);
     const addressJson = {
-      address,
       index,
       city,
       district,
@@ -361,23 +356,23 @@ const ListAddress = ({ navigation ,route}) => {
         >
           <PoppinsTextLeftMedium
             style={{ color: "black", fontSize: 16, marginLeft: 10 }}
-            content={`Address : ${address}`}
+            content={`${t("Address")} : ${address}`}
           />
           <PoppinsTextMedium
             style={{ color: "black", fontSize: 16, marginLeft: 10 }}
-            content={`City : ${city}`}
+            content={`${t("City")} : ${city}`}
           />
           <PoppinsTextMedium
             style={{ color: "black", fontSize: 16, marginLeft: 10 }}
-            content={`District : ${district}`}
+            content={`${t("District")} : ${district}`}
           />
           <PoppinsTextMedium
             style={{ color: "black", fontSize: 16, marginLeft: 10 }}
-            content={`State : ${state}`}
+            content={`${t("State")} : ${state}`}
           />
           <PoppinsTextMedium
             style={{ color: "black", fontSize: 16, marginLeft: 10 }}
-            content={`Pincode : ${pincode}`}
+            content={`${t("Pincode")} : ${pincode}`}
           />
         </View>
   
@@ -449,7 +444,7 @@ const ListAddress = ({ navigation ,route}) => {
           ></Image>
         </TouchableOpacity>
         <PoppinsTextMedium
-          content="Added Address"
+          content={t("Added Address")}
           style={{
             marginLeft: 10,
             fontSize: 16,
@@ -510,7 +505,7 @@ const ListAddress = ({ navigation ,route}) => {
             alert(t("Please select an address first"))
           }
         }}>
-          <PoppinsTextMedium style={{fontSize:18,color:'white',fontWeight:'700'}} content="Select"></PoppinsTextMedium>
+          <PoppinsTextMedium style={{fontSize:18,color:'white',fontWeight:'700'}} content={t("Select")}></PoppinsTextMedium>
 
         </TouchableOpacity>
         <View
@@ -523,12 +518,12 @@ const ListAddress = ({ navigation ,route}) => {
           }}
         >
           <PoppinsText
-            content="Add Address"
+            content={t("Add Address")}
             style={{ color: ternaryThemeColor, fontSize: 16 }}
           ></PoppinsText>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("AddAddress",{type:"Gift",schemeType:schemeType,schemeID:schemeID});
+              navigation.navigate("AddAddress");
             }}
             style={{
               backgroundColor: "#DDDDDD",

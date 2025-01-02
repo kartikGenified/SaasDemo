@@ -133,14 +133,14 @@ const WarrantyHistory = ({ navigation }) => {
             <Image style={{height:30,width:30,resizeMode:'contain'}} source={require('../../../assets/images/cancel.png')}></Image>
           </TouchableOpacity>
                     <View>
-                        <InputDate data="Start Date" handleData={handleStartDate} />
+                        <InputDate data={t("Start Date")} handleData={handleStartDate} />
 
                     </View>
                     <View>
-                        <InputDate data="End Date" handleData={handleEndDate} />
+                        <InputDate data={t("End Date")} handleData={handleEndDate} />
                     </View>
                     <TouchableOpacity onPress={() => { fetchDataAccToFilter() }} style={{ backgroundColor: ternaryThemeColor, marginHorizontal: 50, height: 40, alignItems: 'center', justifyContent: 'center', marginTop: 10, borderRadius: 10 }}>
-                        <PoppinsTextMedium content="SUBMIT" style={{ color: 'white', fontSize: 20, borderRadius: 10, }}></PoppinsTextMedium>
+                        <PoppinsTextMedium content={t("SUBMIT")} style={{ color: 'white', fontSize: 20, borderRadius: 10, }}></PoppinsTextMedium>
                     </TouchableOpacity>
 
                 </View>
@@ -189,7 +189,7 @@ const WarrantyHistory = ({ navigation }) => {
             <View style={{ alignItems: "center", justifyContent: "center", width: '100%', marginTop: 20 }}>
                 <View style={{ alignItems: "center", justifyContent: "center", position: "absolute", left: 40, top: 0 }}>
 
-                    <PoppinsText style={{ color: "black", fontSize: 16 }} content="Warranty"></PoppinsText>
+                    <PoppinsText style={{ color: "black", fontSize: 16 }} content={t("Warranty")}></PoppinsText>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", marginTop: 20 }}>
 
@@ -217,15 +217,15 @@ const WarrantyHistory = ({ navigation }) => {
         return (
             <View style={{ width: "90%", height: 150, borderRadius: 20, backgroundColor: '#F2F2F2', elevation: 6, margin: 20 }}>
                 <ImageBackground resizeMode='contain' style={{ position: "absolute", height: 100, width: 100, right: 10, top: -20, alignItems: "center", justifyContent: "center" }} source={require('../../../assets/images/blueEnvelope.png')}>
-                    <PoppinsTextMedium style={{ fontSize: 11, color: 'white' }} content="Warranty Till"></PoppinsTextMedium>
+                    <PoppinsTextMedium style={{ fontSize: 11, color: 'white' }} content={t("Warranty Till")}></PoppinsTextMedium>
                     <PoppinsTextMedium style={{ fontSize: 12, color: 'white' }} content={moment(warrantyTillDate).format("DD MMM YYYY")}></PoppinsTextMedium>
                 </ImageBackground>
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", width: '60%',backgroundColor:'#F2F2F2' }}>
                     {image ? <Image style={{ height: 60, width: 60, resizeMode: 'contain' }} source={{uri:image}}></Image> : <Image style={{ height: 60, width: 60, resizeMode: 'contain' }} source={require('../../../assets/images/box.png')}></Image>  }
                     <View style={{ alignItems: 'flex-start', justifyContent: "center", marginLeft: 8,width:'80%' }}>
-                        <PoppinsTextMedium style={{ color: 'black' }} content="Product Name /Code : "></PoppinsTextMedium>
+                        <PoppinsTextMedium style={{ color: 'black' }} content={`${t("Product Name")} : `}></PoppinsTextMedium>
                         <PoppinsTextMedium style={{ color: 'black', fontWeight: '700', marginTop: 2 }} content={productName}></PoppinsTextMedium>
-                        <PoppinsTextMedium style={{ color: 'black', marginTop: 4 }} content="Warranty Status"></PoppinsTextMedium>
+                        <PoppinsTextMedium style={{ color: 'black', marginTop: 4 }} content={t("Warranty Status")}></PoppinsTextMedium>
                         <PoppinsTextMedium style={{ color: 'black', marginTop: 2, fontWeight: '700' }} content={warrantyStatus}></PoppinsTextMedium>
 
 
@@ -242,13 +242,13 @@ const WarrantyHistory = ({ navigation }) => {
                         }
                     }} style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
                         <Image style={{ height: 20, width: 20, resizeMode: "contain" }} source={require('../../../assets/images/greenDownload.png')}></Image>
-                        <PoppinsTextMedium style={{ color: '#353535', fontWeight: "700", marginLeft: 4 }} content="Download Warranty"></PoppinsTextMedium>
+                        <PoppinsTextMedium style={{ color: '#353535', fontWeight: "700", marginLeft: 4 }} content={t("Download Warranty")}></PoppinsTextMedium>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
                         navigation.navigate('WarrantyDetails', { data: props.data })
                     }} style={{ backgroundColor: '#3B6CE9', height: 40, borderRadius: 10, alignItems: "center", justifyContent: "center", padding: 10, flexDirection: 'row', marginLeft: 30 }}>
                         <Image style={{ height: 20, width: 20, resizeMode: "contain" }} source={require('../../../assets/images/eye.png')}></Image>
-                        <PoppinsTextMedium style={{ marginLeft: 4, color: "white", fontWeight: "700", fontSize: 12 }} content="View Details"></PoppinsTextMedium>
+                        <PoppinsTextMedium style={{ marginLeft: 4, color: "white", fontWeight: "700", fontSize: 12 }} content={t("View Details")}></PoppinsTextMedium>
                         <View style={{ height: 30, width: 30, borderRadius: 15, backgroundColor: "white", alignItems: "center", justifyContent: "center", marginLeft: 4 }}>
                             <Image style={{ height: 20, width: 20, resizeMode: "contain", transform: [{ rotate: '180deg' }] }} source={require('../../../assets/images/blackBack.png')}></Image>
                         </View>
@@ -300,7 +300,7 @@ const WarrantyHistory = ({ navigation }) => {
                         resizeMode={FastImage.resizeMode.contain}
                     />
 
-                    <PoppinsTextMedium style={{ color: '#808080', fontWeight: 'bold', marginTop:-10}} content="NO DATA"></PoppinsTextMedium>
+                    <PoppinsTextMedium style={{ color: '#808080', fontWeight: 'bold', marginTop:-10}} content={t("NO DATA")}></PoppinsTextMedium>
 
 
 

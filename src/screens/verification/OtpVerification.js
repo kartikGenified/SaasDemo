@@ -371,7 +371,7 @@ const OtpVerification = ({ navigation, route }) => {
       console.log("verifyOtpForNormalUseError", verifyOtpForNormalUseError);
       setError(true);
       setShowRedeemButton(false)
-      setMessage("Please Enter The Correct OTP");
+      setMessage(t("Please Enter The Correct OTP"));
     }
   }, [verifyOtpForNormalUseData, verifyOtpForNormalUseError]);
 

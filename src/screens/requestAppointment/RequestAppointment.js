@@ -469,7 +469,7 @@ const RequestAppointment = ({ navigation, route }) => {
           }}
         >
           <PoppinsTextMedium
-            content={"Request Appointment"}
+             content={t("Request Appointment")}
             style={{
               backgroundColor: ternaryThemeColor,
               height: 50,

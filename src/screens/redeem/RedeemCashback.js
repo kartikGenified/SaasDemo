@@ -170,8 +170,6 @@ const [checkBeforeRedeem, {
         }
 
         if(Number(cashConversion)> Number(isReedemable)){
-          console.log("max amount per transaction", isReedemable,cashConversion)
-          console.log("checking boolean bakchodi",isReedemable ==cashConversion )
           setError(true)
           // setMessage("Maximum Amount Trasaction Per Day Is : " + isReedemable)
           setMessage(t("Maximum Amount Per Trasaction  : ") + isReedemable)
@@ -199,7 +197,7 @@ const [checkBeforeRedeem, {
      
         else if(Number(cashConversion)> Number(maxAmountPerDay)){
           setError(true)
-          setMessage("Maximum Amount Per transaction is: " + isReedemable)
+          setMessage(t("Maximum Amount Per transaction is: ") + isReedemable)
           return
         }
 
@@ -503,7 +501,7 @@ const [checkBeforeRedeem, {
           }}></PoppinsTextMedium>
         <PoppinsTextMedium
           style={{color: 'black', fontWeight: '600'}}
-          content={`${pointsConversion} Points = ${cashConversion} Rupees`}></PoppinsTextMedium></View>}
+          content={`${pointsConversion} ${t("Points")} = ${cashConversion} Rupees`}></PoppinsTextMedium></View>}
       </View>
       {redemptionFrom !="Wallet" ? 
       <View
@@ -588,7 +586,7 @@ const [checkBeforeRedeem, {
             marginBottom:20
           }}>
           <PoppinsTextMedium
-            content={`${t("* You need minimum")} ${minPointsRedeemed} ${t("points to redeem.")}`}
+            content={`* ${t("You need minimum")} ${minPointsRedeemed} ${t("points to redeem")}.`}
             style={{
               color: 'black',
               fontWeight: '600',
@@ -607,7 +605,7 @@ const [checkBeforeRedeem, {
             marginTop:4
           }}>
           <PoppinsTextMedium
-            content={`${t(" * Minimum cash redemption value is")} ${maxCashConverted}. `}
+            content={`* ${t("Minimum cash redemption value is")} ${maxCashConverted}. `}
             style={{
               color: 'black',
               fontWeight: '600',

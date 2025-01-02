@@ -5,6 +5,7 @@ import PoppinsTextMedium from '../../components/electrons/customFonts/PoppinsTex
 import ButtonNavigateArrow from '../../components/atoms/buttons/ButtonNavigateArrow';
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 const DataNotFound = () => {
     const ternaryThemeColor = useSelector(
@@ -13,16 +14,18 @@ const DataNotFound = () => {
         ? useSelector(state => state.apptheme.ternaryThemeColor)
         : 'grey';
         const navigation = useNavigation()
+        const {t} = useTranslation()
+
     const handleButton=()=>{
     navigation.navigate("Dashboard")
     }
     return (
         <View style={{alignItems:'center',justifyContent:"center",height:'100%',width:'100%',backgroundColor:'white'}}>
             <Image style={{height:200,width:200,resizeMode:'center'}} source={require('../../../assets/images/dataNotFound.png')}></Image>
-            <PoppinsText content="No Data Found" style={{color:'black',fontWeight:'700',fontSize:20}}></PoppinsText>
-            <PoppinsTextMedium content="Data is empty" style={{color:'#676767',fontWeight:'500',fontSize:14}}></PoppinsTextMedium>
+            <PoppinsText content={t("No Data Found")} style={{color:'black',fontWeight:'700',fontSize:20}}></PoppinsText>
+            <PoppinsTextMedium content={t("Data is empty")} style={{color:'#676767',fontWeight:'500',fontSize:14}}></PoppinsTextMedium>
             <View style={{marginTop:40}}>
-            <ButtonNavigateArrow style={{color:'white',fontSize:18}} backgroundColor={ternaryThemeColor} handleOperation={handleButton} content="Back to Dashboard"></ButtonNavigateArrow>
+            <ButtonNavigateArrow style={{color:'white',fontSize:18}} backgroundColor={ternaryThemeColor} handleOperation={handleButton} content={t("Back to Dashboard")}></ButtonNavigateArrow>
 
             </View>
         </View>

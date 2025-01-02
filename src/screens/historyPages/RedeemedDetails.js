@@ -323,7 +323,7 @@ const RedeemedDetails = ({ navigation, route }) => {
                   color: "#171717",
                   marginLeft: 10,
                 }}
-                content={`Delivery Status : ${status}`}
+                content={`${t("Delivery Status")} : ${status}`}
               ></PoppinsTextMedium>
             </View>
           </View>

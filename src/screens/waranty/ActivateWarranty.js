@@ -213,10 +213,10 @@ const ActivateWarranty = ({ navigation, route }) => {
       <View style={{ width: '100%', alignItems: "center", justifyContent: "center" }}>
         <View style={{ marginTop: 30, alignItems: 'center', maxWidth: '80%' }}>
           <Icon name="check-circle" size={53} color={buttonThemeColor} />
-          <PoppinsTextMedium style={{ fontSize: 27, fontWeight: '600', color: buttonThemeColor, marginLeft: 5, marginTop: 5 }} content={"Success ! !"}></PoppinsTextMedium>
+          <PoppinsTextMedium style={{ fontSize: 27, fontWeight: '600', color: buttonThemeColor, marginLeft: 5, marginTop: 5 }} content={t("Success")}></PoppinsTextMedium>
 
           <View style={{ marginTop: 10, marginBottom: 30 }}>
-            <PoppinsTextMedium style={{ fontSize: 16, fontWeight: '600', color: "#000000", marginLeft: 5, marginTop: 5, }} content={message}></PoppinsTextMedium>
+          <PoppinsTextMedium style={{ fontSize: 16, fontWeight: '600', color: "#000000", marginLeft: 5, marginTop: 5, }} content={t(message)}></PoppinsTextMedium>
           </View>
 
           {/* <View style={{ alignItems: 'center', marginBottom: 30 }}>
@@ -681,14 +681,16 @@ const ActivateWarranty = ({ navigation, route }) => {
             />
           }
           {
-            warrantyForm.length===0 && <PoppinsTextMedium style={{color:"red",fontSize:18}} content ="Warranty form not created"></PoppinsTextMedium>
+            warrantyForm.length===0 && <PoppinsTextMedium style={{color:"red",fontSize:18}} 
+            content ={t("Warranty form not created")}
+            ></PoppinsTextMedium>
 
           }
           {warrantyForm.length!==0 && !hideButton && <ButtonOval
             handleOperation={() => {
               handleWarrantyFormSubmission();
             }}
-            content="Submit"
+            content={t("Submit")}
             style={{
               paddingLeft: 30,
               paddingRight: 30,

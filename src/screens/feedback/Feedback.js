@@ -82,7 +82,7 @@ const Feedback = ({ navigation }) => {
         }
         else{
             setError(true);
-            setMessage("Please fill all fields")
+            setMessage(t("Please fill all fields"))
         }
     }
 

@@ -16,6 +16,7 @@ import ErrorModal from '../../components/modals/ErrorModal';
 import axios from 'axios';
 import {useClaimGenuinityMutation,useCheckGenuinityMutation } from '../../apiServices/workflow/genuinity/GetGenuinityApi';
 import * as Keychain from'react-native-keychain'
+import { useTranslation } from 'react-i18next';
 const GenuinityScratch = ({navigation,route}) => {
   const [message, setMessage] = useState();
   const [error, setError] = useState(false);
@@ -30,6 +31,7 @@ const GenuinityScratch = ({navigation,route}) => {
   const userData = useSelector(state=>state.appusersdata.userData)
   const workflowProgram = route.params.workflowProgram
   const location = useSelector(state=>state.userLocation.location)
+  const {t} = useTranslation()
   const [claimGenuinityFunc,{
     data:claimGenuinityData,
     error:claimGenuinityError,
@@ -237,7 +239,7 @@ const GenuinityScratch = ({navigation,route}) => {
         </View>
         <ButtonOval
           handleOperation={handleOperation}
-          content="Submit"
+          content={t("Submit")}
           style={{
             padding: 8,
             paddingLeft: 20,

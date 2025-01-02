@@ -365,10 +365,10 @@ const ScannedHistory = ({ navigation }) => {
             <Image style={{height:30,width:30,resizeMode:'contain'}} source={require('../../../assets/images/cancel.png')}></Image>
           </TouchableOpacity>
           <View style={{width:'100%'}}>
-            <InputDate data="Start Date" handleData={handleStartDate} />
+            <InputDate data={t("Start Date")} handleData={handleStartDate} />
           </View>
           <View style={{width:'100%'}}>
-            <InputDate data="End Date" handleData={handleEndDate} />
+            <InputDate data={t("End Date")} handleData={handleEndDate} />
           </View>
           <TouchableOpacity
             onPress={()=>{
@@ -387,7 +387,7 @@ const ScannedHistory = ({ navigation }) => {
             }}
           >
             <PoppinsTextMedium
-              content="SUBMIT"
+              content={t("submit")}
               style={{ color: "white", fontSize: 20 }}
             ></PoppinsTextMedium>
           </TouchableOpacity>

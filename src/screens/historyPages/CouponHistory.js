@@ -101,27 +101,27 @@ else if(getAllCouponsError){
                 <Image style={{height:50,width:50,resizeMode:"contain"}} source={require('../../../assets/images/voucher.png')}></Image>
                 </View>
                 <View style={{alignItems:"center",justifyContent:"center"}}>
-                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content="Ref Number"></PoppinsTextMedium>
+                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content={t("Ref Number")}></PoppinsTextMedium>
                     <PoppinsTextMedium style={{color:'black',fontSize:12,fontWeight:'700'}} content={refNo}></PoppinsTextMedium>
                 </View>
                 <View style={{alignItems:"center",justifyContent:"center",marginTop:20}}>
-                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content="Status"></PoppinsTextMedium>
-                    <PoppinsTextMedium style={{color:'black',fontSize:12,fontWeight:'700'}} content={approvalStatus=="1" ? "Approval Pending" : approvalStatus=="2" ? "Approved" : "Rejected" }></PoppinsTextMedium>
+                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content={t("Status")}></PoppinsTextMedium>
+                    <PoppinsTextMedium style={{color:'black',fontSize:12,fontWeight:'700'}} content={approvalStatus=="1" ? t("Approval Pending") : approvalStatus=="2" ? t("Approved") : t("Rejected") }></PoppinsTextMedium>
                 </View>
                 <View style={{alignItems:"center",justifyContent:"center",marginTop:20}}>
-                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content="Brand Name"></PoppinsTextMedium>
+                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content={t("Brand Name")}></PoppinsTextMedium>
                     <PoppinsTextMedium style={{color:'black',fontSize:12,fontWeight:'700'}} content={data.brand_name}></PoppinsTextMedium>
                 </View>
                 <View style={{alignItems:"center",justifyContent:"center",marginTop:20}}>
-                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content="Denomination"></PoppinsTextMedium>
+                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content={t("Denomination")}></PoppinsTextMedium>
                     <PoppinsTextMedium style={{color:'black',fontSize:12,fontWeight:'700'}} content={denomination}></PoppinsTextMedium>
                 </View>
                 <View style={{alignItems:"center",justifyContent:"center",marginTop:20}}>
-                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content="Points"></PoppinsTextMedium>
+                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content={t("Points")}></PoppinsTextMedium>
                     <PoppinsTextMedium style={{color:'black',fontSize:12,fontWeight:'700'}} content={couponValue}></PoppinsTextMedium>
                 </View>
                 <View style={{alignItems:"center",justifyContent:"center",marginTop:20,borderTopWidth:1,borderBottomWidth:1,borderStyle:'dotted',flexDirection:'row',padding:4,width:'100%',}}>
-                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content="Redeemed on"></PoppinsTextMedium>
+                    <PoppinsTextMedium style={{color:'grey',fontSize:12}} content={t("Redeemed on")}></PoppinsTextMedium>
                     <PoppinsTextMedium style={{color:'grey',fontSize:12,marginLeft:4}} content={redeemedOn}></PoppinsTextMedium>
                 </View>
                
@@ -139,7 +139,7 @@ else if(getAllCouponsError){
             <Image style={{height:24,width:24,resizeMode:'contain',marginLeft:10}} source={require('../../../assets/images/blackBack.png')}></Image>
 
                 </TouchableOpacity>
-            <PoppinsTextMedium content ={t("Coupon History")} style={{marginLeft:10,fontSize:16,fontWeight:'800',color:'#171717'}}></PoppinsTextMedium>
+            <PoppinsTextMedium content ={t("Coupon History")} style={{marginLeft:10,fontSize:16,fontWeight:'600',color:'#171717'}}></PoppinsTextMedium>
             
             </View>
             <View style={{padding:14,alignItems:"center",justifyContent:"flex-start",width:"100%",flexDirection:"row",borderBottomWidth:1,borderColor:'#DDDDDD',borderStyle:'dashed'}}>

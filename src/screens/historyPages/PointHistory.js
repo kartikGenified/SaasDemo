@@ -320,16 +320,16 @@ const PointHistory = ({ navigation }) => {
                         handleFilter={onFilter}
                         comp={ModalContent}></FilterModal>} */}
 
-                    <PoppinsTextLeftMedium content="Date Filter" style={{ color: 'black', marginTop: 20, fontWeight: 'bold',alignSelf:'center' }}></PoppinsTextLeftMedium>
+<PoppinsTextMedium style={{ marginLeft: 20, fontSize: 16, position: "absolute", left: 10,color:'black' }} content={t("Date Filter")}></PoppinsTextMedium>
                     <TouchableOpacity onPress={()=>{setOpenBottomModal(false)}} style={{height:40,width:40,alignItems:'center',justifyContent:'center',position:'absolute',top:10,right:10}}>
                     <Image style={{height:30,width:30,resizeMode:'contain'}} source={require('../../../assets/images/cancel.png')}></Image>
                     </TouchableOpacity>
                     <View>
-                        <InputDate data="Start Date" handleData={handleStartDate} />
+                    <InputDate data={t("Start Date")} handleData={handleStartDate} />
 
                     </View>
                     <View>
-                        <InputDate data="End Date" handleData={handleEndDate} />
+                    <InputDate data={t("End Date")}handleData={handleEndDate} />
                     </View>
                     <TouchableOpacity onPress={() => { fetchDataAccToFilter() }} style={{ backgroundColor: ternaryThemeColor, marginHorizontal: 50, height: 40, alignItems: 'center', justifyContent: 'center', marginTop: 10, borderRadius: 10 }}>
                         <PoppinsTextMedium content="SUBMIT" style={{ color: 'white', fontSize: 20, borderRadius: 10, }}></PoppinsTextMedium>
@@ -399,10 +399,10 @@ const PointHistory = ({ navigation }) => {
                 </View>
                 <View style={{ alignItems: "flex-start", justifyContent: "center",position:'absolute',left:80,width:'60%' }}>
                 {type!=="registration_bonus" && <PoppinsTextMedium style={{ fontWeight: '700', fontSize: 14, color: 'black' }} content={description}></PoppinsTextMedium>}
-                    {type==="registration_bonus" &&<PoppinsTextMedium style={{ fontWeight: '400', fontSize: 14, color: 'black',fontWeight: '700' }} content={`Registration Bonus`}></PoppinsTextMedium>}
+                {type==="registration_bonus" &&<PoppinsTextMedium style={{ fontWeight: '400', fontSize: 14, color: 'black',fontWeight: '700' }} content={t("Registration Bonus")}></PoppinsTextMedium>}
 
-                    {type!=="registration_bonus" &&<PoppinsTextMedium style={{ fontWeight: '400', fontSize: 12, color: 'black' }} content={`Product Code : ${productCode}`}></PoppinsTextMedium>}
-                    {type!=="registration_bonus" && <PoppinsTextMedium style={{ fontWeight: '400', fontSize: 12, color: 'black' }} content={`Visible Code : ${visibleCode}`}></PoppinsTextMedium>}
+                {type!=="registration_bonus" &&<PoppinsTextMedium style={{ fontWeight: '400', fontSize: 12, color: 'black' }} content={`${t("Product Code")} : ${productCode}`}></PoppinsTextMedium>}
+                {type!=="registration_bonus" && <PoppinsTextMedium style={{ fontWeight: '400', fontSize: 12, color: 'black' }} content={`${t("Visible Code")} : ${visibleCode}`}></PoppinsTextMedium>}
                     <PoppinsTextMedium style={{ fontWeight: '400', fontSize: 12, color: 'black' }} content={date}></PoppinsTextMedium>
                     
                     <PoppinsTextMedium style={{ fontWeight: '400', fontSize: 12, color: 'black' }} content={time}></PoppinsTextMedium>

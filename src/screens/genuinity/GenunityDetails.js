@@ -201,7 +201,7 @@ const GenunityDetails = ({ navigation, route }) => {
                             </View>
 
                             <View>
-                                <PoppinsTextMedium style={{ color: '#010101', fontSize: 20, fontWeight: '800', marginTop: 40 }} content={`FOLLOW US ON`}></PoppinsTextMedium>
+                                <PoppinsTextMedium style={{ color: '#010101', fontSize: 20, fontWeight: '800', marginTop: 40 }} content={t("FOLLOW US ON")}></PoppinsTextMedium>
 
                                 <View style={{ width: "80%", alignSelf: 'center', marginTop: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
                                     {socials.facebook!=='' && <TouchableOpacity onPress={()=>{Linking.openURL("https://"+socials.facebook)}}>

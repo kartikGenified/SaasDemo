@@ -53,7 +53,7 @@ const AddBankAccountAndUpi = ({navigation}) => {
             </View>
             <View style={{alignItems:'flex-start',justifyContent:'center',width:'70%',height:'100%',marginLeft:20}}>
                 <PoppinsTextMedium style={{color:'black',fontSize:14}} content="Unified Payments Interface (UPI)"></PoppinsTextMedium>
-                <PoppinsTextMedium style={{color:'black',fontSize:10}} content="Transfer through UPI ID"></PoppinsTextMedium>
+                <PoppinsTextMedium style={{color:'black',fontSize:10}} content={t("Transfer through UPI ID")}></PoppinsTextMedium>
 
             </View>
             <View style={{alignItems:'center',justifyContent:'center'}}>

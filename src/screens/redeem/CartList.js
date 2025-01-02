@@ -150,7 +150,7 @@ const CartList = ({ navigation, route }) => {
         {!redeem && (
           <>
             <PoppinsTextMedium
-              content="Redeem"
+      content={t("Redeem")}
               style={{ color: 'white', fontWeight: '700' }}></PoppinsTextMedium>
             <Image
               style={{
@@ -233,7 +233,7 @@ const CartList = ({ navigation, route }) => {
           }}>
           <PoppinsTextMedium
             style={{ color: 'white', fontWeight: '700' }}
-            content="Cancel"></PoppinsTextMedium>
+            content={t("Cancel")}></PoppinsTextMedium>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => { handleGiftRedemption() }}
@@ -248,7 +248,7 @@ const CartList = ({ navigation, route }) => {
           }}>
           <PoppinsTextMedium
             style={{ color: 'white', fontWeight: '700' }}
-            content="Confirm"></PoppinsTextMedium>
+            content={t("Confirm")}></PoppinsTextMedium>
         </TouchableOpacity>
       </View>
     );
@@ -275,7 +275,7 @@ const CartList = ({ navigation, route }) => {
           borderColor: "#DDDDDD",
 
         }}>
-        <PoppinsTextMedium style={{ color: '#292626', fontSize: 16, fontWeight: '700' }} content="Total Points Consumed :"></PoppinsTextMedium>
+ <PoppinsTextMedium style={{ color: '#292626', fontSize: 16, fontWeight: '700' }} content={`${t("Total Points Consumed")} :`}></PoppinsTextMedium>
         <View
           style={{
             alignItems: 'center',
@@ -379,7 +379,7 @@ const CartList = ({ navigation, route }) => {
                 fontWeight: '700',
                 marginLeft: 10,
               }}
-              content={`Points : ${points}`}></PoppinsTextMedium>
+              content={`${t("Points")} : ${points}`}></PoppinsTextMedium>
           </LinearGradient>
           <TouchableOpacity
             onPress={() => {

@@ -64,7 +64,7 @@ const CouponCartList = ({ navigation, route }) => {
     if(cart.length===0)
     {
       setError(true)
-      setMessage("Cart cannot be empty")
+      setMessage(t("Cart cannot be empty"))
     }
     else{
       let tempID = []
@@ -127,7 +127,7 @@ const CouponCartList = ({ navigation, route }) => {
           if(cart.length===0)
           {
             setError(true)
-            setMessage("Cart cannot be empty")
+            setMessage(t("Cart cannot be empty"))
           }
           else{
             setRedeem(true);
@@ -150,7 +150,7 @@ const CouponCartList = ({ navigation, route }) => {
         {!redeem && (
           <>
             <PoppinsTextMedium
-              content="Redeem"
+              content={t("Redeem")}
               style={{ color: 'white', fontWeight: '700' }}></PoppinsTextMedium>
             <Image
               style={{
@@ -233,7 +233,7 @@ const CouponCartList = ({ navigation, route }) => {
           }}>
           <PoppinsTextMedium
             style={{ color: 'white', fontWeight: '700' }}
-            content="Cancel"></PoppinsTextMedium>
+            content={t("Cancel")}></PoppinsTextMedium>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => { handleGiftRedemption() }}
@@ -248,7 +248,7 @@ const CouponCartList = ({ navigation, route }) => {
           }}>
           <PoppinsTextMedium
             style={{ color: 'white', fontWeight: '700' }}
-            content="Confirm"></PoppinsTextMedium>
+            content={t("Confirm")}></PoppinsTextMedium>
         </TouchableOpacity>
       </View>
     );
@@ -275,7 +275,7 @@ const CouponCartList = ({ navigation, route }) => {
           borderColor: "#DDDDDD",
 
         }}>
-        <PoppinsTextMedium style={{ color: '#292626', fontSize: 16, fontWeight: '700' }} content="Total Points Consumed :"></PoppinsTextMedium>
+        <PoppinsTextMedium style={{ color: '#292626', fontSize: 16, fontWeight: '700' }} content={`${t("Total Points Consumed")} :`}></PoppinsTextMedium>
         <View
           style={{
             alignItems: 'center',
@@ -382,7 +382,7 @@ const CouponCartList = ({ navigation, route }) => {
                 fontWeight: '700',
                 marginLeft: 10,
               }}
-              content={`Points : ${points}`}></PoppinsTextMedium>
+              content={`${t("Points")} : ${points}`}></PoppinsTextMedium>
               <PoppinsTextMedium
               style={{
                 fontSize: 12,
@@ -390,7 +390,7 @@ const CouponCartList = ({ navigation, route }) => {
                 fontWeight: '700',
                 marginLeft: 10,
               }}
-              content={`Price : ${price}`}></PoppinsTextMedium>
+              content={`${t("Price")} : ${price}`}></PoppinsTextMedium>
           </LinearGradient>
           <TouchableOpacity
             onPress={() => {
