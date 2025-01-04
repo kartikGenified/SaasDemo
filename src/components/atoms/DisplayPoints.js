@@ -83,7 +83,7 @@ const [timer, setTimer] = useState(3)
 const PointBo = (props) => {
     return (
           <View style={{alignItems:'center',justifyContent:'center',borderWidth:2,width:`${width}%`,borderRadius:6,margin:3}}>
-          <Text style={{fontSize:18}}>{props.val}</Text>
+          <Text style={{fontSize:18, color:'black'}}>{props.val}</Text>
       </View>
     );
   };

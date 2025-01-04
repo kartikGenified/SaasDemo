@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 import PoppinsTextMedium from '../electrons/customFonts/PoppinsTextMedium';
+import { useTranslation } from 'react-i18next';
 
 const ScannedListItem = props => {
   const index = props.index;
@@ -9,6 +10,8 @@ const ScannedListItem = props => {
   const productCode = props.productCode;
   const batchCode = props.batchCode;
   const unique_code = props.unique_code
+
+  const {t} = useTranslation()
   
 
   return (

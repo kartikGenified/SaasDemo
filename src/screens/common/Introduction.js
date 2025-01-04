@@ -47,6 +47,8 @@ const Introduction = ({navigation}) => {
             {
                 storeData();
                 navigation.navigate('SelectUser');
+                // navigation.navigate('SelectLanguage');
+
             }
             else{
                 setImageIndex(imageIndex+1)

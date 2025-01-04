@@ -25,6 +25,7 @@ import authSlice from './slices/authSlice';
 import termsPolicySlice from './slices/termsPolicySlice';
 import drawerDataSlice from './slices/drawerDataSlice';
 import cameraStatusSlice from './slices/cameraStatusSlice';
+import appLanguageSlice from './slices/appLanguageSlice';
 import walkThroughSlice from './slices/walkThroughSlice';
 
 export const store = configureStore({
@@ -45,15 +46,17 @@ export const store = configureStore({
     redemptionData: redemptionDataSlice,
     fcmToken: fcmTokenSlice,
     userMapping: userMappingSlice,
-    walkThrough: walkThroughSlice,
     internet: internetSlice,
     scanning : scanningSlice,
     pointWallet:pointWalletSlice,
+    walkThrough:walkThroughSlice,
+    cameraStatus:cameraStatusSlice,
     dashboardData:dashboardDataSlice,
     auth:authSlice,
     termsPolicy:termsPolicySlice,
     drawerData: drawerDataSlice,
-    cameraStatus:cameraStatusSlice
+    cameraStatus:cameraStatusSlice,
+    appLanguage:appLanguageSlice
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(baseApi.middleware, internetMiddleware), // Include networkMiddleware

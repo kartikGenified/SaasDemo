@@ -104,6 +104,7 @@ import { apiFetchingInterval } from "../../utils/apiFetchingInterval";
 import { clientName, splash } from "../../utils/HandleClientSetup";
 import FastImage from "react-native-fast-image";
 import { useTranslation } from "react-i18next";
+// import { setLanguage } from "../../../redux/slices/appLanguageSlice";
 
 const Splash = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -1263,6 +1264,7 @@ const Splash = ({ navigation }) => {
       );
       dispatch(setColorShades(getAppThemeData?.body?.theme.color_shades));
       dispatch(setKycOptions(getAppThemeData?.body?.kyc_options));
+      // dispatch(setLanguage(getAppThemeData?.body?.language))
       dispatch(setPointSharing(getAppThemeData?.body?.points_sharing));
       dispatch(setSocials(getAppThemeData?.body?.socials));
       dispatch(setWebsite(getAppThemeData?.body?.website));
