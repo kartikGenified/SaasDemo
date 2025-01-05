@@ -68,7 +68,7 @@ const AddBankDetails = ({navigation}) => {
     },[addBankDetailsData,addBankDetailsError])
 
     const bankNames=["State Bank Of India","Punjab National Bank","IndusInd Bank","Canara Bank","Axis bank","HDFC Bank"]
-    const accountType = ["Current","Savings"]
+    const accountType = [t("Current"),t("Savings")]
     const height = Dimensions.get('window').height
     var selectedBankName = ''
     var selectedIfscCode = ''
@@ -153,8 +153,8 @@ const AddBankDetails = ({navigation}) => {
         return(
             <View style={{minHeight:180,width:'90%',backgroundColor:'white',borderRadius:20,marginTop:20,marginBottom:20,alignItems:'center',justifyContent:'center'}}>
                 <PoppinsTextMedium style={{color:"black",fontWeight:'700'}} content={t("Bank Details")}></PoppinsTextMedium>
-                <RectangularUnderlinedDropDown header="Select Bank" data={bankNames} handleData={getBankName}></RectangularUnderlinedDropDown>
-                <RectanglarUnderlinedTextInput label ="IFSC Code" handleData={getIfscCode} placeHolder="SBIN0010650" title = "IFSC Code"></RectanglarUnderlinedTextInput>
+                <RectangularUnderlinedDropDown header={t("Select Bank")} data={bankNames} handleData={getBankName}></RectangularUnderlinedDropDown>
+                <RectanglarUnderlinedTextInput label ={t("IFSC Code")} handleData={getIfscCode} placeHolder="SBIN0010650" title = {t("IFSC Code")}></RectanglarUnderlinedTextInput>
             </View>
         )
     }
@@ -162,10 +162,10 @@ const AddBankDetails = ({navigation}) => {
         return(
             <View style={{minHeight:320,width:'90%',backgroundColor:'white',borderRadius:20,marginTop:20,marginBottom:20,alignItems:'center',justifyContent:'flex-start'}}>
                 <PoppinsTextMedium style={{color:"black",fontWeight:'700',marginTop:20,paddingBottom:20}} content={t("Account Details")}></PoppinsTextMedium>
-                <RectanglarUnderlinedTextInput label ="Account Number" handleData={getAccountNumber} placeHolder="Enter Account Number" ></RectanglarUnderlinedTextInput>
-                <RectanglarUnderlinedTextInput label ="Confirm Account Number" handleData={getConfirmAccountNumber} placeHolder="Confirm Account Number" ></RectanglarUnderlinedTextInput>
-                <RectanglarUnderlinedTextInput label = "Beneficiary Name" handleData={getBeneficiaryName} placeHolder="Enter Beneficiary Name" ></RectanglarUnderlinedTextInput>
-                <RectangularUnderlinedDropDown label ="Account Type" header="Select Account Type" data={accountType} handleData={getBankAccountType}></RectangularUnderlinedDropDown>
+                <RectanglarUnderlinedTextInput label ={t("Account Number")} handleData={getAccountNumber} placeHolder={t("Enter Account Number")} ></RectanglarUnderlinedTextInput>
+                <RectanglarUnderlinedTextInput label ={t("Confirm Account Number")} handleData={getConfirmAccountNumber} placeHolder={t("Confirm Account Number")} ></RectanglarUnderlinedTextInput>
+                <RectanglarUnderlinedTextInput label = {t("Beneficiary Name")} handleData={getBeneficiaryName} placeHolder={t("Enter Beneficiary Name")} ></RectanglarUnderlinedTextInput>
+                <RectangularUnderlinedDropDown label ={t("Account Type")} header={t("Select Account Type")} data={accountType} handleData={getBankAccountType}></RectangularUnderlinedDropDown>
 
             </View>
         )

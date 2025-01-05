@@ -10,18 +10,19 @@ import * as Keychain from 'react-native-keychain';
 import { useFetchAllQrScanedListMutation } from '../../apiServices/qrScan/AddQrApi';
 import { FlatList } from 'react-native';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 
 // create a component
 const AddedUserScanList = ({ navigation, route }) => {
   const [scannedListData, setScannedListData] = useState([]);
 
+  const {t} = useTranslation()
 
     const ternaryThemeColor = useSelector(
         state => state.apptheme.ternaryThemeColor,
     )
-        ? useSelector(state => state.apptheme.ternaryThemeColor)
-        : '#FFB533';
+        
 
     const data = route.params.data;
 
@@ -161,7 +162,7 @@ const AddedUserScanList = ({ navigation, route }) => {
               ></PoppinsTextMedium>
               <PoppinsTextMedium
                 style={{ fontWeight: "400", fontSize: 12, color: "black" }}
-                content={`Product Code : ${productCode}`}
+                content={`${t("Product Code")} : ${productCode}`}
               ></PoppinsTextMedium>
               <View
                 style={{
@@ -262,7 +263,7 @@ const AddedUserScanList = ({ navigation, route }) => {
                         source={require('../../../assets/images/blackBack.png')}></Image>
                 </TouchableOpacity>
 
-                <PoppinsTextMedium style={{ fontSize: 20, color: '#ffffff',marginLeft:10}} content={"Added User Scanned List"}></PoppinsTextMedium>
+                <PoppinsTextMedium style={{ fontSize: 20, color: '#ffffff',marginLeft:10}} content={t("Added User Scanned List")}></PoppinsTextMedium>
 
 
             </View>
@@ -276,7 +277,7 @@ const AddedUserScanList = ({ navigation, route }) => {
                         <View style={{ alignItems: 'center' }}>
                             <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '800', fontSize: 20, }} content={` ${userPointData?.body?.point_earned}`} ></PoppinsTextLeftMedium>
 
-                            <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={`Earned Points`} ></PoppinsTextLeftMedium>
+                            <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={t(`Earned Points`)} ></PoppinsTextLeftMedium>
 
                         </View>
                     </View>
@@ -287,7 +288,7 @@ const AddedUserScanList = ({ navigation, route }) => {
                             <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '800', fontSize: 20, }} content={`${userPointData?.body?.point_redeemed}`}></PoppinsTextLeftMedium>
 
 
-                            <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={`Point Redeemed`} ></PoppinsTextLeftMedium>
+                            <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={t(`Point Redeemed`)} ></PoppinsTextLeftMedium>
 
                         </View>
                     </View>
@@ -299,7 +300,7 @@ const AddedUserScanList = ({ navigation, route }) => {
 
                             <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '800', fontSize: 20, }} content={` ${userPointData?.body?.point_balance}`} ></PoppinsTextLeftMedium>
 
-                            <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={`Point Balance`} ></PoppinsTextLeftMedium>
+                            <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={t(`Point Balance`)} ></PoppinsTextLeftMedium>
 
                         </View>
                     </View>
@@ -312,7 +313,7 @@ const AddedUserScanList = ({ navigation, route }) => {
 
                             <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '800', fontSize: 20, }} content={` ${userPointData?.body?.point_reserved}`} ></PoppinsTextLeftMedium>
 
-                            <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={`Reserved Points`} ></PoppinsTextLeftMedium>
+                            <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={t(`Reserved Points`)} ></PoppinsTextLeftMedium>
 
                         </View>
                     </View>
@@ -325,7 +326,7 @@ const AddedUserScanList = ({ navigation, route }) => {
 
                             <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '800', fontSize: 20, }} content={String(Number(userPointData?.body?.point_reserved) + Number(userPointData?.body?.point_earned)).substring(0, 6)} ></PoppinsTextLeftMedium>
 
-                            <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={`Total Points`} ></PoppinsTextLeftMedium>
+                            <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={t(`Total Points`)} ></PoppinsTextLeftMedium>
 
                         </View>
                     </View>

@@ -13,6 +13,7 @@ import {useSelector} from 'react-redux';
 import ButtonNavigate from '../../components/atoms/buttons/ButtonNavigate';
 import moment from 'moment';
 import Clipboard from '@react-native-clipboard/clipboard';
+import { useTranslation } from 'react-i18next';
 
 const CouponDetails = ({navigation,route}) => {
     const [copiedText, setCopiedText] = useState('');
@@ -23,6 +24,7 @@ const CouponDetails = ({navigation,route}) => {
     const couponTitle = data.brand_product_code;
   const validDate = moment(data.expire_date).format("DD MMM YYYY");
   const couponCode = data.brand_product_code
+  const {t} = useTranslation()
   const ternaryThemeColor = useSelector(
     state => state.apptheme.ternaryThemeColor,
   )
@@ -142,8 +144,8 @@ const CouponDetails = ({navigation,route}) => {
         
       </View>
       <View style={{alignItems:"center",justifyContent:"center",marginTop:20,position:"absolute",bottom:10,borderTopWidth:1,borderColor:'#DDDDDD',width:'90%',paddingTop:10}}>
-                <PoppinsTextMedium style={{color:"black",fontSize:18,fontWeight:"700"}} content="Issue With This ?"></PoppinsTextMedium>
-                <ButtonNavigate navigateTo="SupportQueries" style={{color:"white"}}  content ="Click Here To Report" backgroundColor="#D10000"></ButtonNavigate>
+      <PoppinsTextMedium style={{color:"black",fontSize:18,fontWeight:"700"}} content={t("Issue With This ?")}></PoppinsTextMedium>
+      <ButtonNavigate navigateTo="SupportQueries" style={{color:"white"}}  content ={t("Click Here To Report")} backgroundColor="#D10000"></ButtonNavigate>
             
             </View>
     </View>

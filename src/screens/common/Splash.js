@@ -1181,6 +1181,7 @@ const Splash = ({ navigation }) => {
       );
       dispatch(setColorShades(getAppThemeData?.body?.theme.color_shades));
       dispatch(setKycOptions(getAppThemeData?.body?.kyc_options));
+      // dispatch(setLanguage(getAppThemeData?.body?.language))
       dispatch(setPointSharing(getAppThemeData?.body?.points_sharing));
       dispatch(setSocials(getAppThemeData?.body?.socials));
       dispatch(setWebsite(getAppThemeData?.body?.website));

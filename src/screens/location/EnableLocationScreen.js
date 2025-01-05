@@ -515,14 +515,14 @@ const EnableLocationScreen = ({ route, navigation }) => {
         {!locationEnabled && !locationPermissionStatus && (
           <PoppinsTextMedium
             style={styles.checkingText}
-            content="Checking Location Access"
+            content={t("Checking Location Access")}
           />
         )}
         {locationEnabled && locationPermissionStatus && (
           <View style={{ alignItems: "center", justifyContent: "center" }}>
             <PoppinsTextMedium
               style={{ ...styles.grantedText, color: ternaryThemeColor }}
-              content="Location Access Granted"
+              content={t("Location Access Granted")}
             />
             <View style={{ flexDirection: "row" }}>
               {lat && (

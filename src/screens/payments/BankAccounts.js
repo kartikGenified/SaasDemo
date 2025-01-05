@@ -173,7 +173,7 @@ const BankAccounts = ({ navigation, route }) => {
             <View style={styles.modalView}>
               <Info name="info" color={ternaryThemeColor} size={40}></Info>
               <PoppinsTextMedium style={{ color: 'black', width: 300, marginTop: 20, fontSize: 18 }} content="Are you sure?"></PoppinsTextMedium>
-              <PoppinsTextMedium style={{ color: 'black', width: '90%', marginTop: 20, fontSize: 20 }} content="Do you want to delete this account?"></PoppinsTextMedium>
+              <PoppinsTextMedium style={{ color: 'black', width: '90%', marginTop: 20, fontSize: 20 }} content={t("Do you want to delete this account?")}></PoppinsTextMedium>
 
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "center", marginTop: 20 }}>
                 <TouchableOpacity onPress={() => {
@@ -182,7 +182,7 @@ const BankAccounts = ({ navigation, route }) => {
 
 
                 }} style={{ alignItems: "center", justifyContent: "center", backgroundColor: 'white', flexDirection: "row", height: 40, width: 100, borderRadius: 20, borderWidth: 1 }}>
-                  <PoppinsTextMedium style={{ color: 'black', marginLeft: 10, fontWeight: '700' }} content="Cancel"></PoppinsTextMedium>
+  <PoppinsTextMedium style={{ color: 'black', marginLeft: 10, fontWeight: '700' }} content={t("Cancel")}></PoppinsTextMedium>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
                   // console.log("Upi component delete",props.id)
@@ -283,8 +283,8 @@ const BankAccounts = ({ navigation, route }) => {
                 setModalVisible(true)
 
               }} style={{ height: '50%', flexDirection: 'row', alignItems: "center", justifyContent: 'center' }}>
-                <Delete style={{ marginLeft: 4 }} name="delete" size={14} color={ternaryThemeColor}></Delete>
-                <PoppinsTextMedium style={{ color: ternaryThemeColor, fontSize: 14, marginLeft: 4 }} content="Delete"></PoppinsTextMedium>
+   <Delete style={{ marginLeft: 4 }} name={t("delete")} size={14} color={ternaryThemeColor}></Delete>
+   <PoppinsTextMedium style={{ color: ternaryThemeColor, fontSize: 14, marginLeft: 4 }} content={t("Delete")}></PoppinsTextMedium>
               </TouchableOpacity>
 
             </View>
@@ -362,8 +362,8 @@ const BankAccounts = ({ navigation, route }) => {
                 setDeleteAccountId(props.id)
                 setModalVisible(true)
               }} style={{ height: '50%', flexDirection: 'row', alignItems: "center", justifyContent: 'center' }}>
-                <Delete style={{ marginLeft: 4 }} name="delete" size={14} color={ternaryThemeColor}></Delete>
-                <PoppinsTextMedium style={{ color: ternaryThemeColor, fontSize: 14, marginLeft: 4 }} content="Delete"></PoppinsTextMedium>
+   <Delete style={{ marginLeft: 4 }} name={t("delete")} size={14} color={ternaryThemeColor}></Delete>
+   <PoppinsTextMedium style={{ color: ternaryThemeColor, fontSize: 14, marginLeft: 4 }} content={t("Delete")}></PoppinsTextMedium>
               </TouchableOpacity>
 
             </View>

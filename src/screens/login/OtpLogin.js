@@ -269,7 +269,7 @@ const OtpLogin = ({ navigation, route }) => {
       }
     } else {
       setError(true);
-      setMessage(t("Please Accept Terms and condition"))
+      setMessage(t("Please Accept Terms and Condition"))
     }
   };
 

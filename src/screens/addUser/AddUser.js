@@ -22,6 +22,7 @@ import MessageModal from '../../components/modals/MessageModal';
 import { useCreateUserMappingMutation } from '../../apiServices/userMapping/userMappingApi';
 import { useGetFormAccordingToAppUserTypeFormIdMutation } from '../../apiServices/workflow/GetForms';
 import ListUsers from './ListUsers';
+import { useTranslation } from 'react-i18next';
 
 const AddUser = ({ navigation }) => {
   const [addUserForm, setAddUserForm] = useState()
@@ -42,8 +43,7 @@ const AddUser = ({ navigation }) => {
   const ternaryThemeColor = useSelector(
     state => state.apptheme.ternaryThemeColor,
   )
-    ? useSelector(state => state.apptheme.ternaryThemeColor)
-    : 'grey';
+   const {t} = useTranslation()
   const userData = useSelector(state => state.appusersdata.userData)
   const allUsers = useSelector(state => state.appusers.appUsersData)
 
@@ -412,7 +412,11 @@ const AddUser = ({ navigation }) => {
 
     if (missingFields.length > 0) {
         setError(true);
-        setMessage(`${t("Please fill in the required fields:")} ${missingFields.join(', ')}`);
+        const fields = missingFields.map((item,index)=>{
+          return t(item)
+        })
+        console.log("fields hello", fields)
+        setMessage(`${t("Please fill in the required fields:")} ${(fields).join(', ')}`);
         return;
     }
 
@@ -482,16 +486,16 @@ const AddUser = ({ navigation }) => {
           <Image style={{ height: 24, width: 24, resizeMode: 'contain', marginLeft: 10 }} source={require('../../../assets/images/blackBack.png')}></Image>
 
         </TouchableOpacity>
-        <PoppinsTextMedium content="Add User" style={{ marginLeft: 10, fontSize: 16, fontWeight: '600', color: 'white' }}></PoppinsTextMedium>
+        <PoppinsTextMedium content={t("Add User")} style={{ marginLeft: 10, fontSize: 16, fontWeight: '600', color: 'white' }}></PoppinsTextMedium>
 
       </View>
       <View style={{ alignItems: 'center', justifyContent: 'center', width: '100%', backgroundColor: 'white', height: '90%', borderTopRightRadius: 30, borderTopLeftRadius: 30, paddingTop: 40 }}>
         {/* <KeyboardAvoidingView style={{width:"100%"}}> */}
         <ScrollView style={{ width: '100%' }} contentContainerStyle={{ alignItems: "center", justifyContent: "center", }}>
-          {usersList.length === 0 && <PoppinsTextMedium content="There are no user to select" style={{ color: 'black', fontSize: 16 }}></PoppinsTextMedium>}
+          {usersList.length === 0 && <PoppinsTextMedium content={t("There are no user to select")} style={{ color: 'black', fontSize: 16 }}></PoppinsTextMedium>}
           {usersList.length !== 0 && <DropDownRegistration
             title={selectedOption?.[0]}
-            header={selectedOption?.[0] ? selectedOption?.[0] : selectUsers ? selectUsers : "Select Type"}
+            header={selectedOption?.[0] ? selectedOption?.[0] : selectUsers ? selectUsers : ("Select Type")}
             jsonData={{ "label": "UserType", "maxLength": "100", "name": "user_type", "options": [], "required": true, "type": "text" }}
             data={usersList}
             handleData={handleDataFromDropDown}
@@ -748,7 +752,7 @@ const AddUser = ({ navigation }) => {
             handleSubmission()
           }} style={{ height: 40, width: 120, borderRadius: 4, backgroundColor: ternaryThemeColor, alignItems: "center", justifyContent: "center", marginBottom: 30 }}>
 
-            <PoppinsTextMedium content="Proceed" style={{ color: 'white', fontSize: 20, }}></PoppinsTextMedium>
+            <PoppinsTextMedium content={t("Proceed")} style={{ color: 'white', fontSize: 20, }}></PoppinsTextMedium>
           </TouchableOpacity>
           }
 

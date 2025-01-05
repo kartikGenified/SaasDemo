@@ -35,7 +35,7 @@ const ReportIssue = ({navigation}) => {
             source={require('../../../assets/images/blackBack.png')}></Image>
         </TouchableOpacity>
         <PoppinsTextMedium
-          content="Report and Issue"
+           content={t("Report And Issue")}
           style={{
             marginLeft: 10,
             fontSize: 16,

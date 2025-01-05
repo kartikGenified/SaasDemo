@@ -144,7 +144,7 @@ export default function GiftCatalogue({ navigation }) {
           ></PoppinsTextMedium> */}
           <PoppinsTextMedium
             style={{ color: ternaryThemeColor, fontSize: 14, fontWeight: "700" }}
-            content={`Points : ${coin}`}
+            content={`${t("Points")} : ${coin}`}
           ></PoppinsTextMedium>
         </View>
       </View>
@@ -296,7 +296,7 @@ export default function GiftCatalogue({ navigation }) {
           >
            {giftCatalogueData && <FilterComp
                     handlePress={handlePressAll}
-                    title="All"
+                    title={t("All")}
                   ></FilterComp>}
             {categories &&
               categories.map((item, index) => {

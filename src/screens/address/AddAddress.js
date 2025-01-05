@@ -13,6 +13,8 @@ import MessageModal from "../../components/modals/MessageModal";
 import ErrorModal from "../../components/modals/ErrorModal";
 import { useIsFocused } from "@react-navigation/native";
 import { getCurrentLocation } from "../../utils/getCurrentLocation"; 
+import { GoogleMapsKey } from "@env";
+import { useTranslation } from "react-i18next";
 
 const AddAddress = ({ navigation }) => {
   const [message, setMessage] = useState();
@@ -22,7 +24,7 @@ const AddAddress = ({ navigation }) => {
   const [fieldIsEmpty, setFieldIsEmpty] = useState(false);
   const [hideButton, setHideButton] = useState(false);
   const [location, setLocation] = useState();
-
+  const {t} = useTranslation()
   const dispatch = useDispatch();
   const focused = useIsFocused();
   const [
@@ -246,7 +248,7 @@ const AddAddress = ({ navigation }) => {
 
         <PoppinsTextMedium
           style={{ fontSize: 20, color: "#ffffff", marginLeft: 10 }}
-          content={"Add Address"}
+          content={t("Add Address")}
         ></PoppinsTextMedium>
       </View>
       {/* navigator */}
@@ -375,7 +377,7 @@ const AddAddress = ({ navigation }) => {
             >
               <PoppinsTextMedium
                 style={{ color: "white", fontWeight: "800", fontSize: 18 }}
-                content={"SUBMIT"}
+                content={t("Submit")}
               ></PoppinsTextMedium>
             </TouchableOpacity>
           )}

@@ -147,7 +147,7 @@ const SupportQueries = ({ navigation }) => {
   const submitData = () => {
     if (shortDescText == "" || selectedOption == null) {
       setError(true)
-      setMessage("Please fill all the fields")
+      setMessage(t("Please fill all fields"))
       console.log("userData", userData)
     }
     else {

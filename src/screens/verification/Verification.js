@@ -938,25 +938,7 @@ const Verification = ({ navigation }) => {
                     height: 40,
                   }}
                 >
-                  <TextInput
-                    value={
-                      name !== "" ? name : verifyPanData?.body?.registered_name
-                    }
-                    onChangeText={(text) => {
-                      setName(text);
-                    }}
-                    style={{
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "82%",
-                      height: 40,
-                      fontSize: 16,
-                      letterSpacing: 1,
-                      marginLeft: 20,
-                      color: "black",
-                    }}
-                    placeholder="Enter Your Name"
-                  ></TextInput>
+                  <TextInput value={name!=="" ? name : verifyPanData?.body?.registered_name } onChangeText={(text)=>{setName(text)}} style={{alignItems:'center',justifyContent:'center',width:'82%',height:40,fontSize:16,letterSpacing:1,marginLeft:20,color:'black'}} placeholder={t('Enter Your Name')}></TextInput>
                 </View>
               </View>
 
@@ -1221,17 +1203,7 @@ const Verification = ({ navigation }) => {
                     left: 20,
                   }}
                 >
-                  <PoppinsTextMedium
-                    style={{
-                      color: "#919191",
-                      fontSize: 16,
-                      marginLeft: 4,
-                      marginRight: 4,
-                    }}
-                    content="Enter GSTIN"
-                  >
-                    {" "}
-                  </PoppinsTextMedium>
+                <PoppinsTextMedium style={{color:'#919191',fontSize:16,marginLeft:4,marginRight:4}} content={t("Enter GSTIN")} > </PoppinsTextMedium>
                 </View>
                 <View
                   style={{
@@ -1242,24 +1214,7 @@ const Verification = ({ navigation }) => {
                     height: 40,
                   }}
                 >
-                  <TextInput
-                    maxLength={15}
-                    value={gstin ? gstin : verifyGstData?.body?.GSTIN}
-                    onChangeText={(text) => {
-                      handleGstInput(text);
-                    }}
-                    style={{
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "82%",
-                      height: 40,
-                      fontSize: 16,
-                      letterSpacing: 1,
-                      marginLeft: 20,
-                      color: "black",
-                    }}
-                    placeholder="Enter GSTIN"
-                  ></TextInput>
+                    <TextInput maxLength={15} value={gstin ? gstin : verifyGstData?.body?.GSTIN} onChangeText={(text)=>{handleGstInput(text)}} style={{alignItems:'center',justifyContent:'center',width:'82%',height:40,fontSize:16,letterSpacing:1,marginLeft:20,color:'black'}} placeholder={t('Enter GSTIN')}></TextInput>
                   <View
                     style={{
                       width: "14%",
@@ -1312,17 +1267,7 @@ const Verification = ({ navigation }) => {
                     left: 20,
                   }}
                 >
-                  <PoppinsTextMedium
-                    style={{
-                      color: "#919191",
-                      fontSize: 16,
-                      marginLeft: 4,
-                      marginRight: 4,
-                    }}
-                    content="Business Name"
-                  >
-                    {" "}
-                  </PoppinsTextMedium>
+                <PoppinsTextMedium style={{color:'#919191',fontSize:16,marginLeft:4,marginRight:4}} content={t("Business Name")} > </PoppinsTextMedium>
                 </View>
                 <View
                   style={{
@@ -1333,27 +1278,7 @@ const Verification = ({ navigation }) => {
                     height: 40,
                   }}
                 >
-                  <TextInput
-                    value={
-                      verifyGstData
-                        ? verifyGstData.body?.legal_name_of_business
-                        : businessName
-                    }
-                    onChangeText={(text) => {
-                      handleGstInput(text);
-                    }}
-                    style={{
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "82%",
-                      height: 40,
-                      fontSize: 16,
-                      letterSpacing: 1,
-                      marginLeft: 20,
-                      color: "black",
-                    }}
-                    placeholder="Business Name"
-                  ></TextInput>
+                   <TextInput value={verifyGstData ? verifyGstData.body?.legal_name_of_business:businessName} onChangeText={(text)=>{handleGstInput(text)}} style={{alignItems:'center',justifyContent:'center',width:'82%',height:40,fontSize:16,letterSpacing:1,marginLeft:20,color:'black'}} placeholder={t('Business Name')}></TextInput>
                 </View>
               </View>
 

@@ -348,8 +348,7 @@ const RedeemGifts = ({ navigation, route }) => {
                 fontWeight: "800",
                 marginLeft: 10,
               }}
-              content={`Points : ${points}`}
-            ></PoppinsTextMedium>
+              content={`${t("Points")} : ${points}`}></PoppinsTextMedium>
           </LinearGradient>
           <View
             style={{

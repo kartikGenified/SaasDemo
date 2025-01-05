@@ -20,7 +20,7 @@ const VideoGallery = ({ navigation }) => {
     : 'grey';
   const height = Dimensions.get('window').height
 
-  const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader2.gif')).uri;
+  const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader.gif')).uri;
   
   const {t} = useTranslation()
 
@@ -73,9 +73,9 @@ const VideoGallery = ({ navigation }) => {
         </View>
 
         <View style={{ backgroundColor: 'black', width: '100%', alignItems: 'flex-start', height: '60%', justifyContent: "center",padding:4 }}>
-          <PoppinsTextMedium style={{ color: 'white', fontSize: 13, marginLeft: 8 }} content={`Title : ${title.substring(0, 16)}`}></PoppinsTextMedium>
-          <PoppinsTextMedium style={{ color: 'white', fontSize: 13, marginLeft: 8 }} content={`Type : ${type}`}></PoppinsTextMedium>
-          <PoppinsTextMedium style={{ color: 'white', fontSize: 13, marginBottom: 6, marginLeft: 8 }} content={`Date : ${moment(date).format("DD MMM YYYY")}`}></PoppinsTextMedium>
+          <PoppinsTextMedium style={{ color: 'white', fontSize: 13, marginLeft: 8 }} content={`${t("Title")} : ${title.substring(0, 16)}`}></PoppinsTextMedium>
+          <PoppinsTextMedium style={{ color: 'white', fontSize: 13, marginLeft: 8 }} content={`${t("Type")} : ${type}`}></PoppinsTextMedium>
+          <PoppinsTextMedium style={{ color: 'white', fontSize: 13, marginBottom: 6, marginLeft: 8 }} content={`${t("Date")} : ${moment(date).format("DD MMM YYYY")}`}></PoppinsTextMedium>
 
         </View>
 

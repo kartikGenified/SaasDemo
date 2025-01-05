@@ -435,7 +435,7 @@ else{
                 right: 0,
                 top: 0,
               }}
-              content="Scan Product QR Code"></PoppinsText>
+              content={t("Scan Product QR Code")}></PoppinsText>
             <View
               style={{
                 backgroundColor: 'transparent',
@@ -622,7 +622,7 @@ else{
           <ButtonProceed
             handleOperation={handleAddQr}
             style={{ color: 'white' }}
-            content="Proceed"
+            content={t("Proceed")}
             navigateTo={'QrCodeScanner'}></ButtonProceed>
         </View>
       }

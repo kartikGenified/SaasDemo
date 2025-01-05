@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet, Image, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { useListAddedUsersMutation } from '../../apiServices/listUsers/listAddedUsersApi';
 import { useSelector, useDispatch } from 'react-redux';
 import * as Keychain from 'react-native-keychain';
@@ -12,6 +12,7 @@ import PoppinsTextLeftMedium from '../../components/electrons/customFonts/Poppin
 import FastImage from 'react-native-fast-image';
 import { setCanMapUsers } from '../../../redux/slices/userMappingSlice';
 import { useFetchAllQrScanedListMutation } from '../../apiServices/qrScan/AddQrApi';
+import { useTranslation } from 'react-i18next';
 
 const ListUsers = ({ navigation }) => {
 
@@ -22,6 +23,7 @@ const ListUsers = ({ navigation }) => {
   const [userTypeList, setUserTypeList] = useState()
   const [active, setActive] = useState()
   const [inactive, setInactive] = useState()
+  const {t} = useTranslation()
 const dispatch = useDispatch()
 
   const pointSharingData = useSelector(state => state.pointSharing.pointSharing)
@@ -35,7 +37,7 @@ const dispatch = useDispatch()
     : '#FFB533';
 
   const allUsers = useSelector(state => state.appusers.value)
-  const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader2.gif')).uri;
+  const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader.gif')).uri;
 
   var allUsersData = []
   var allUsersList = []
@@ -120,7 +122,7 @@ const dispatch = useDispatch()
     if (listAddedUserData) {
       console.log("listAddedUserData", JSON.stringify(listAddedUserData));
 
-      setUserList(listAddedUserData)
+      setUserList(listAddedUserData?.body)
 
       setTotalCount(listAddedUserData?.body.length)
 
@@ -173,6 +175,13 @@ const dispatch = useDispatch()
 
   }
 
+  const searchUsers=(mobile)=>{
+    const result = listAddedUserData.body.filter(user => user?.mapped_app_user_mobile.includes(mobile));
+  console.log("searchUsers",mobile, result)
+    // Return the result
+    setUserList(result)
+  }
+
 
   const UserListComponent = (props) => {
    
@@ -193,16 +202,16 @@ const dispatch = useDispatch()
             </View>
           </View>
           <View style={{ width: '80%', alignItems: "flex-start", justifyContent: 'center', height: '100%', padding: 20 }}>
-            <PoppinsTextMedium style={{ color: '#413E3E', fontWeight: "700", marginBottom: 5 }} content={`Name : ${name}`}></PoppinsTextMedium>
-            <PoppinsTextMedium style={{ color: '#413E3E', fontWeight: "700", marginBottom: 5 }} content={`User Type : ${userType}`}></PoppinsTextMedium>
-            <PoppinsTextMedium style={{ color: '#413E3E', fontWeight: "700", marginBottom: 5 }} content={`Mobile : ${mobile}`}></PoppinsTextMedium>
+            <PoppinsTextMedium style={{ color: '#413E3E', fontWeight: "700", marginBottom: 5 }} content={`${t("Name")} : ${name}`}></PoppinsTextMedium>
+            <PoppinsTextMedium style={{ color: '#413E3E', fontWeight: "700", marginBottom: 5 }} content={`${t("User Type")} : ${userType}`}></PoppinsTextMedium>
+            <PoppinsTextMedium style={{ color: '#413E3E', fontWeight: "700", marginBottom: 5 }} content={`${t("Mobile")} : ${mobile}`}></PoppinsTextMedium>
             {/* <PoppinsTextMedium style={{ color: 'grey', fontWeight: "700" }} content={`Status : ${status == 1 ? "Active" : "Inactive"}`}></PoppinsTextMedium> */}
 
 
           </View>
         </View>
         <View style={{ backgroundColor: status == 1 ? "#DCFCE7" : "#FFE2E6", height: 50, justifyContent: 'center' }}>
-          <PoppinsTextMedium style={{ color: '#413E3E', fontWeight: "700" }} content={`${status == 1 ? "Verified" : "Not Verified"}`}></PoppinsTextMedium>
+          <PoppinsTextMedium style={{ color: '#413E3E', fontWeight: "700" }} content={`${status == 1 ? t("Verified") : t("Not Verified")}`}></PoppinsTextMedium>
         </View>
       </TouchableOpacity>
     )
@@ -236,7 +245,7 @@ const dispatch = useDispatch()
             source={require('../../../assets/images/blackBack.png')}></Image>
         </TouchableOpacity>
         <PoppinsTextMedium
-          content="Added Users List"
+          content={t("Added Users List")}
           style={{
             marginLeft: 10,
             fontSize: 16,
@@ -247,21 +256,30 @@ const dispatch = useDispatch()
       </View>
 
       <View style={{ height: '90%', width: '100%', justifyContent: 'flex-start', paddingTop: 10 }}>
-      {selectedOption.length===0 && <PoppinsTextMedium style={{color:'black',fontSize:16,margin:10}} content="There are no users to select"></PoppinsTextMedium>}
-
-        <View style={{ width: '50%', justifyContent: 'flex-start', marginLeft: 10, flexDirection: 'row' }}>
+      {selectedOption.length===0 && <PoppinsTextMedium style={{color:'black',fontSize:16,margin:10}} content={t("There are no users to select")}></PoppinsTextMedium>}
+          <View style={{width:'100%',flexDirection:"row",alignItems:"center",justifyContent:'flex-start'}}>
+        <View style={{ width: '50%', justifyContent: 'flex-start', marginLeft: 10 }}>
           {
             selectedOption.length!==0 &&
             <DropDownRegistration
               title={selectedOption?.[0]}
-              header={selectedOption?.[0] ? "Select Type" :  selectUsers ? selectUsers : "Select Type"}
+              header={selectedOption?.[0] ? t("Select Type") :  selectUsers ? selectUsers : t("Select Type")}
               jsonData={{ "label": "UserType", "maxLength": "100", "name": "user_type", "options": [], "required": true, "type": "text" }}
               data={selectedOption}
               handleData={handleData}
             ></DropDownRegistration>
           }
+          </View>
+          
+          {listAddedUserData &&  <TextInput onChangeText={(text)=>{
+            searchUsers(text)
+          }} placeholderTextColor={ternaryThemeColor} placeholder={t('Search mobile')} style={{alignItems:'center',justifyContent:'center',borderWidth:2,borderRadius:10,height:40,color:'grey',width:'40%',borderColor:ternaryThemeColor,fontSize:16,paddingLeft:10,padding:4}}>
+
+          </TextInput>}
+            
 
 
+        
         </View>
 
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ marginLeft: 10, height: '25%' }}>
@@ -272,7 +290,7 @@ const dispatch = useDispatch()
             <View style={{ alignItems: 'center' }}>
               <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '800', fontSize: 18, }} content={` ${totalCount && totalCount}`} ></PoppinsTextLeftMedium>
 
-              <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={`Total ${selectUsers ? selectUsers : "Users"}`} ></PoppinsTextLeftMedium>
+              <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={`${t("Total")} ${t(selectUsers) ? t(selectUsers) : t("Users")}`} ></PoppinsTextLeftMedium>
 
             </View>
           </View>
@@ -283,7 +301,7 @@ const dispatch = useDispatch()
               <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '800', fontSize: 18, }} content={`${active!=undefined ? active:"Loading"}`}></PoppinsTextLeftMedium>
 
 
-              <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={`Total Verified`} ></PoppinsTextLeftMedium>
+              <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={`${t("Total Verified")}`} ></PoppinsTextLeftMedium>
 
             </View>
           </View>
@@ -295,7 +313,7 @@ const dispatch = useDispatch()
 
               {/* <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '800', fontSize:20, }} content={` ${totalCount}`} ></PoppinsTextLeftMedium> */}
 
-              <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={`Total Not Verified`} ></PoppinsTextLeftMedium>
+              <PoppinsTextLeftMedium style={{ marginLeft: 5, color: 'black', fontWeight: '600' }} content={`${t("Total Not Verified")}`} ></PoppinsTextLeftMedium>
 
             </View>
           </View>
@@ -307,7 +325,7 @@ const dispatch = useDispatch()
         </ScrollView>
 
         <ScrollView style={{ width: '100%' }} contentContainerStyle={{ alignItems: 'center', justifyContent: 'flex-start', paddingBottom: 30 }}>
-          {userList && userList?.body?.map((item, index) => {
+          {userList && userList?.map((item, index) => {
             return (
               <UserListComponent userType={item.mapped_user_type} name={item.mapped_app_user_name} mobile={item.mapped_app_user_mobile} key={index} index={index} status={item.user_status} item={item}></UserListComponent>
             )

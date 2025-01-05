@@ -256,7 +256,7 @@ const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loadingAnim
         if(addBulkPointOnProductData?.body?.registration_bonus?.is_registration_bonus)
         {
           setSuccess(true)
-          setMessage(`Registration bonus of ${addBulkPointOnProductData?.body?.registration_bonus?.points} points added`)
+          setMessage(`${t("Registration bonus of")} ${addBulkPointOnProductData?.body?.registration_bonus?.points} ${t("points added")}`)
         }
         
         

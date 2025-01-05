@@ -4,6 +4,7 @@ import PoppinsTextMedium from '../../components/electrons/customFonts/PoppinsTex
 import { useSelector } from 'react-redux';
 import PoppinsTextLeftMedium from '../../components/electrons/customFonts/PoppinsTextLeftMedium';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 // create a component
 const WarrantyClaimDetails = ({ navigation, route }) => {
@@ -13,12 +14,10 @@ const WarrantyClaimDetails = ({ navigation, route }) => {
 
     console.log("after claim data", afterClaimData)
 
-
+    const {t} = useTranslation()
     const ternaryThemeColor = useSelector(
         state => state.apptheme.ternaryThemeColor,
     )
-        ? useSelector(state => state.apptheme.ternaryThemeColor)
-        : '#002940';
 
 
     return (
@@ -46,8 +45,8 @@ const WarrantyClaimDetails = ({ navigation, route }) => {
                 <PoppinsTextMedium content="Dear User" style={{ fontWeight: 'bold', fontSize: 24, color: 'black' }} />
             </View>
             <View style={{ marginTop: 18, paddingHorizontal: 20 }}>
-                <PoppinsTextMedium content="Thank You For Submitting Your details." style={{ fontWeight: '600', fontSize: 18, color: ternaryThemeColor }} />
-                <PoppinsTextMedium content="We will get back to you soon." style={{ fontWeight: '600', fontSize: 18, color: ternaryThemeColor }} />
+                <PoppinsTextMedium content={t("Thank You For Submitting Your details.")} style={{ fontWeight: '600', fontSize: 18, color: ternaryThemeColor }} />
+                <PoppinsTextMedium content={t("We will get back to you soon.")} style={{ fontWeight: '600', fontSize: 18, color: ternaryThemeColor }} />
             </View>
 
             <View style={{ marginTop: 20 }}>
@@ -67,18 +66,18 @@ const WarrantyClaimDetails = ({ navigation, route }) => {
                 alignSelf: 'center'
             }}>
                 <View style={{ marginHorizontal: 20, marginTop: 10, flexDirection: 'row',width:'100%' }}>
-                    <PoppinsTextMedium content="Prdoduct Name : " style={{ fontWeight: '700', fontSize: 18, color: "#474747",width:'40%' }} />
+                    <PoppinsTextMedium content={t("Product Name")} style={{ fontWeight: '700', fontSize: 18, color: "#474747",width:'40%' }} />
                     <PoppinsTextMedium content={`${warrantyItemData?.product_name}`} style={{ fontWeight: '700', fontSize: 18, color: "#474747",width:'55%' }} />
                 </View>
 
                 <View style={{ marginHorizontal: 20, marginTop: 10, flexDirection: 'row' }}>
-                    <PoppinsTextMedium content="Prdoduct Code : " style={{ fontWeight: '700', fontSize: 18, color: "#474747" }} />
+                    <PoppinsTextMedium content={t("Prdoduct Code")} style={{ fontWeight: '700', fontSize: 18, color: "#474747" }} />
                     <PoppinsTextMedium content={`${warrantyItemData?.product_code}`} style={{ fontWeight: '700', fontSize: 20, color: "#474747" }} />
                 </View>
 
 
                 <View style={{ marginHorizontal: 20, marginTop: 10 }}>
-                    <PoppinsTextLeftMedium content="Product Damage : " style={{ fontWeight: '700', fontSize: 18, color: ternaryThemeColor, }} />
+                    <PoppinsTextLeftMedium content={t("Product Damage")} style={{ fontWeight: '700', fontSize: 18, color: ternaryThemeColor, }} />
                 </View>
                 <View style={{ marginHorizontal: 20, justifyContent: 'flex-start', }}>
                     <PoppinsTextLeftMedium style={{ fontWeight: '400', fontSize: 17, color: ternaryThemeColor, textAlign: 'left' }} content={`${warrantyItemData?.description}`} ></PoppinsTextLeftMedium>

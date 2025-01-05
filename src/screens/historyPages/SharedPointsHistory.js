@@ -282,21 +282,21 @@ const SharedPointsHistory = ({ navigation }) => {
           )}
 
           <PoppinsTextLeftMedium
-            content="Date Filter"
+            content={t("Date Filter")}
             style={{
               color: "black",
               marginTop: 20,
-             
+              
               fontWeight: "bold",
               alignSelf:"center"
 
             }}
           ></PoppinsTextLeftMedium>
           <View>
-            <InputDate data="Start Date" handleData={handleStartDate} />
+            <InputDate data={t("Start Date")} handleData={handleStartDate} />
           </View>
           <View>
-            <InputDate data="End Date" handleData={handleEndDate} />
+            <InputDate data={t("End Date")} handleData={handleEndDate} />
           </View>
           <TouchableOpacity
             onPress={() => {
@@ -313,7 +313,7 @@ const SharedPointsHistory = ({ navigation }) => {
             }}
           >
             <PoppinsTextMedium
-              content="SUBMIT"
+              content={t("SUBMIT")}
               style={{ color: "white", fontSize: 20, borderRadius: 10 }}
             ></PoppinsTextMedium>
           </TouchableOpacity>
@@ -340,7 +340,7 @@ const SharedPointsHistory = ({ navigation }) => {
             left: 10,
             color: "black",
           }}
-          content="Date Filter"
+          content={t("Date Filter")}
         ></PoppinsTextMedium>
 
         <TouchableOpacity
@@ -432,20 +432,20 @@ const SharedPointsHistory = ({ navigation }) => {
           ></PoppinsTextMedium>
           <PoppinsTextMedium
             style={{ fontWeight: "400", fontSize: 12 }}
-            content={`Product Code : ${productCode}`}
+            content={`${t("Product Code")} : ${productCode}`}
           ></PoppinsTextMedium>
 
           <PoppinsTextMedium
             style={{ color: "#91B406", fontSize: 12, color: "grey" }}
-            content={`Scanned By : ${name}`}
+            content={`${t("Scanned By")} : ${name}`}
           ></PoppinsTextMedium>
           <PoppinsTextMedium
             style={{ color: "#91B406", fontSize: 12, color: "grey" }}
-            content={`Mobile Number : ${mobile}`}
+            content={`${t("Mobile Number")} : ${mobile}`}
           ></PoppinsTextMedium>
            <PoppinsTextMedium
             style={{ color: "#91B406", fontSize: 12, color: "grey" }}
-            content={`Date : ${day}`}
+            content={`${t("Date")} : ${day}`}
           ></PoppinsTextMedium>
           <View
             style={{
@@ -530,7 +530,7 @@ const SharedPointsHistory = ({ navigation }) => {
               ></Image>
             </TouchableOpacity>
             <PoppinsTextMedium
-              content="Shared Points History"
+              content={t("Shared Point History")}
               style={{
                 marginLeft: 10,
                 fontSize: 16,
@@ -557,7 +557,7 @@ const SharedPointsHistory = ({ navigation }) => {
                 fontWeight: "600",
                 color: "#6E6E6E",
               }}
-              content="You Have"
+              content={t("You Have")}
             ></PoppinsTextMedium>
 
             {userPointData && (
@@ -590,7 +590,7 @@ const SharedPointsHistory = ({ navigation }) => {
                 fontWeight: "600",
                 color: "#6E6E6E",
               }}
-              content="Point Balance"
+              content={t("Point Balance")}
             ></PoppinsTextMedium>
 
             {/* <DisplayEarnings></DisplayEarnings> */}

@@ -250,7 +250,7 @@ const RedeemCoupons = ({ navigation, route }) => {
             }
           }
         } else {
-          alert("Kindly select a value")
+          alert(t("Kindly select a value"))
         }
       } else {
         let temp = count;
@@ -357,7 +357,7 @@ const RedeemCoupons = ({ navigation, route }) => {
                       fontWeight: "700",
                       marginLeft: 10,
                     }}
-                    content={`Select value: ${pointsSelected}`}
+                    content={`${t("Select value")}: ${pointsSelected}`}
                   ></PoppinsTextMedium>
                 ) : (
                   <View
@@ -374,7 +374,7 @@ const RedeemCoupons = ({ navigation, route }) => {
                         fontWeight: "700",
                         marginLeft: 10,
                       }}
-                      content={"Select value"}
+                      content={t("Select value")}
                     ></PoppinsTextMedium>
                     <Expand name="expand-more" size={20}></Expand>
                   </View>
@@ -415,11 +415,11 @@ const RedeemCoupons = ({ navigation, route }) => {
                       >
                         <PoppinsTextMedium
                           style={{ color: "black",fontSize:12 }}
-                          content={`Points : ${item.value}`}
+                          content={`${t("Points")} : ${item.value}`}
                         ></PoppinsTextMedium>
                         <PoppinsTextMedium
                           style={{ color: "black",marginLeft:10,fontSize:12 }}
-                          content={`Price : ${item.denomination}`}
+                          content={`${t("Price")} : ${item.denomination}`}
                         ></PoppinsTextMedium>
                       </TouchableOpacity>
                     )
@@ -517,7 +517,6 @@ const RedeemCoupons = ({ navigation, route }) => {
         <ErrorModal
           modalClose={modalClose}
           message={message}
-          warning={true}
           openModal={error}
         ></ErrorModal>
       )}
@@ -556,7 +555,7 @@ const RedeemCoupons = ({ navigation, route }) => {
         </TouchableOpacity>
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <PoppinsTextMedium
-            content={t("Redeem Coupon")}
+            content={t("Redeem Points")}
             style={{
               marginLeft: 10,
               fontSize: 16,
@@ -627,7 +626,7 @@ const RedeemCoupons = ({ navigation, route }) => {
                 ></Icon>
                 <TextInput
                   style={{ marginLeft: 20, width: "70%", color: "black" }}
-                  placeholder="Type Product Name"
+                  placeholder={t("Type Product Name")}
                   value={search}
                   onChangeText={(text) => {
                     handleSearch(text);
@@ -681,7 +680,7 @@ const RedeemCoupons = ({ navigation, route }) => {
                 fontWeight: "600",
                 marginTop: 2,
               }}
-              content="All"
+              content={t("All")}
             ></PoppinsTextMedium>
           </TouchableOpacity>
           <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>

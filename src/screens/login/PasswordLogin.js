@@ -65,29 +65,25 @@ const PasswordLogin = ({ navigation, route }) => {
   const primaryThemeColor = useSelector(
     state => state.apptheme.primaryThemeColor,
   )
-    ? useSelector(state => state.apptheme.primaryThemeColor)
-    : '#FF9B00';
+    
   const secondaryThemeColor = useSelector(
     state => state.apptheme.secondaryThemeColor,
   )
-    ? useSelector(state => state.apptheme.secondaryThemeColor)
-    : '#FFB533';
+    
   const ternaryThemeColor = useSelector(
     state => state.apptheme.ternaryThemeColor,
   )
-    ? useSelector(state => state.apptheme.ternaryThemeColor)
-    : '#FFB533';
+    
   const currentVersion = useSelector((state)=>state.appusers.app_version)
 
+
   const icon = useSelector(state => state.apptheme.icon)
-
-
+    
 
   const buttonThemeColor = useSelector(
     state => state.apptheme.ternaryThemeColor,
   )
-    ? useSelector(state => state.apptheme.ternaryThemeColor)
-    : '#ef6110';
+    
 
   const fcmToken = useSelector(state=> state.fcmToken.fcmToken)
 
@@ -240,7 +236,7 @@ const PasswordLogin = ({ navigation, route }) => {
       
       if(passwordLoginError.status===400)
       {
-        alert(t("Your status is under process, please contact OzoStars"))
+      alert(t("Your status is under process, please contact OzoStars"))
       }
       else if(passwordLoginError?.message){
         setError(true)
@@ -310,7 +306,7 @@ const PasswordLogin = ({ navigation, route }) => {
     else if(getFormError) {
       // console.log("Form Field Error", getFormError)
       setError(true)
-      setMessage("Can't fetch forms for warranty.")
+      setMessage(t("Can't fetch forms for warranty."))
     }
   }, [getFormData, getFormError])
 
@@ -527,7 +523,7 @@ const PasswordLogin = ({ navigation, route }) => {
       <View style={{
         width: '100%', alignItems: 'center',
         justifyContent: 'center',
-        // backgroundColor: ternaryThemeColor,
+        backgroundColor: ternaryThemeColor,
       }}>
         <View
           style={{
@@ -535,7 +531,7 @@ const PasswordLogin = ({ navigation, route }) => {
             width: '100%',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'white',
+            backgroundColor: ternaryThemeColor,
             flexDirection: 'row',
 
           }}>
@@ -557,8 +553,11 @@ const PasswordLogin = ({ navigation, route }) => {
               top: 20,
               position: "absolute",
               left: 50,
+
+
+
             }}
-            source={(icon!=null && icon!= undefined ) ? {uri:icon }: require('../../../assets/images/ozoneWhiteLogo.png')}></Image>
+            source={require('../../../assets/images/ozoneWhiteLogo.png')}></Image>
           {/* ozone change */}
          
 
@@ -600,7 +599,7 @@ const PasswordLogin = ({ navigation, route }) => {
             width: '90%'
           }}>
           <PoppinsText
-            style={{ color: 'black', fontSize: 28 }}
+            style={{ color: 'white', fontSize: 28 }}
             content={t("Login To Your Account")}></PoppinsText>
 
         </View>
@@ -652,14 +651,16 @@ const PasswordLogin = ({ navigation, route }) => {
           <TouchableOpacity onPress={() => {
             navigation.navigate('PdfComponent', { pdf: getTermsData.body.data?.[0]?.files[0] })
           }}>
-            <PoppinsTextLeftMedium content={t("I agree to the Terms & Conditions")} style={{ color: '#808080', marginHorizontal: 30, marginBottom: 20, fontSize: 15, marginLeft: 8, marginTop: 16 }}></PoppinsTextLeftMedium>
+            <PoppinsTextLeftMedium content={t("terms and condition")} style={{ color: '#808080', marginHorizontal: 30, marginBottom: 20, fontSize: 15, marginLeft: 8, marginTop: 16 }}></PoppinsTextLeftMedium>
           </TouchableOpacity>
         </View>
 
         <View style={{ flexDirection: "row", alignItems: "center", justifyContent: 'center', width: '90%' }}>
-          <PoppinsTextMedium style={{ color: "#727272", fontSize: 14 }} content="Not remembering password? "></PoppinsTextMedium>
-          <TouchableOpacity >
-            <PoppinsTextMedium style={{ color: ternaryThemeColor, fontSize: 14 }} content="Forget Password"></PoppinsTextMedium>
+          <PoppinsTextMedium style={{ color: "#727272", fontSize: 14 }} content={`${t("Not remembering password?")} `}></PoppinsTextMedium>
+          <TouchableOpacity onPress={()=>{
+            navigation.navigate("ForgetPassword",{userType: userType, userTypeId: userId})
+          }} >
+            <PoppinsTextMedium style={{ color: ternaryThemeColor, fontSize: 14 }} content={t("Forget Password")}></PoppinsTextMedium>
           </TouchableOpacity>
         </View>
 
