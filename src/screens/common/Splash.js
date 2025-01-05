@@ -62,7 +62,6 @@ import {
   setLocation,
   setLocationEnabled,
 } from "../../../redux/slices/userLocationSlice";
-import { GoogleMapsKey } from "@env";
 import { useCheckVersionSupportMutation } from "../../apiServices/minVersion/minVersionApi";
 import VersionCheck from "react-native-version-check";
 import LocationPermission from "../../components/organisms/LocationPermission";
@@ -104,6 +103,7 @@ import { apiFetchingInterval } from "../../utils/apiFetchingInterval";
 import { clientName, splash } from "../../utils/HandleClientSetup";
 import FastImage from "react-native-fast-image";
 import { useTranslation } from "react-i18next";
+import handleLocationPermissionAndFetch from "../../utils/handleLocationPermissionAndFetch";
 
 const Splash = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -112,7 +112,6 @@ const Splash = ({ navigation }) => {
   const [isSlowInternet, setIsSlowInternet] = useState(false);
   const [locationStatusChecked, setLocationCheckVisited] = useState(false);
   const [locationBoxEnabled, setLocationBoxEnabled] = useState(false);
-  const [fetchLocation, setfetchLocation] = useState(false);
   const [showLoading, setShowLoading] = useState(true);
   const [message, setMessage] = useState();
   const [success, setSuccess] = useState(false);
@@ -811,167 +810,86 @@ const Splash = ({ navigation }) => {
     return () => backHandler.remove();
   }, []);
 
-  const openSettings = () => {
-    if (Platform.OS === "android") {
-      Linking.openSettings();
-    } else {
-      Linking.openURL("app-settings:");
-    }
-  };
-  const getLocationPermission = async () => {
-    if (Platform.OS == "ios") {
-      Alert.alert(
-        "GPS Disabled",
-        "Please enable GPS/Location to use this feature. You can open it from the top sliding setting menu of your phone or from the setting section of your phone.",
-        [
-          {
-            text: "Cancel",
-            style: "cancel",
-          },
-          {
-            text:  t("Settings"),
-            onPress: () =>
-              Platform.OS == "android"
-                ? Linking.openSettings()
-                : Linking.openURL("app-settings:"),
-          },
-        ],
-        { cancelable: false }
-      );
-    }
-    if (Platform.OS == "android") {
-      LocationServicesDialogBox.checkLocationServicesIsEnabled({
-        message:
-          "<h2 style='color: #0af13e'>Use Location ?</h2>Genefied Demo wants to change your device settings:<br/><br/>Enable location to use the application.<br/><br/><a href='#'>Learn more</a>",
-        ok: "YES",
-        cancel: "NO",
-        enableHighAccuracy: true, // true => GPS AND NETWORK PROVIDER, false => GPS OR NETWORK PROVIDER
-        showDialog: true, // false => Opens the Location access page directly
-        openLocationServices: true, // false => Directly catch method is called if location services are turned off
-        preventOutSideTouch: false, // true => To prevent the location services window from closing when it is clicked outside
-        preventBackClick: true, // true => To prevent the location services popup from closing when it is clicked back button
-        providerListener: false, // true ==> Trigger locationProviderStatusChange listener when the location state changes
-        style: {
-          backgroundColor: "#DDDDDD",
-          positiveButtonTextColor: "white",
-          positiveButtonBackgroundColor: "#298d7b",
-          negativeButtonTextColor: "white",
-          negativeButtonBackgroundColor: "#ba5f5f",
-        },
-      })
-        .then(function (success) {
-          // setLocationCheckVisited(true)
-          dispatch(setLocationEnabled(true));
-          setfetchLocation(true);
-          // success => {alreadyEnabled: false, enabled: true, status: "enabled"}
-        })
-        .catch((error) => {
-          dispatch(setLocationEnabled(false));
-          setLocationCheckVisited(true);
+  // const openSettings = () => {
+  //   if (Platform.OS === "android") {
+  //     Linking.openSettings();
+  //   } else {
+  //     Linking.openURL("app-settings:");
+  //   }
+  // };
+  // const getLocationPermission = async () => {
+  //   if (Platform.OS == "ios") {
+  //     Alert.alert(
+  //       "GPS Disabled",
+  //       "Please enable GPS/Location to use this feature. You can open it from the top sliding setting menu of your phone or from the setting section of your phone.",
+  //       [
+  //         {
+  //           text: "Cancel",
+  //           style: "cancel",
+  //         },
+  //         {
+  //           text:  t("Settings"),
+  //           onPress: () =>
+  //             Platform.OS == "android"
+  //               ? Linking.openSettings()
+  //               : Linking.openURL("app-settings:"),
+  //         },
+  //       ],
+  //       { cancelable: false }
+  //     );
+  //   }
+  //   if (Platform.OS == "android") {
+  //     LocationServicesDialogBox.checkLocationServicesIsEnabled({
+  //       message:
+  //         "<h2 style='color: #0af13e'>Use Location ?</h2>Genefied Demo wants to change your device settings:<br/><br/>Enable location to use the application.<br/><br/><a href='#'>Learn more</a>",
+  //       ok: "YES",
+  //       cancel: "NO",
+  //       enableHighAccuracy: true, // true => GPS AND NETWORK PROVIDER, false => GPS OR NETWORK PROVIDER
+  //       showDialog: true, // false => Opens the Location access page directly
+  //       openLocationServices: true, // false => Directly catch method is called if location services are turned off
+  //       preventOutSideTouch: false, // true => To prevent the location services window from closing when it is clicked outside
+  //       preventBackClick: true, // true => To prevent the location services popup from closing when it is clicked back button
+  //       providerListener: false, // true ==> Trigger locationProviderStatusChange listener when the location state changes
+  //       style: {
+  //         backgroundColor: "#DDDDDD",
+  //         positiveButtonTextColor: "white",
+  //         positiveButtonBackgroundColor: "#298d7b",
+  //         negativeButtonTextColor: "white",
+  //         negativeButtonBackgroundColor: "#ba5f5f",
+  //       },
+  //     })
+  //       .then(function (success) {
+  //         // setLocationCheckVisited(true)
+  //         dispatch(setLocationEnabled(true));
+  //         setfetchLocation(true);
+  //         // success => {alreadyEnabled: false, enabled: true, status: "enabled"}
+  //       })
+  //       .catch((error) => {
+  //         dispatch(setLocationEnabled(false));
+  //         setLocationCheckVisited(true);
 
-          // getLocationPermission()
-          // error.message => "disabled"
-        });
-    }
-  };
-
-  useEffect(() => {
-    let lat = "";
-    let lon = "";
-
-    // if (__DEV__) {
-    //   setLocationCheckVisited(true)
-    // }
-
-    try {
-      Geolocation.getCurrentPosition(
-        (res) => {
-          lat = res.coords.latitude;
-          lon = res.coords.longitude;
-          // getLocation(JSON.stringify(lat),JSON.stringify(lon))
-          let locationJson = {
-            lat: lat === undefined ? "N/A" : lat,
-            lon: lon === undefined ? "N/A" : lon,
-          };
-          // setLocationCheckVisited(true)
-
-          var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${res?.coords?.latitude},${res?.coords?.longitude}
-              &location_type=ROOFTOP&result_type=street_address&key=${GoogleMapsKey}`;
-
-          fetch(url)
-            .then((response) => response.json())
-            .then((json) => {
-              if (json.status == "OK") {
-                const formattedAddress = json?.results[0]?.formatted_address;
-
-                locationJson["address"] =
-                  formattedAddress === undefined ? "N/A" : formattedAddress;
-                const addressComponent = json?.results[0]?.address_components;
-
-                for (let i = 0; i <= addressComponent?.length; i++) {
-                  if (i === addressComponent?.length) {
-                    console.log("location json after iteration", locationJson);
-                    dispatch(setLocationCheckVisited(true));
-                    dispatch(setLocationPermissionStatus(true));
-                    dispatch(setLocation(locationJson));
-                    setLocationCheckVisited(true);
-                  } else {
-                    if (addressComponent[i].types.includes("postal_code")) {
-                      locationJson["postcode"] = addressComponent[i]?.long_name;
-                    } else if (addressComponent[i]?.types.includes("country")) {
-                      locationJson["country"] = addressComponent[i]?.long_name;
-                    } else if (
-                      addressComponent[i]?.types.includes(
-                        "administrative_area_level_1"
-                      )
-                    ) {
-                      locationJson["state"] = addressComponent[i]?.long_name;
-                    } else if (
-                      addressComponent[i]?.types.includes(
-                        "administrative_area_level_3"
-                      )
-                    ) {
-                      locationJson["district"] = addressComponent[i]?.long_name;
-                    } else if (
-                      addressComponent[i]?.types.includes("locality")
-                    ) {
-                      locationJson["city"] = addressComponent[i]?.long_name;
-                    }
-                  }
-                }
-              }
-            });
-        },
-        (error) => {
-          console.log("location enabled error splash", error);
-          setLocationCheckVisited(false);
-          if (error.code === 1) {
-            setLocationCheckVisited(true);
-            dispatch(setLocationPermissionStatus(false));
-          } else if (error.code === 2) {
-            // Position Unavailable
-            // if (!locationBoxEnabled)
-            getLocationPermission();
-          } else {
-            // Other errors
-            Alert.alert(
-              t("Error"),
-              t("An error occurred while fetching your location."),
-              [{ text: "OK", onPress: () => console.log("OK Pressed") }],
-              { cancelable: false }
-            );
-          }
-        },
-        {
-          enableHighAccuracy: true,
-        }
-      );
-    } catch (e) {}
-  }, [navigation, fetchLocation]);
+  //         // getLocationPermission()
+  //         // error.message => "disabled"
+  //       });
+  //   }
+  // };
 
   useEffect(() => {
+    const fetchLocationData =  async() => {
+      try {
+        const locationData =  await handleLocationPermissionAndFetch();
+        console.log("Fetched Location Dataaaaaa:", locationData);
+      } catch (error) {
+        console.error("Error fetching location data:", error);
+      }
+    };
+  
+    fetchLocationData();
+  }, []);
+
+  useEffect(async() => {
     getUsers();
-    getAppTheme(clientName);
+    console.log("unwrapping resolved and rejected status",await getAppTheme(clientName));
     const checkToken = async () => {
       const fcmToken = await messaging().getToken();
       if (fcmToken) {

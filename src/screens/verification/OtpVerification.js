@@ -28,7 +28,6 @@ import { useGetLoginOtpForVerificationMutation } from "../../apiServices/otp/Get
 import { useAddCashToBankMutation } from "../../apiServices/cashback/CashbackRedeemApi";
 import Geolocation from "@react-native-community/geolocation";
 import { useCreateCouponRequestMutation } from "../../apiServices/coupons/getAllCouponsApi";
-import { GoogleMapsKey } from "@env";
 import { useTranslation } from "react-i18next";
 import {
   setPointConversionF,
@@ -37,6 +36,7 @@ import {
 } from "../../../redux/slices/redemptionDataSlice";
 import { useDispatch } from "react-redux";
 import { useRedeemSchemeApiMutation } from "../../apiServices/scheme/RedeemSchemeApi";
+import { getCurrentLocation } from "../../utils/getCurrentLocation";
 
 const OtpVerification = ({ navigation, route }) => {
   const [message, setMessage] = useState();
@@ -238,84 +238,16 @@ const OtpVerification = ({ navigation, route }) => {
     timer > 0 && setTimeout(timeOutCallback, 1000);
   }, [timer, timeOutCallback]);
 
-  useEffect(() => {
+  useEffect(async() => {
+    // check if there is stored location
+    // if not present keep the previous location
     if (Object.keys(storedLocation).length == 0) {
-      let lat = "";
-      let lon = "";
-      Geolocation.getCurrentPosition((res) => {
-        console.log("res", res);
-        lat = res.coords.latitude;
-        lon = res.coords.longitude;
-        // getLocation(JSON.stringify(lat),JSON.stringify(lon))
-        console.log("latlong", lat, lon);
-        var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${res.coords.latitude},${res.coords.longitude}
-        &location_type=ROOFTOP&result_type=street_address&key=${GoogleMapsKey}`;
-
-        fetch(url)
-          .then((response) => response.json())
-          .then((json) => {
-            console.log("location address=>", JSON.stringify(json));
-            const formattedAddress = json.results[0].formatted_address;
-            const formattedAddressArray = formattedAddress?.split(",");
-
-            let locationJson = {
-              lat:
-                json.results[0].geometry.location.lat === undefined
-                  ? "N/A"
-                  : json.results[0].geometry.location.lat,
-              lon:
-                json.results[0].geometry.location.lng === undefined
-                  ? "N/A"
-                  : json.results[0].geometry.location.lng,
-              address:
-                formattedAddress === undefined ? "N/A" : formattedAddress,
-            };
-
-            const addressComponent = json.results[0].address_components;
-            console.log("addressComponent", addressComponent);
-            for (let i = 0; i <= addressComponent.length; i++) {
-              if (i === addressComponent.length) {
-                setLocation(locationJson);
-              } else {
-                if (addressComponent[i].types.includes("postal_code")) {
-                  console.log("inside if");
-
-                  console.log(addressComponent[i].long_name);
-                  locationJson["postcode"] = addressComponent[i].long_name;
-                } else if (addressComponent[i].types.includes("country")) {
-                  console.log(addressComponent[i].long_name);
-
-                  locationJson["country"] = addressComponent[i].long_name;
-                } else if (
-                  addressComponent[i].types.includes(
-                    "administrative_area_level_1"
-                  )
-                ) {
-                  console.log(addressComponent[i].long_name);
-
-                  locationJson["state"] = addressComponent[i].long_name;
-                } else if (
-                  addressComponent[i].types.includes(
-                    "administrative_area_level_3"
-                  )
-                ) {
-                  console.log(addressComponent[i].long_name);
-
-                  locationJson["district"] = addressComponent[i].long_name;
-                } else if (addressComponent[i].types.includes("locality")) {
-                  console.log(addressComponent[i].long_name);
-
-                  locationJson["city"] = addressComponent[i].long_name;
-                }
-              }
-            }
-
-            console.log("formattedAddressArray", locationJson);
-          });
-      });
+      const getCurrLocation = getCurrentLocation()
+      setLocation(getCurrLocation)
     } else {
       setLocation(storedLocation);
     }
+    // -----------------------------------------
   }, []);
 
   useEffect(() => {

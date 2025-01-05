@@ -12,7 +12,7 @@ import { useAddAddressMutation } from "../../apiServices/userAddress/UserAddress
 import MessageModal from "../../components/modals/MessageModal";
 import ErrorModal from "../../components/modals/ErrorModal";
 import { useIsFocused } from "@react-navigation/native";
-import { GoogleMapsKey } from "@env";
+import { getCurrentLocation } from "../../utils/getCurrentLocation"; 
 
 const AddAddress = ({ navigation }) => {
   const [message, setMessage] = useState();
@@ -70,85 +70,10 @@ const AddAddress = ({ navigation }) => {
     ? useSelector((state) => state.apptheme.ternaryThemeColor)
     : "grey";
 
-  useEffect(() => {
-    let lat = "";
-    let lon = "";
-    Geolocation.getCurrentPosition((res) => {
-      console.log("res", res);
-      lat = res?.coords?.latitude;
-      lon = res?.coords?.longitude;
-      // getLocation(JSON.stringify(lat),JSON.stringify(lon))
-      console.log("latlong", lat, lon);
-      var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${res?.coords?.latitude},${res?.coords?.longitude}
-            &location_type=ROOFTOP&result_type=street_address&key=${GoogleMapsKey}`;
-
-      fetch(url)
-        .then((response) => response.json())
-        .then((json) => {
-          console.log("location address=>", JSON.stringify(json));
-          const formattedAddress = json?.results[0]?.formatted_address;
-          const formattedAddressArray = formattedAddress?.split(",");
-
-          let locationJson = {
-            lat:
-              json?.results[0]?.geometry?.location?.lat === undefined
-                ? "N/A"
-                : json?.results[0]?.geometry?.location?.lat,
-            lon:
-              json?.results[0]?.geometry?.location?.lng === undefined
-                ? "N/A"
-                : json?.results[0]?.geometry?.location?.lng,
-            address: formattedAddress === undefined ? "N/A" : formattedAddress,
-          };
-
-          const addressComponent = json?.results[0]?.address_components;
-          console.log("addressComponent", addressComponent);
-          for (let i = 0; i <= addressComponent.length; i++) {
-            if (i === addressComponent.length) {
-              dispatch(setLocation(locationJson));
-              setLocation(locationJson);
-            } else {
-              if (addressComponent[i]?.types.includes("postal_code")) {
-                console.log("inside if");
-
-                console.log(addressComponent[i]?.long_name);
-                locationJson["postcode"] = addressComponent[i]?.long_name;
-              } else if (addressComponent[i]?.types.includes("country")) {
-                console.log(addressComponent[i]?.long_name);
-
-                locationJson["country"] = addressComponent[i]?.long_name;
-              } else if (
-                addressComponent[i]?.types.includes(
-                  "administrative_area_level_1"
-                )
-              ) {
-                console.log(addressComponent[i]?.long_name);
-
-                locationJson["state"] = addressComponent[i]?.long_name;
-              } else if (
-                addressComponent[i]?.types.includes(
-                  "administrative_area_level_3"
-                )
-              ) {
-                console.log(addressComponent[i]?.long_name);
-
-                locationJson["district"] = addressComponent[i]?.long_name;
-              } else if (addressComponent[i]?.types.includes("locality")) {
-                console.log(addressComponent[i]?.long_name);
-
-                locationJson["city"] = addressComponent[i]?.long_name;
-              } else if (addressComponent[i]?.types.includes("country")) {
-                console.log(addressComponent[i]?.long_name);
-
-                locationJson["country"] = addressComponent[i]?.long_name;
-              }
-            }
-          }
-
-          console.log("formattedAddressArray", locationJson);
-          setLocation(locationJson);
-        });
-    });
+  useEffect(async() => {
+    const getCurrLocation = await getCurrentLocation()
+    setLocation(getCurrLocation)
+    dispatch(setLocation(getCurrLocation))
   }, []);
 
   useEffect(() => {
