@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		005EFA06328442D69CFD157C /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6BB490790024A1D944512E3 /* Poppins-BlackItalic.ttf */; };
-		00E356F31AD99517003FC87E /* OzoneOverseasTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* OzoneOverseasTests.m */; };
+		00E356F31AD99517003FC87E /* expoloTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* expoloTests.m */; };
 		0B5E7FD736894E34B199C899 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FEAC1C540BDA408D917124E6 /* Poppins-Bold.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -62,21 +62,21 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = OzoneOverseas;
+			remoteInfo = "expolo";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* OzoneOverseasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OzoneOverseasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* expoloTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "expoloTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* OzoneOverseasTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OzoneOverseasTests.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* expoloTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "expoloTests.m"; sourceTree = "<group>"; };
 		0E1B8BF0838049D291ECD299 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* OzoneOverseas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OzoneOverseas.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = OzoneOverseas/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = OzoneOverseas/AppDelegate.mm; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = OzoneOverseas/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = OzoneOverseas/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = OzoneOverseas/main.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* expolo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "expolo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "expolo/AppDelegate.h"; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = "expolo/AppDelegate.mm"; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "expolo/Images.xcassets"; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "expolo/Info.plist"; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "expolo/main.m"; sourceTree = "<group>"; };
 		1AE6820C23DE453CAB52F952 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		1E3DA997340647E68B5EABD5 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Italic.ttf"; path = "../assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		2621FF15BCC64D26969A75F2 /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
@@ -87,24 +87,24 @@
 		4ECDB724FABA4B5C8ABD00FD /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLightItalic.ttf"; path = "../assets/fonts/Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		5109BE1CC45D4D228F5905C8 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-MediumItalic.ttf"; path = "../assets/fonts/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		6ADA9E2354B743C393570BC0 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BoldItalic.ttf"; path = "../assets/fonts/Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
-		79D654BA924B1589326AA749 /* Pods-OzoneOverseas-OzoneOverseasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzoneOverseas-OzoneOverseasTests.debug.xcconfig"; path = "Target Support Files/Pods-OzoneOverseas-OzoneOverseasTests/Pods-OzoneOverseas-OzoneOverseasTests.debug.xcconfig"; sourceTree = "<group>"; };
+		79D654BA924B1589326AA749 /* Pods-expolo-expoloTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-expolo-expoloTests.debug.xcconfig"; path = "Target Support Files/Pods-expolo-expoloTests/Pods-expolo-expoloTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CD9F36D1CDD42B4A722D9A1 /* Poppins-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Black.ttf"; path = "../assets/fonts/Poppins-Black.ttf"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = OzoneOverseas/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = "expolo/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		884A6DE7592C4EE0B1A9E605 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Thin.ttf"; path = "../assets/fonts/Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		8DB51198E9EA4355BC888C2C /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLight.ttf"; path = "../assets/fonts/Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
-		93F16DC083E939C0851E0128 /* Pods-OzoneOverseas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzoneOverseas.debug.xcconfig"; path = "Target Support Files/Pods-OzoneOverseas/Pods-OzoneOverseas.debug.xcconfig"; sourceTree = "<group>"; };
+		93F16DC083E939C0851E0128 /* Pods-expolo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-expolo.debug.xcconfig"; path = "Target Support Files/Pods-expolo/Pods-expolo.debug.xcconfig"; sourceTree = "<group>"; };
 		B6BB490790024A1D944512E3 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BlackItalic.ttf"; path = "../assets/fonts/Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		B7146FCA9701416BBB4981A0 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ThinItalic.ttf"; path = "../assets/fonts/Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
 		BF597A940C684E27BC749E32 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraBoldItalic.ttf"; path = "../assets/fonts/Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
-		C3989FDBA78A1976B0B2A19A /* Pods-OzoneOverseas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzoneOverseas.release.xcconfig"; path = "Target Support Files/Pods-OzoneOverseas/Pods-OzoneOverseas.release.xcconfig"; sourceTree = "<group>"; };
-		DA5C77B66CA720F9A6FF74E6 /* Pods-OzoneOverseas-OzoneOverseasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OzoneOverseas-OzoneOverseasTests.release.xcconfig"; path = "Target Support Files/Pods-OzoneOverseas-OzoneOverseasTests/Pods-OzoneOverseas-OzoneOverseasTests.release.xcconfig"; sourceTree = "<group>"; };
+		C3989FDBA78A1976B0B2A19A /* Pods-expolo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-expolo.release.xcconfig"; path = "Target Support Files/Pods-expolo/Pods-expolo.release.xcconfig"; sourceTree = "<group>"; };
+		DA5C77B66CA720F9A6FF74E6 /* Pods-expolo-expoloTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-expolo-expoloTests.release.xcconfig"; path = "Target Support Files/Pods-expolo-expoloTests/Pods-expolo-expoloTests.release.xcconfig"; sourceTree = "<group>"; };
 		E245633C7E561AF902E4B366 /* Pods_OzoneOverseas_OzoneOverseasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OzoneOverseas_OzoneOverseasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9222AD72BA4338E006B4478 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E92D73692B3B5093009D7BC1 /* hermes.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = hermes.xcframework; path = "Pods/hermes-engine/destroot/Library/Frameworks/universal/hermes.xcframework"; sourceTree = "<group>"; };
 		E92D736B2B3B50B3009D7BC1 /* libReact-hermes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libReact-hermes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92D736D2B3B549D009D7BC1 /* OpenSSL.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = "Pods/OpenSSL-Universal/Frameworks/OpenSSL.xcframework"; sourceTree = "<group>"; };
 		E92EE8E92B4156DE00162902 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E97F37B52B3AE9B500D662DB /* OzoneOverseas.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = OzoneOverseas.entitlements; path = OzoneOverseas/OzoneOverseas.entitlements; sourceTree = "<group>"; };
+		E97F37B52B3AE9B500D662DB /* expolo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = expolo.entitlements; path = expolo/expolo.entitlements; sourceTree = "<group>"; };
 		E99B6EA22B3CA8A600D14E1F /* reacthermes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = reacthermes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A31A8F2C3802DA00346EF5 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		E9B14A9F2A8CDED1004DE909 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		E9B14AAF2A8CDED1004DE909 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		E9B14AB02A8CDED1004DE909 /* FontAwesome6_Brands.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome6_Brands.ttf; sourceTree = "<group>"; };
 		E9B14AB12A8CDED1004DE909 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
-		E9B14AC52A8E3BD2004DE909 /* OzoneOverseas-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OzoneOverseas-Bridging-Header.h"; sourceTree = "<group>"; };
+		E9B14AC52A8E3BD2004DE909 /* expolo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "expolo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E9B14AC62A8E3BD3004DE909 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F97B41FC45544F1C852F0A14 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -153,13 +153,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* OzoneOverseasTests */ = {
+		00E356EF1AD99517003FC87E /* expoloTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* OzoneOverseasTests.m */,
+				00E356F21AD99517003FC87E /* expoloTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = OzoneOverseasTests;
+			path = "expoloTests";
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -195,10 +195,10 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* OzoneOverseas */ = {
+		13B07FAE1A68108700A75B9A /* expolo */ = {
 			isa = PBXGroup;
 			children = (
-				E97F37B52B3AE9B500D662DB /* OzoneOverseas.entitlements */,
+				E97F37B52B3AE9B500D662DB /* expolo.entitlements */,
 				E9B14A9E2A8CDED1004DE909 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -207,7 +207,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = OzoneOverseas;
+			name = "expolo";
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -228,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				E9B14AC62A8E3BD3004DE909 /* File.swift */,
-				E9B14AC52A8E3BD2004DE909 /* OzoneOverseas-Bridging-Header.h */,
+				E9B14AC52A8E3BD2004DE909 /* expolo-Bridging-Header.h */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -239,9 +239,9 @@
 				E9A31A8F2C3802DA00346EF5 /* assets */,
 				E9222AD72BA4338E006B4478 /* GoogleService-Info.plist */,
 				E92EE8E92B4156DE00162902 /* Assets.xcassets */,
-				13B07FAE1A68108700A75B9A /* OzoneOverseas */,
+				13B07FAE1A68108700A75B9A /* expolo */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* OzoneOverseasTests */,
+				00E356EF1AD99517003FC87E /* expoloTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
@@ -255,8 +255,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* OzoneOverseas.app */,
-				00E356EE1AD99517003FC87E /* OzoneOverseasTests.xctest */,
+				13B07F961A680F5B00A75B9A /* expolo.app */,
+				00E356EE1AD99517003FC87E /* expoloTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -264,10 +264,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				93F16DC083E939C0851E0128 /* Pods-OzoneOverseas.debug.xcconfig */,
-				C3989FDBA78A1976B0B2A19A /* Pods-OzoneOverseas.release.xcconfig */,
-				79D654BA924B1589326AA749 /* Pods-OzoneOverseas-OzoneOverseasTests.debug.xcconfig */,
-				DA5C77B66CA720F9A6FF74E6 /* Pods-OzoneOverseas-OzoneOverseasTests.release.xcconfig */,
+				93F16DC083E939C0851E0128 /* Pods-expolo.debug.xcconfig */,
+				C3989FDBA78A1976B0B2A19A /* Pods-expolo.release.xcconfig */,
+				79D654BA924B1589326AA749 /* Pods-expolo-expoloTests.debug.xcconfig */,
+				DA5C77B66CA720F9A6FF74E6 /* Pods-expolo-expoloTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -302,9 +302,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* OzoneOverseasTests */ = {
+		00E356ED1AD99517003FC87E /* expoloTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "OzoneOverseasTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "expoloTests" */;
 			buildPhases = (
 				45964017E8ED779BD5CF69DC /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -317,14 +317,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = OzoneOverseasTests;
-			productName = OzoneOverseasTests;
-			productReference = 00E356EE1AD99517003FC87E /* OzoneOverseasTests.xctest */;
+			name = "expoloTests";
+			productname = "expoloTests";
+			productReference = 00E356EE1AD99517003FC87E /* expoloTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* OzoneOverseas */ = {
+		13B07F861A680F5B00A75B9A /* expolo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "OzoneOverseas" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "expolo" */;
 			buildPhases = (
 				FFE6915D2E55942CDE375804 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -340,9 +340,9 @@
 			);
 			dependencies = (
 			);
-			name = OzoneOverseas;
-			productName = OzoneOverseas;
-			productReference = 13B07F961A680F5B00A75B9A /* OzoneOverseas.app */;
+			name = "expolo";
+			productName = "expolo";
+			productReference = 13B07F961A680F5B00A75B9A /* expolo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -363,7 +363,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "OzoneOverseas" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "expolo" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -379,8 +379,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* OzoneOverseas */,
-				00E356ED1AD99517003FC87E /* OzoneOverseasTests */,
+				13B07F861A680F5B00A75B9A /* expolo */,
+				00E356ED1AD99517003FC87E /* expoloTests */,
 			);
 		};
 /* End PBXProject section */
@@ -488,7 +488,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OzoneOverseas-OzoneOverseasTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-expolo-expoloTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -501,15 +501,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OzoneOverseas-OzoneOverseasTests/Pods-OzoneOverseas-OzoneOverseasTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-expolo-expoloTests/Pods-expolo-expoloTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OzoneOverseas-OzoneOverseasTests/Pods-OzoneOverseas-OzoneOverseasTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-expolo-expoloTests/Pods-expolo-expoloTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OzoneOverseas-OzoneOverseasTests/Pods-OzoneOverseas-OzoneOverseasTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-expolo-expoloTests/Pods-expolo-expoloTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C92962A1440377EB4C8E017A /* [CP-User] [RNFB] Crashlytics Configuration */ = {
@@ -532,15 +532,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OzoneOverseas/Pods-OzoneOverseas-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-expolo/Pods-expolo-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OzoneOverseas/Pods-OzoneOverseas-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-expolo/Pods-expolo-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OzoneOverseas/Pods-OzoneOverseas-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-expolo/Pods-expolo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -577,7 +577,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OzoneOverseas-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-expolo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -591,7 +591,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* OzoneOverseasTests.m in Sources */,
+				00E356F31AD99517003FC87E /* expoloTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,7 +610,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* OzoneOverseas */;
+			target = 13B07F861A680F5B00A75B9A /* expolo */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -618,7 +618,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79D654BA924B1589326AA749 /* Pods-OzoneOverseas-OzoneOverseasTests.debug.xcconfig */;
+			baseConfigurationReference = 79D654BA924B1589326AA749 /* Pods-expolo-expoloTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -627,7 +627,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = OzoneOverseasTests/Info.plist;
+				INFOPLIST_FILE = "expoloTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -639,21 +639,21 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.genefied.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.genefied.expolo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OzoneOverseas.app/OzoneOverseas";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/expolo.app/expolo";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA5C77B66CA720F9A6FF74E6 /* Pods-OzoneOverseas-OzoneOverseasTests.release.xcconfig */;
+			baseConfigurationReference = DA5C77B66CA720F9A6FF74E6 /* Pods-expolo-expoloTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 9D932R2PWR;
-				INFOPLIST_FILE = OzoneOverseasTests/Info.plist;
+				INFOPLIST_FILE = "expoloTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -665,28 +665,29 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.genefied.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.genefied.expolo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OzoneOverseas.app/OzoneOverseas";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/expolo.app/expolo";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93F16DC083E939C0851E0128 /* Pods-OzoneOverseas.debug.xcconfig */;
+			baseConfigurationReference = 93F16DC083E939C0851E0128 /* Pods-expolo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = OzoneOverseas/OzoneOverseas.entitlements;
+				CODE_SIGN_ENTITLEMENTS = expolo/expolo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RAW3WGCVCZ;
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = OzoneOverseas/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = OzoneOverseas;
+				INFOPLIST_FILE = "expolo/Info.plist";
+             INFOPLIST_KEY_CFBundleDisplayName = "expolo";
+				INFOPLIST_KEY_CFBundleDisplayName = expolo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -699,10 +700,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.genefied.demo;
-				PRODUCT_NAME = OzoneOverseas;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.genefied.expolo";
+				PRODUCT_NAME = "expolo";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "OzoneOverseas-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "expolo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -712,19 +713,20 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3989FDBA78A1976B0B2A19A /* Pods-OzoneOverseas.release.xcconfig */;
+			baseConfigurationReference = C3989FDBA78A1976B0B2A19A /* Pods-expolo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = OzoneOverseas/OzoneOverseas.entitlements;
+				CODE_SIGN_ENTITLEMENTS = expolo/expolo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RAW3WGCVCZ;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = OzoneOverseas/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = OzoneOverseas;
+				INFOPLIST_FILE = "expolo/Info.plist";
+             INFOPLIST_KEY_CFBundleDisplayName = "expolo";
+				INFOPLIST_KEY_CFBundleDisplayName = expolo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -737,10 +739,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.genefied.demo;
-				PRODUCT_NAME = OzoneOverseas;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.genefied.expolo";
+				PRODUCT_NAME = "expolo";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "OzoneOverseas-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "expolo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -908,7 +910,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "OzoneOverseasTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "expoloTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -917,7 +919,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "OzoneOverseas" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "expolo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -926,7 +928,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "OzoneOverseas" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "expolo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

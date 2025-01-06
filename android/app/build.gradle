@@ -75,9 +75,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.genefied.demo"
+    namespace "com.genefied.expolo"
     defaultConfig {
-        applicationId "com.genefied.demo"
+        applicationId "com.genefied.expolo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
