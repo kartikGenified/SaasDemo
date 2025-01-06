@@ -1,4 +1,4 @@
-package com.genefied.demo;
+package com.genefied.expolo;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "Genefied";
+    return "expolo";
   }
   @Override
   protected void onCreate(Bundle savedInstanceState) {

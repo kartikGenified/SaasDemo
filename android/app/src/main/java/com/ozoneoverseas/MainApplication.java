@@ -1,4 +1,4 @@
-package com.genefied.demo;
+package com.genefied.expolo;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
