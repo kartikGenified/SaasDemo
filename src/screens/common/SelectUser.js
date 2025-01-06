@@ -90,11 +90,11 @@ const SelectUser = ({navigation}) => {
 
   const handleNavigation=()=>{
     
-    setTimeout(() => {
-      setShowSplash(false)
-    navigation.navigate('Dashboard')
+    // setTimeout(() => {
+    //   setShowSplash(false)
+    // navigation.navigate('Dashboard')
 
-    }, 5000);
+    // }, 5000);
   }
   const primaryThemeColor = useSelector(
     state => state.apptheme.primaryThemeColor,

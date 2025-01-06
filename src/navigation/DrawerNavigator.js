@@ -140,6 +140,7 @@ const CustomDrawer = () => {
     try {
       await AsyncStorage.removeItem("loginData");
       await AsyncStorage.removeItem("storedBanner");
+      await AsyncStorage.removeItem("userMpin");
 
       navigation.reset({ index: "0", routes: [{ name: "SelectUser" }] });
     } catch (e) {

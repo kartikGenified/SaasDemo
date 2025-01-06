@@ -84,6 +84,9 @@ import EnableLocationScreen from '../screens/location/EnableLocationScreen';
 import EnableCameraScreen from '../screens/camera/EnableCameraScreen';
 import SchemeItems from '../screens/scheme/SchemeItems';
 import ForgetPassword from '../screens/login/ForgotPassword';
+import MpinSetupScreen from '../screens/mpin/MpinSetupScreen';
+import MpinValidationScreen from '../screens/mpin/MpinValidationScreen';
+import ForgotMpin from '../screens/mpin/ForgotMpin';
 
 const Stack = createNativeStackNavigator()
 
@@ -224,6 +227,22 @@ const StackNavigator = () => {
                         headerShown: false
                     }
                 } name="GiftCatalogue" component={GiftCatalogue}></Stack.Screen>
+                    <Stack.Screen options={
+                    {
+                        headerShown: false
+                    }
+                } name="MpinSetupScreen" component={MpinSetupScreen}></Stack.Screen>
+                                <Stack.Screen options={
+                    {
+                        headerShown: false
+                    }
+                } name="MpinValidationScreen" component={MpinValidationScreen}></Stack.Screen>
+                                <Stack.Screen options={
+                    {
+                        headerShown: false
+                    }
+                } name="ForgotMpin" component={ForgotMpin}></Stack.Screen>
+                
                 <Stack.Screen options={
                     {
                         headerShown: false
