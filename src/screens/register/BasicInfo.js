@@ -8,49 +8,45 @@ import {
   TextInput,
   ScrollView,
   Dimensions,
-  Text,
-} from "react-native";
-import PoppinsTextMedium from "../../components/electrons/customFonts/PoppinsTextMedium";
-import { useSelector, useDispatch } from "react-redux";
-import TextInputRectangleMandatory from "../../components/atoms/input/TextInputRectangleMandatory";
-import TextInputRectangle from "../../components/atoms/input/TextInputRectangle";
-import TextInputNumericRectangle from "../../components/atoms/input/TextInputNumericRectangle";
-import InputDate from "../../components/atoms/input/InputDate";
-import ImageInput from "../../components/atoms/input/ImageInput";
-import * as Keychain from "react-native-keychain";
-import MessageModal from "../../components/modals/MessageModal";
-import RegistrationProgress from "../../components/organisms/RegistrationProgress";
-import { useGetFormAccordingToAppUserTypeMutation } from "../../apiServices/workflow/GetForms";
-import ButtonOval from "../../components/atoms/buttons/ButtonOval";
-import {
-  useRegisterUserByBodyMutation,
-  useUpdateProfileAtRegistrationMutation,
-} from "../../apiServices/register/UserRegisterApi";
-import TextInputAadhar from "../../components/atoms/input/TextInputAadhar";
-import TextInputPan from "../../components/atoms/input/TextInputPan";
-import TextInputGST from "../../components/atoms/input/TextInputGST";
-import ErrorModal from "../../components/modals/ErrorModal";
-import Geolocation from "@react-native-community/geolocation";
-import axios from "axios";
-import PrefilledTextInput from "../../components/atoms/input/PrefilledTextInput";
-import { useGetLocationFromPinMutation } from "../../apiServices/location/getLocationFromPincode";
-import PincodeTextInput from "../../components/atoms/input/PincodeTextInput";
-import OtpInput from "../../components/organisms/OtpInput";
-import PoppinsTextLeftMedium from "../../components/electrons/customFonts/PoppinsTextLeftMedium";
-import { useGetLoginOtpMutation } from "../../apiServices/login/otpBased/SendOtpApi";
-import { useGetAppLoginMutation } from "../../apiServices/login/otpBased/OtpLoginApi";
-import { useVerifyOtpMutation } from "../../apiServices/login/otpBased/VerifyOtpApi";
-import { useGetLoginOtpForVerificationMutation } from "../../apiServices/otp/GetOtpApi";
-import { useVerifyOtpForNormalUseMutation } from "../../apiServices/otp/VerifyOtpForNormalUseApi";
-import DropDownRegistration from "../../components/atoms/dropdown/DropDownRegistration";
-import EmailTextInput from "../../components/atoms/input/EmailTextInput";
-import { validatePathConfig } from "@react-navigation/native";
-import { useIsFocused } from "@react-navigation/native";
-import FastImage from "react-native-fast-image";
-import { useTranslation } from "react-i18next";
-import CameraInputWithUpload from "../../components/atoms/input/CameraInputWithUpload";
-import { RegistrationMessage } from "../../utils/HandleClientSetup";
-import { getCurrentLocation } from "../../utils/getCurrentLocation";
+  Text
+} from 'react-native';
+import PoppinsTextMedium from '../../components/electrons/customFonts/PoppinsTextMedium';
+import { useSelector, useDispatch } from 'react-redux';
+import TextInputRectangleMandatory from '../../components/atoms/input/TextInputRectangleMandatory';
+import TextInputRectangle from '../../components/atoms/input/TextInputRectangle';
+import TextInputNumericRectangle from '../../components/atoms/input/TextInputNumericRectangle';
+import InputDate from '../../components/atoms/input/InputDate';
+import ImageInput from '../../components/atoms/input/ImageInput';
+import * as Keychain from 'react-native-keychain';
+import MessageModal from '../../components/modals/MessageModal';
+import RegistrationProgress from '../../components/organisms/RegistrationProgress';
+import { useGetFormAccordingToAppUserTypeMutation } from '../../apiServices/workflow/GetForms';
+import ButtonOval from '../../components/atoms/buttons/ButtonOval';
+import { useRegisterUserByBodyMutation, useUpdateProfileAtRegistrationMutation } from '../../apiServices/register/UserRegisterApi';
+import TextInputAadhar from '../../components/atoms/input/TextInputAadhar';
+import TextInputPan from '../../components/atoms/input/TextInputPan';
+import TextInputGST from '../../components/atoms/input/TextInputGST';
+import ErrorModal from '../../components/modals/ErrorModal';
+import Geolocation from '@react-native-community/geolocation';
+import axios from 'axios';
+import PrefilledTextInput from '../../components/atoms/input/PrefilledTextInput';
+import { useGetLocationFromPinMutation } from '../../apiServices/location/getLocationFromPincode';
+import PincodeTextInput from '../../components/atoms/input/PincodeTextInput';
+import OtpInput from '../../components/organisms/OtpInput';
+import PoppinsTextLeftMedium from '../../components/electrons/customFonts/PoppinsTextLeftMedium';
+import { useGetLoginOtpMutation } from '../../apiServices/login/otpBased/SendOtpApi';
+import { useGetAppLoginMutation } from '../../apiServices/login/otpBased/OtpLoginApi';
+import { useVerifyOtpMutation } from '../../apiServices/login/otpBased/VerifyOtpApi';
+import { useGetLoginOtpForVerificationMutation } from '../../apiServices/otp/GetOtpApi';
+import { useVerifyOtpForNormalUseMutation } from '../../apiServices/otp/VerifyOtpForNormalUseApi';
+import DropDownRegistration from '../../components/atoms/dropdown/DropDownRegistration';
+import EmailTextInput from '../../components/atoms/input/EmailTextInput';
+import { validatePathConfig } from '@react-navigation/native';
+import { useIsFocused } from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
+import {GoogleMapsKey} from "@env"
+import { useTranslation } from 'react-i18next';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const BasicInfo = ({ navigation, route }) => {
   const [userName, setUserName] = useState(route.params.name)
@@ -73,9 +69,17 @@ const BasicInfo = ({ navigation, route }) => {
   const [isValid, setIsValid] = useState(true)
   const [hideButton, setHideButton] = useState(false)
   const [timer, setTimer] = useState(0)
-  const [aadhaarVerified, setAadhaarVerified] = useState(true)
+  const [aadhaarVerified, setAadhaarVerified] = useState(false)
+  const [aadhaarEntered, setAadhaarEntered] = useState(false)
+  const [aadhaarRequired, setAadhaarRequired] = useState(false)
   const [pansVerified, setPansVerified] = useState(true)
+  const [panEntered, setPanEntered] = useState(false)
+  const [panRequired, setPanRequired] = useState(false)
+
   const [gstVerified, setGstVerified] = useState(true)
+  const [gstEntered, setGstEntered] = useState(false)
+  const [gstinRequired, setGstinRequired] = useState(false)
+
   const [mobileVerified, setMobileVerified] = useState()
   const timeOutCallback = useCallback(() => setTimer(currTimer => currTimer - 1), []);
   const focused = useIsFocused()
@@ -115,7 +119,7 @@ const BasicInfo = ({ navigation, route }) => {
   const height = Dimensions.get('window').height
   const {t} = useTranslation()
   const gifUri = Image.resolveAssetSource(
-    require("../../../assets/gif/loader.gif")
+    require("../../../assets/gif/loader2.gif")
   ).uri;
 
   let timeoutId;
@@ -225,19 +229,78 @@ const BasicInfo = ({ navigation, route }) => {
       setError(true)
       setMessage(t("Please Enter Correct OTP"))
     }
-  }, [verifyOtpData, verifyOtpError]);
-
-  useEffect(async() => {
-    console.log("007");
-    // ----------------------------------------
-    //fetching location as the component mounts
-    const getCurrLocation = await getCurrentLocation()
-    dispatch(setLocation(getCurrLocation))
-    setLocation(getCurrLocation)
-    // ----------------------------------------
-
-  }, []);
+  }, [verifyOtpData, verifyOtpError])
   
+  useEffect(() => {
+    let lat = ''
+    let lon = ''
+    Geolocation.getCurrentPosition((res) => {
+      console.log("res", res)
+      lat = res.coords.latitude
+      lon = res.coords.longitude
+      // getLocation(JSON.stringify(lat),JSON.stringify(lon))
+      console.log("latlong", lat, lon)
+      var url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${res.coords.latitude},${res.coords.longitude}
+        &location_type=ROOFTOP&result_type=street_address&key=${GoogleMapsKey}`
+
+      fetch(url).then(response => response.json()).then(json => {
+        console.log("location address=>", JSON.stringify(json));
+        const formattedAddress = json.results[0].formatted_address
+        const formattedAddressArray = formattedAddress?.split(',')
+
+        let locationJson = {
+
+          lat: json.results[0].geometry.location.lat === undefined ? "N/A" : json.results[0].geometry.location.lat,
+          lon: json.results[0].geometry.location.lng === undefined ? "N/A" : json.results[0].geometry.location.lng,
+          address: formattedAddress === undefined ? "N/A" : formattedAddress
+
+        }
+
+        const addressComponent = json.results[0].address_components
+        console.log("addressComponent", addressComponent)
+        for (let i = 0; i <= addressComponent.length; i++) {
+          if (i === addressComponent.length) {
+            dispatch(setLocation(locationJson))
+            setLocation(locationJson)
+          }
+          else {
+            if (addressComponent[i].types.includes("postal_code")) {
+              console.log("inside if")
+
+              console.log(addressComponent[i].long_name)
+              locationJson["postcode"] = addressComponent[i].long_name
+            }
+            else if (addressComponent[i].types.includes("country")) {
+              console.log(addressComponent[i].long_name)
+
+              locationJson["country"] = addressComponent[i].long_name
+            }
+            else if (addressComponent[i].types.includes("administrative_area_level_1")) {
+              console.log(addressComponent[i].long_name)
+
+              locationJson["state"] = addressComponent[i].long_name
+            }
+            else if (addressComponent[i].types.includes("administrative_area_level_3")) {
+              console.log(addressComponent[i].long_name)
+
+              locationJson["district"] = addressComponent[i].long_name
+            }
+            else if (addressComponent[i].types.includes("locality")) {
+              console.log(addressComponent[i].long_name)
+
+              locationJson["city"] = addressComponent[i].long_name
+            }
+          }
+
+        }
+
+
+        console.log("formattedAddressArray", locationJson)
+
+      })
+    })
+
+  }, [])
   useEffect(() => {
     if (getLocationFormPincodeData) {
       console.log("getLocationFormPincodeData", getLocationFormPincodeData)
@@ -275,6 +338,25 @@ const BasicInfo = ({ navigation, route }) => {
 
         const values = Object.values(getFormData.body.template)
         setRegistrationForm(values)
+        console.log("values values are bering printed", values.length)
+        if(values)
+        for(let i=0;i<values;i++)
+        {
+          console.log("form values are being printed", values[i])
+          if(values[i].label.toLowerCase() == "aadhar" && values[i].required)
+          {
+            setAadhaarRequired(true)
+          }
+          if(values[i].label.toLowerCase()== "pan" && values[i].required)
+          {
+            setPanRequired(true)
+          }
+          if(values[i].label.toLowerCase() == "gstin" && values[i].required)
+          {
+            setGstinRequired(true)
+          }
+        }
+
       }
       else {
         setError(true)
@@ -293,7 +375,7 @@ const BasicInfo = ({ navigation, route }) => {
       console.log("data after submitting form", registerUserData)
       if (registerUserData.success) {
         setSuccess(true)
-        setMessage(t("Thank you for joining OZOSTARS Loyalty program, we will get back to you within 1-2 working days"))
+        setMessage(t("Thank you for joining Expolo Loyalty program, we will get back to you within 1-2 working days"))
         setModalTitle(t("Greetings"))
       }
       setHideButton(false)
@@ -381,6 +463,9 @@ const BasicInfo = ({ navigation, route }) => {
     getLocationFromPinCode(data)
 
   }
+
+  
+
   const getData = async () => {
     try {
       const value = await AsyncStorage.getItem('primaryLanguage');
@@ -409,79 +494,40 @@ const BasicInfo = ({ navigation, route }) => {
       console.log("isValidEmail", isValidEmail(data?.value), isValid)
 
     }
-    if(data?.name=== "aadhar")
+    if((data?.name).toLowerCase()=== "aadhar")
     {
-      console.log("aadhar input returned", data?.value?.length,data)
-      if(data.required)
+      console.log("aadhar input returned", data?.value?.length,data,aadhaarVerified)
+      if(data?.value?.length>0)
       {
-        if(aadhaarVerified)
-        {
-          setHideButton(false)
-        }
-        else{
-          setHideButton(true)
-        }
+        setAadhaarEntered(true)
       }
-      else{
-        if(data?.value?.length==0 || data?.value==undefined)
-        {
-         setHideButton(false)
-        }
-        else if(data?.value.length<12)
-        {
-         setHideButton(true)
-        }
-        else if(data?.value.length==12)
-        {
-          if(aadhaarVerified)
-          {
-          console.log("data hai addhar mei addhar verified",data?.value)
-          setHideButton(true)
-
-          }
-          else{
-          console.log("data hai addhar mei addhar not verified",data?.value)
-          setHideButton(false)
-
-          }
-        }
-      }  
+      else if(data?.value?.length == 0)
+      {
+        setAadhaarEntered(false)
+      }
     }
-    if(data?.name=== "pan")
+    if((data?.name).toLowerCase()=== "pan")
     {
-      console.log("pan input returned", data)
-      if(data.required)
+      if(data?.value?.length>0)
       {
-        if(pansVerified)
-        {
-          setHideButton(false)
-        }
-        else{
-          setHideButton(true)
-        }
+        setPanEntered(true)
       }
-      else{
-        if(data?.value?.length==0 || data?.value==undefined)
-        {
-         setHideButton(false)
-        }
-        else if(data?.value.length<10)
-        {
-         setHideButton(true)
-        }
-        else if(data?.value.length==10)
-        {
-          if(pansVerified)
-          {
-            setHideButton(false)
-          }
-          else{
-            setHideButton(true)
-          }
-        }
-      }  
+      else if(data?.value?.length == 0)
+      {
+        setPanEntered(false)
+      }
     }
-
+    if((data?.name).toLowerCase()=== "gstin")
+    {
+      if(data?.value?.length>0)
+      {
+        setGstEntered(true)
+      }
+      else if(data?.value?.length == 0)
+      {
+        setGstEntered(false)
+      }
+    }
 
 
 
@@ -582,37 +628,21 @@ const BasicInfo = ({ navigation, route }) => {
   }
 
   const panVerified =(bool)=>{
-    
-    console.log("Pan Verified",bool)
-
-    if(bool)
-    {
-      setPansVerified(true)
-    }
-    else
-    {
-    setPansVerified(false)
-    }
-    
+    setPansVerified(bool)
   }
 
 
   console.log("panVerifiedhideButton",hideButton)
 
-  const addharNotVerified = (bool)=>{
+  const addharVerified = (bool)=>{
     console.log("aadhar text input status", bool)
-    if(bool)
-    {
-      setAadhaarVerified(false)
-      setHideButton(true)
-    }
-    else{
-      setAadhaarVerified(true)
-      setHideButton(false)
-    }
+    
+      setAadhaarVerified(bool)
+      
+    
   }
 
-//   const handleRegistrationFormSubmission = () => {
+
 //     console.log("handleRegistrationFormSubmission", registrationForm)
 //     const inputFormData = {};
 //     let isFormValid = true; 
@@ -712,7 +742,7 @@ const BasicInfo = ({ navigation, route }) => {
 // };
 
 const handleRegistrationFormSubmission = () => {
-  console.log("handleRegistrationFormSubmission", responseArray);
+  console.log("handleRegistrationFormSubmission", responseArray,aadhaarRequired,panRequired,gstinRequired);
   const inputFormData = {};
   let isFormValid = true; 
   let missingParam = "";
@@ -775,8 +805,53 @@ console.log("responseMap",responseMap)
           if (isValidEmail(values[index])) {
               if (isFormValid) {
                 console.log("registerUserFuncqwerty",body)
-                  registerUserFunc(body);
-                  setHideButton(true);
+                  if(aadhaarRequired && !aadhaarVerified)
+                  {
+                    alert("aadhar is not verified")
+                  }
+                  else{
+                    if(aadhaarEntered && !aadhaarVerified)
+                    {
+                      alert("aadhar is not verified")
+                    }
+                    else{
+                      if(panRequired && !pansVerified)
+                    {
+                      alert("pan is not verified")
+                    }
+                    else{
+                      if(panEntered && !pansVerified)
+                      {
+                      alert("pan is not verified")
+                      }
+                      else{
+                        if(gstinRequired && !gstVerified)
+                        {
+                          alert("gstin is not verified")
+                        }
+                        else{
+                          if(gstEntered && !gstVerified)
+                          {
+                          alert("gstin is not verified")
+                          }
+                          else{
+                            console.log("aadhar fields required, verified",aadhaarRequired,aadhaarVerified )
+                            console.log("pan fields required, verified",panRequired,pansVerified )
+                            console.log("gstin fields required, verified",gstinRequired,gstVerified )
+
+
+                          registerUserFunc(body);
+                          }
+                          
+  
+                        }
+                      }
+                     
+                    }
+
+                    }
+                    
+                  }
               } else {
                   setError(true);
                   setMessage(missingParam);
@@ -788,7 +863,51 @@ console.log("responseMap",responseMap)
       } else {
           if (isFormValid) {
             console.log("registerUserFuncqwerty",body)
-              registerUserFunc(body);
+            if(aadhaarRequired && !aadhaarVerified)
+                  {
+                    alert("aadhar is not verified")
+                  }
+                  else{
+                    if(aadhaarEntered && !aadhaarVerified)
+                    {
+                      alert("aadhar is not verified")
+                    }
+                    else{
+                      if(panRequired && !pansVerified)
+                    {
+                      alert("pan is not verified")
+                    }
+                    else{
+                      if(panEntered && !pansVerified)
+                      {
+                      alert("pan is not verified")
+                      }
+                      else{
+                        if(gstinRequired && !gstVerified)
+                        {
+                          alert("gstin is not verified")
+                        }
+                        else{
+                          if(gstEntered && !gstVerified)
+                          {
+                          alert("gstin is not verified")
+                          }
+                          else{
+                            console.log("aadhar fields required, verified",aadhaarRequired,aadhaarVerified )
+                            console.log("pan fields required, verified",panRequired,pansVerified )
+                            console.log("gstin fields required, verified",gstinRequired,gstVerified )
+                            registerUserFunc(body);
+                          }
+                          
+  
+                        }
+                      }
+                     
+                    }
+
+                    }
+                    
+                  }
           } else {
               setError(true);
               setMessage(missingParam);
@@ -910,7 +1029,7 @@ console.log("responseMap",responseMap)
                             value={userMobile}
                             displayText ={item.name}
                             label={item.label}
-                            isEditable={false}
+                            isEditable={true}
                           >
                             {' '}
                           </TextInputNumericRectangle>}
@@ -999,7 +1118,7 @@ console.log("responseMap",responseMap)
                       displayText = {t(item.name.toLowerCase().trim())}
                       value={userName}
                       label={item.label}
-                      isEditable={false}
+                      isEditable={true}
                  
                     ></PrefilledTextInput>
                   )
@@ -1021,14 +1140,14 @@ console.log("responseMap",responseMap)
                 }
 
                 // } 
-                else if (item.name === 'aadhaar' || item.name === "aadhar") {
+                else if ((item.name).toLowerCase() === 'aadhaar' || (item.name).toLowerCase() === "aadhar") {
                   console.log("aadhar")
                   return (
                     <TextInputAadhar
                       required={item.required}
                       jsonData={item}
                       key={index}
-                      notVerified={addharNotVerified}
+                      verified={addharVerified}
                       handleData={handleChildComponentData}
                       placeHolder={item.name}
                       displayText = {t(item.name.toLowerCase().trim())}
@@ -1038,7 +1157,7 @@ console.log("responseMap",responseMap)
                     </TextInputAadhar>
                   );
                 }
-                else if (item.name === 'pan') {
+                else if ((item.name).toLowerCase() === 'pan') {
                   console.log("pan")
                   return (
                     <TextInputPan
@@ -1055,7 +1174,7 @@ console.log("responseMap",responseMap)
                     </TextInputPan>
                   );
                 }
-                else if (item.name === 'gstin') {
+                else if ((item.name).toLowerCase() === 'gstin') {
                   console.log("gstin")
                   return (
                     <TextInputGST
@@ -1197,7 +1316,7 @@ console.log("responseMap",responseMap)
                 );
               }
             })}
-
+  {console.log("sadbhjasbhjvfhjvhasjvhj",hideButton)}
           {formFound && !hideButton  && <ButtonOval
             handleOperation={() => {
               handleRegistrationFormSubmission();

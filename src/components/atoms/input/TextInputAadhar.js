@@ -34,7 +34,7 @@ const TextInputAadhar = (props) => {
   )
     ? useSelector(state => state.apptheme.ternaryThemeColor)
     : 'grey';
-    const gifUri = Image.resolveAssetSource(require('../../../../assets/gif/loader.gif')).uri;
+    const gifUri = Image.resolveAssetSource(require('../../../../assets/gif/loader2.gif')).uri;
     Keyboard.addListener("keyboardDidShow", () => {
       setKeyboardShow(true);
     });
@@ -62,15 +62,15 @@ const TextInputAadhar = (props) => {
       {
         if(value.length===12)
       {
-        
-        
         const data = {
           "aadhaar_number":value
       }
       setShowLoading(true)
       sendAadharOtpFunc(data)
-        
-       
+      }
+      if(value.length<12)
+      {
+        props.verified(false)
       }
       else{
         setShowOtp(false)
@@ -94,7 +94,7 @@ const TextInputAadhar = (props) => {
             }
             else
             {
-              props.notVerified(true)
+              props.verified(false)
             }
         }
      },[otp])
@@ -109,7 +109,6 @@ const TextInputAadhar = (props) => {
           setOtpSent(true)
           setShowOtp(true)
           setShowLoading(false)
-          props.notVerified(true)
         }
         }
         else if(sendAadharOtpError)
@@ -117,7 +116,6 @@ const TextInputAadhar = (props) => {
         console.log("sendAadharOtpError",sendAadharOtpError)
           setShowLoading(false)
           setAadharExists(true)
-          props.notVerified(true)
         
         }
         
@@ -132,12 +130,11 @@ const TextInputAadhar = (props) => {
               setModalVisible(true)
               setShowLoading(false)
               setAadharVerified(true)
-              props.notVerified(false)
+              props.verified(true)
               }
             }
             else if(verifyAadharError){
               console.log("verifyAadharError",verifyAadharError)
-              props.notVerified(true)
               setShowLoading(false)
 
             }

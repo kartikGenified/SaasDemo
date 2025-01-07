@@ -18,7 +18,7 @@ const DeleteModal = (props) => {
     const userData = useSelector(state => state.appusersdata.userData)
     console.log("userdata",userData)
 
-  const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader.gif')).uri;
+  const gifUri = Image.resolveAssetSource(require('../../../assets/gif/loader2.gif')).uri;
     const [deleteDataFunc, {
         data: deleteDataData,
         error: deleteDataError,

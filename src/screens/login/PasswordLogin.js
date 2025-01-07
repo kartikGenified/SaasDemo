@@ -236,7 +236,7 @@ const PasswordLogin = ({ navigation, route }) => {
       
       if(passwordLoginError.status===400)
       {
-      alert(t("Your status is under process, please contact OzoStars"))
+      alert(t("Your status is under process, please contact Genefied"))
       }
       else if(passwordLoginError?.message){
         setError(true)

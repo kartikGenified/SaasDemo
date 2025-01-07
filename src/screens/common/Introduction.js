@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {View, StyleSheet, Text,Image, TouchableOpacity, ImageBackground} from 'react-native';
+import {View, StyleSheet, Text,Image, TouchableOpacity, ImageBackground, BackHandler} from 'react-native';
 import DotHorizontalList from '../../components/molecules/DotHorizontalList';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { descriptionImages } from '../../utils/HandleClientSetup';
@@ -31,6 +31,28 @@ const Introduction = ({navigation}) => {
          }, 1500);
          
     },[])
+
+    useEffect(() => {
+        const handleBackPress = () => {
+        //   navigation.goBack(); // Navigate back when back button is pressed
+          return true; // Prevent default back press behavior
+        };
+        const backHandler = BackHandler.addEventListener(
+          "hardwareBackPress",
+          handleBackPress
+        );
+
+
+        return () => {
+          // Ensure backHandler exists and remove the listener
+          // console.log("unmounting compionent sajkdahjsdhsaghd")
+    
+          if (backHandler) {
+            BackHandler.addEventListener("hardwareBackPress", () => false);
+          }
+        };
+      }, []);
+
     // This is the array used to display images, add or remove image from the array to modify as per clients need----------------
     
     // const descriptionImages=[require('../../../assets/images/asliVsnakli.png'),require('../../../assets/images/rewardifyDescription.png')]
