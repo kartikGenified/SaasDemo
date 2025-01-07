@@ -58,7 +58,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'expolo' do
+target 'Genefied' do
   config = use_native_modules!
 
 
@@ -80,7 +80,7 @@ target 'expolo' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'expoloTests' do
+  target 'GenefiedTests' do
     inherit! :complete
     # Pods for testing
   end

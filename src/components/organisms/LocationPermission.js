@@ -14,8 +14,8 @@ const LocationPermission = ({ onSuccess, onReject }) => {
             const granted = await PermissionsAndroid.request(
                 PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
                 {
-                    title: 'expolo App Location Permission',
-                    message: 'expolo App needs access to your Location ',
+                    title: 'Genefied App Location Permission',
+                    message: 'Genefied App needs access to your Location ',
                     buttonNeutral: 'Ask Me Later',
                     buttonNegative: 'Cancel',
                     buttonPositive: 'OK',

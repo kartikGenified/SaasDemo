@@ -73,8 +73,8 @@ const EnableCameraScreen = ({ navigation, route }) => {
         const granted = await PermissionsAndroid.request(
           PermissionsAndroid.PERMISSIONS.CAMERA,
           {
-            title: "expolo App Camera Permission",
-            message: "expolo App needs access to your camera",
+            title: "Genefied App Camera Permission",
+            message: "Genefied App needs access to your camera",
             buttonNegative: "Cancel",
             buttonPositive: "OK",
           }

@@ -901,7 +901,7 @@ const Splash = ({ navigation }) => {
   //   if (Platform.OS == "android") {
   //     LocationServicesDialogBox.checkLocationServicesIsEnabled({
   //       message:
-  //         "<h2 style='color: #0af13e'>Use Location ?</h2>expolo wants to change your device settings:<br/><br/>Enable location to use the application.<br/><br/><a href='#'>Learn more</a>",
+  //         "<h2 style='color: #0af13e'>Use Location ?</h2>Genefied wants to change your device settings:<br/><br/>Enable location to use the application.<br/><br/><a href='#'>Learn more</a>",
   //       ok: "YES",
   //       cancel: "NO",
   //       enableHighAccuracy: true, // true => GPS AND NETWORK PROVIDER, false => GPS OR NETWORK PROVIDER
@@ -1000,7 +1000,7 @@ const Splash = ({ navigation }) => {
                 text: t("Update"),
                 onPress: () =>
                   Linking.openURL(
-                    "https://play.google.com/store/apps/details?id=com.genefied.expolo"
+                    "https://play.google.com/store/apps/details?id=com.genefied.demo"
                   ),
               },
             ]
@@ -1016,7 +1016,7 @@ const Splash = ({ navigation }) => {
                 text: "Update",
                 onPress: () =>
                   Linking.openURL(
-                    "https://play.google.com/store/apps/details?id=com.genefied.expolo"
+                    "https://play.google.com/store/apps/details?id=com.genefied.demo"
                   ),
               },
             ]

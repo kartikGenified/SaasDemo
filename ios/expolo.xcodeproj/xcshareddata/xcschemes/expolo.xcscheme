@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "expolo.app"
-               BlueprintName = "expolo"
-               ReferencedContainer = "container:expolo.xcodeproj">
+               BuildableName = "Genefied.app"
+               BlueprintName = "Genefied"
+               ReferencedContainer = "container:Genefied.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "expoloTests.xctest"
-               BlueprintName = "expoloTests"
-               ReferencedContainer = "container:expolo.xcodeproj">
+               BuildableName = "GenefiedTests.xctest"
+               BlueprintName = "GenefiedTests"
+               ReferencedContainer = "container:Genefied.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "expolo.app"
-            BlueprintName = "expolo"
-            ReferencedContainer = "container:expolo.xcodeproj">
+            BuildableName = "Genefied.app"
+            BlueprintName = "Genefied"
+            ReferencedContainer = "container:Genefied.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "expolo.app"
-            BlueprintName = "expolo"
-            ReferencedContainer = "container:expolo.xcodeproj">
+            BuildableName = "Genefied.app"
+            BlueprintName = "Genefied"
+            ReferencedContainer = "container:Genefied.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
