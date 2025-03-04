@@ -385,6 +385,7 @@ const OtpVerification = ({ navigation, route }) => {
             tempID.push(item.gift_id);
           });
         console.log("tempID", tempID, userData, address);
+        console.log("schemeType",schemeType);
 
         if (schemeType == "yearly") {
           const data = {
@@ -398,6 +399,7 @@ const OtpVerification = ({ navigation, route }) => {
             remarks: "demo",
             type: "point",
             address_id: address.id,
+            address
           };
           const params = {
             token: token,
@@ -405,18 +407,37 @@ const OtpVerification = ({ navigation, route }) => {
           };
           redeemGiftsFunc(params);
         } else {
+          // const data = {
+          //   scheme_id: schemeID,
+          //   address: address,
+          //   platform_id: 1,
+          //   platform: Platform.OS,
+          //   gift_ids: tempID,
+          // };
+          // const params = {
+          //   token: token,
+          //   data: data,
+          // };
+          // redeemSchemeApiFunc(params);
+
           const data = {
-            scheme_id: schemeID,
-            address: address,
+            user_type_id: String(userData.user_type_id),
+            user_type: userData.user_type,
             platform_id: 1,
-            platform: Platform.OS,
+            platform: "mobile",
             gift_ids: tempID,
+            approved_by_id: "1",
+            app_user_id: String(userData.id),
+            remarks: "demo",
+            type: "point",
+            address_id: address.id,
+            address:address
           };
           const params = {
             token: token,
             data: data,
           };
-          redeemSchemeApiFunc(params);
+          redeemGiftsFunc(params);
         }
       } else if (type === "Cashback") {
         

@@ -40,6 +40,7 @@ import FastImage from "react-native-fast-image";
 import { useGetMappingDetailsByAppUserIdMutation } from "../../apiServices/userMapping/userMappingApi";
 import { setFirstScan } from "../../../redux/slices/scanningSlice";
 import MessageModal from "../../components/modals/MessageModal";
+import { useTranslation } from "react-i18next";
 
 
 const CongratulateOnScan = ({ navigation, route }) => {
@@ -64,6 +65,8 @@ const CongratulateOnScan = ({ navigation, route }) => {
   );
   const qrIdList = useSelector((state) => state.qrData.qrIdList);
   const qrData = useSelector((state) => state.qrData.qrData)[0];
+
+  const {t} = useTranslation()
 
   const userData = useSelector((state) => state.appusersdata.userData);
   // console.log("userData", `${userData.user_type}_points`, JSON.stringify(pointSharingData));

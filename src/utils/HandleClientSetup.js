@@ -6,6 +6,10 @@ export const clientID = 28;
 
 export const baseUrl = "http://sales-saas-api.genefied.in/"  // "http://saas-api-dev.genefied.in/""
 
+
+//Qr Code gveryify url
+export const gVerifyQrName = "Gautam Garments";
+
 //icons and images
 export const appIcon = require("../../assets/images/genefiedLogo.jpg");
 export const splash = require("../../assets/gif/SplashGenefied.gif");
@@ -34,19 +38,22 @@ export const scannerType = "qr"; //"qr for qr", "bar for bar
 // choose from ["points", "scanned", "redeemed", "cashback","coupon", "warranty", "wheel","previous transaction","wheel","shared"]
 export const neededHistory = [
   "points",
-  "scanned",
+  // "scanned",
   "redeemed",
   "cashback",
   "coupon",
   "warranty",
   "shared",
-  "previous",
+  // "previous",
 ];
 
 export const showEditProfile = true;
 
-export const needWalkedThrough = true
+export const needWalkedThrough = false
+
+// export const needMpin = false
 
 export const needRandomRedeemPoint = true
+
 
 export const redeemptionItems = ["gift", "cashback","coupon" ]; // choose from -->  ["gift", "cashback","coupon"]

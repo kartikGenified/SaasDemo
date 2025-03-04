@@ -58,10 +58,10 @@ const handleLocationPermissionAndFetch = async (
 
         return locationJson;
       } else {
-        showAlert(
-         "Geocoding Error",
-           "Failed to fetch address."
-        );
+        // showAlert(
+        //  "Geocoding Error",
+        //    "Failed to fetch address."
+        // );
         return null;
       }
     } catch (error) {

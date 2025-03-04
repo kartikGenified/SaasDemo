@@ -71,7 +71,7 @@ import {
 import Toast, { BaseToast, ErrorToast } from "react-native-toast-message";
 import scanDelay from "../../utils/ScannedDelayUtil";
 import UpdateModal from "../../components/modals/UpdateModal";
-import { scannerType } from "../../utils/HandleClientSetup";
+import { gVerifyQrName, scannerType } from "../../utils/HandleClientSetup";
 
 const QrCodeScanner = ({ navigation, route }) => {
   const [zoom, setZoom] = useState(0);
@@ -666,13 +666,19 @@ const QrCodeScanner = ({ navigation, route }) => {
       let requestData = {};
 
       if (qrData?.split("-").length === 1) {
-        requestData["unique_code"] = `ozone-${qrData}`;
-        qrData = `ozone-${qrData}`;
+        requestData["unique_code"] = `${gVerifyQrName}-${qrData}`;
+        qrData = `${gverif}-${qrData}`;
       } else if (qrData?.split("-").length === 2) {
         requestData["unique_code"] = qrData;
       }
 
       console.log("onSuccess qrData", qrData);
+      if(qrData == undefined)
+        {
+          qrData = e?.split('-')[1]
+          qrData = `Gautam Garments-${qrData}`;
+          requestData["unique_code"] = qrData;
+        }
       // Check for duplicate QR code
 
       if (isDuplicateQr.has(qrData)) {

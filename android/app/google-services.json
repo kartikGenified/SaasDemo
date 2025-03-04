@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "1011408310830",
-    "project_id": "Genefied",
-    "storage_bucket": "Genefied.firebasestorage.app"
+    "project_number": "972986036876",
+    "project_id": "genefied-sales",
+    "storage_bucket": "genefied-sales.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1011408310830:android:6c5feb3f545adda39f45bf",
+        "mobilesdk_app_id": "1:972986036876:android:c899983a83b9823f9381a9",
         "android_client_info": {
           "package_name": "com.genefied.demo"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBsFGdJ4by6tK-aq4XEEQ9rghyK6mxpX4w"
+          "current_key": "AIzaSyB78EKQ1ICZE4IiK0CVF15NDNWnpPuRnb8"
         }
       ],
       "services": {

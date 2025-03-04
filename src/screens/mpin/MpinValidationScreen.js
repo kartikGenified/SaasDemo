@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Alert,
   Image,
+  Keyboard
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch, useSelector } from "react-redux";
@@ -496,6 +497,9 @@ const MpinValidationScreen = (params) => {
     if (text.length === 1 && index < 3) {
       refInputs.current[index + 1].focus();
     }
+    else{
+      Keyboard.dismiss()
+    }
   };
 
   // Handle key press to move back on backspace
@@ -575,7 +579,7 @@ const MpinValidationScreen = (params) => {
 
       <View
         style={{
-          backgroundColor: ternaryThemeColor,
+          backgroundColor: 'white',
           padding: 10,
           marginTop: "35%",
           marginBottom: 100,
@@ -583,8 +587,8 @@ const MpinValidationScreen = (params) => {
       >
         <Image
           style={{
-            height: 50,
-            width: 100,
+            height: 150,
+            width: 150,
             resizeMode: "contain",
           }}
           source={appIcon}

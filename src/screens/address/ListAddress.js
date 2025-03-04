@@ -281,6 +281,7 @@ const ListAddress = ({ navigation ,route}) => {
     const { address, city, state, country, index, district, pincode } = props;
     const [selected, setSelected] = useState(false);
     const addressJson = {
+      address,
       index,
       city,
       district,

@@ -341,7 +341,7 @@ const Passbook = ({ navigation }) => {
 
                         <View style={{ width: '100%', height: 50, flexDirection: "row", alignItems: "center", justifyContent: 'space-between', borderBottomWidth: 1, borderColor: '#EEEEEE' }}>
                             <View style={{width:'70%',height:'100%',alignItems:'center',justifyContent:'center'}}>
-                            {(getPointSharingData?.body?.total !== "0") ? <PoppinsTextMedium style={{ color: ternaryThemeColor, fontWeight: 'bold', position: 'absolute', left: 10 }} content={`${t("registration bonus")}: ${getPointSharingData?.body?.data?.[0]?.points ? getPointSharingData?.body?.data?.[0]?.points + "Points" : "loading"} `}></PoppinsTextMedium >
+                            {(getPointSharingData?.body?.total !== "0") ? <PoppinsTextMedium style={{ color: ternaryThemeColor, fontWeight: 'bold', position: 'absolute', left: 10 }} content={`${t("registration bonus ")}: ${getPointSharingData?.body?.data?.[0]?.points ? getPointSharingData?.body?.data?.[0]?.points + "Points" : "loading"} `}></PoppinsTextMedium >
                                 : <PoppinsTextMedium style={{ fontWeight: 'bold', position: 'absolute', left: 10 }} content={t("what do you want to do")}></PoppinsTextMedium>
                             }
                             </View>
@@ -399,7 +399,11 @@ const Passbook = ({ navigation }) => {
                             neededHistory.includes("shared") &&
                             pointSharing && <NavigateTO visibleTitle={t("shared point history")} title="Shared Point History" discription=" list of shared points recieved by you" image={require('../../../assets/images/shared_point.png')}></NavigateTO>
                         }
+                        {
+                                 neededHistory.includes("previous") &&
                         <NavigateTO visibleTitle={t("previous transaction history")} title="Previous Transaction History" discription=" Previous transaction done by you" image={require('../../../assets/images/coinStack.png')}></NavigateTO>
+
+                        }
 
                     </View>
                 }

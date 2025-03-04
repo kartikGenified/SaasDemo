@@ -7,6 +7,8 @@ import {
   TouchableOpacity,
   Alert,
   Image,
+  Keyboard,
+  ScrollView
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useSelector } from "react-redux";
@@ -103,9 +105,13 @@ const MpinSetupScreen = (params) => {
     newMpin[index] = text; // Update the current input
     setMpin(newMpin);
 
+
     // Move to the next input if a number is entered
     if (text.length === 1 && index < 3) {
       refInputs.current[index + 1].focus();
+    }
+    else{
+      Keyboard.dismiss()
     }
   };
 
@@ -141,10 +147,12 @@ const MpinSetupScreen = (params) => {
 
       await AsyncStorage.setItem("userMpin", fullMpin);
       if(userData.user_type == "distributor"){
-        navigation.reset({ index: "0", routes: [{ name: "UpdatePassword",params: { 
-          /* Your parameters here */
-          type: "login"
-        } }] });
+
+        // navigation.reset({ index: "0", routes: [{ name: "UpdatePassword",params: { 
+        //   /* Your parameters here */
+        //   type: "login"
+        // } }] });
+        navigation.reset({ index: "0", routes: [{ name: "Dashboard" }] });
       }
       else{
       navigation.reset({ index: "0", routes: [{ name: "Dashboard" }] });
@@ -158,7 +166,7 @@ const MpinSetupScreen = (params) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       {/* <TouchableOpacity
         onPress={() => {
           navigation.goBack();
@@ -179,23 +187,23 @@ const MpinSetupScreen = (params) => {
         ></Image>
       </TouchableOpacity> */}
 
-      <View
+      <TouchableOpacity onPress={()=>{Keyboard.dismiss()}}
         style={{
-          backgroundColor: ternaryThemeColor,
+          backgroundColor: 'white',
           padding: 10,
-          marginTop: "35%",
+          marginTop: "20%",
           marginBottom: 100,
         }}
       >
         <Image
           style={{
-            height: 50,
-            width: 100,
+            height: 150,
+            width: 150,
             resizeMode: "contain",
           }}
           source={appIcon}
         />
-      </View>
+      </TouchableOpacity>
 
       <Text style={{ ...styles.title, color: ternaryThemeColor }}>
         Create Your MPIN
@@ -229,7 +237,7 @@ const MpinSetupScreen = (params) => {
       >
         <Text style={styles.buttonText}>Set MPIN</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 

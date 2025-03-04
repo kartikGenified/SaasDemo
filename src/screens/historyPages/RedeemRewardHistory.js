@@ -414,7 +414,7 @@ const RedeemRewardHistory = ({navigation}) => {
             <View style={{alignItems:"flex-start",justifyContent:"center",width:'100%',top:10}}>
             <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
            {showCoupons &&
-            <RedeemRewardDataBox header="My Vouchers"  data="5000" image={require('../../../assets/images/voucher1.png')} ></RedeemRewardDataBox>}
+            <RedeemRewardDataBox header="My Vouchers"  data="0" image={require('../../../assets/images/voucher1.png')} ></RedeemRewardDataBox>}
            {showCashback && <RedeemRewardDataBox navigation = {navigation} header="Cashback"  data="5000" image={require('../../../assets/images/cashback.png')} ></RedeemRewardDataBox>}
             {showPoints && userPointData &&  <RedeemRewardDataBox navigation = {navigation} header={t("earned points")}  data={userPointData.body.point_earned} image={require('../../../assets/images/points.png')} ></RedeemRewardDataBox>}
            {showWheel &&  <RedeemRewardDataBox navigation = {navigation} header="Total Spins"  data="5000" image={require('../../../assets/images/wheel.png')} ></RedeemRewardDataBox>
